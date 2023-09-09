@@ -64,6 +64,8 @@ npm run start:dev - запуск сервера + frontend проекта в dev
 - /config/babel - babel
 - /config/build - конфигурация webpack
 
+----
+
 ### Работа с данными
 
 Взаимодействие с данными осуществляется с помощью redux toolkit.
