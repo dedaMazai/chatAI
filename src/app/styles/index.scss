@@ -4,21 +4,17 @@
 @import "themes/dark";
 
 .app {
+    background: var(--bg);
+    min-height: 100vh;
     font: var(--font-m);
-    color: var(--primary-color);
-    background: var(--bg-color);
-    min-height: 100vh;
-}
-
-.app_redesigned {
-    background: var(--bg-redesigned);
-    min-height: 100vh;
-    font: var(--font-m-redesigned);
-    color: var(--text-redesigned);
+    color: var(--text);
 }
 
 .content-page {
     display: flex;
+    overflow: hidden;
+    padding: 1rem 0;
+    height: calc(100vh - var(--navbar-height));
 }
 
 *::-webkit-scrollbar {
@@ -27,13 +23,13 @@
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--light-bg-redesigned);        /* цвет дорожки */
+    background: var(--light-bg);        /* цвет дорожки */
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--icon-redesigned);    /* цвет плашки */
+    background-color: var(--icon);    /* цвет плашки */
     border-radius: 20px;       /* закругления плашки */
-    border: 1px solid var(--accent-redesigned);  /* padding вокруг плашки */
+    border: 1px solid var(--accent);  /* padding вокруг плашки */
 }
 
 .app *::-webkit-scrollbar {

@@ -1,3 +1,6 @@
+import { Counter } from '@/entities/Counter';
+import { LangSwitcher } from '@/features/LangSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { Page } from '@/shared/layouts';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -14,6 +17,9 @@ const MainPage = () => {
         <Page>
             <div>123123123123123123</div>
             {t('Главная страница')}
+            <Counter />
+            <LangSwitcher />
+            <ThemeSwitcher />
         </Page>
     );
 };

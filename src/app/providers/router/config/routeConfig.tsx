@@ -11,6 +11,7 @@ import { AppRoutesProps } from '@/shared/types/router';
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
         path: getRouteMain(),
+        withSidebar: true,
         element: <MainPage />,
     },
     [AppRoutes.FORBIDDEN]: {

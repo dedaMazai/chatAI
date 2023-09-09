@@ -4,11 +4,15 @@ import { PageLoader } from '@/widgets/PageLoader';
 import { RequireAuth } from './RequireAuth';
 import { routeConfig } from '../config/routeConfig';
 import { AppRoutesProps } from '@/shared/types/router';
+import { Sidebar } from '@/widgets/Sidebar';
 
 const AppRouter = () => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
         const element = (
-            <Suspense fallback={<PageLoader />}>{route.element}</Suspense>
+            <Suspense fallback={<PageLoader />}>
+                {route.withSidebar && <Sidebar />}
+                {route.element}
+            </Suspense>
         );
 
         return (

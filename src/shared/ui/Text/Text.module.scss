@@ -1,9 +1,9 @@
 .title {
-    color: var(--text-redesigned);
+    color: var(--text);
 }
 
 .text {
-    color: var(--text-redesigned);
+    color: var(--text);
 }
 
 .error {
@@ -18,11 +18,11 @@
 
 .accent {
     .title {
-        color: var(--accent-redesigned);
+        color: var(--accent);
     }
 
     .text {
-        color: var(--accent-redesigned);
+        color: var(--accent);
     }
 }
 
@@ -40,31 +40,31 @@
 
 .size_s {
     .title {
-        font: var(--font-m-redesigned);
+        font: var(--font-m);
     }
 
     .text {
-        font: var(--font-s-redesigned);
+        font: var(--font-s);
     }
 }
 
 .size_m {
     .title {
-        font: var(--font-l-redesigned);
+        font: var(--font-l);
     }
 
     .text {
-        font: var(--font-m-redesigned);
+        font: var(--font-m);
     }
 }
 
 .size_l {
     .title {
-        font: var(--font-xl-redesigned);
+        font: var(--font-xl);
     }
 
     .text {
-        font: var(--font-l-redesigned);
+        font: var(--font-l);
     }
 }
 

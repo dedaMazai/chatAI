@@ -1,6 +1,8 @@
 .item {
     display: flex;
     align-items: center;
+    width: 100%;
+    padding: 0 16px;
 }
 
 .link {
@@ -10,13 +12,6 @@
 
 .icon {
     fill: var(--inverted-primary-color);
-}
-
-.itemRedesigned {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 0 16px;
 }
 
 .collapsed {
@@ -38,7 +33,7 @@
         position: absolute;
         width: 2px;
         left: 0;
-        background: var(--accent-redesigned);
+        background: var(--accent);
         height: 100%;
     }
 }

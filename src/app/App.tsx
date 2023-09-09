@@ -32,7 +32,6 @@ const App = memo(() => {
             <Suspense fallback="">
                 <Navbar />
                 <div className="content-page">
-                    <Sidebar />
                     <AppRouter />
                 </div>
             </Suspense>

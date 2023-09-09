@@ -16,11 +16,9 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const authData = useSelector(getUserAuthData);
 
-    const mainClass = cls.Navbar;
-
     if (authData) {
         return (
-            <header className={classNames(mainClass, {}, [className])}>
+            <header className={classNames(cls.Navbar, {}, [className])}>
                 <HStack gap="16" className={cls.actions}>
                     <Button
                         variant="clear"
@@ -35,7 +33,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     }
 
     return (
-        <header className={classNames(mainClass, {}, [className])}>
+        <header className={classNames(cls.Navbar, {}, [className])}>
             <Button
                 variant="clear"
                 className={cls.links}
