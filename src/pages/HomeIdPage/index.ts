@@ -1,0 +1,1 @@
+export { HomeIdPageAsync as HomeIdPage } from './ui/HomeIdPage.async';

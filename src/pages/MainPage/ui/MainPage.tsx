@@ -1,7 +1,7 @@
 import { Counter } from '@/entities/Counter';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
-import { Page } from '@/shared/layouts';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -14,13 +14,13 @@ const MainPage = () => {
     };
 
     return (
-        <Page>
+        <VStack max>
             <div>123123123123123123</div>
             {t('Главная страница')}
             <Counter />
             <LangSwitcher />
             <ThemeSwitcher />
-        </Page>
+        </VStack>
     );
 };
 

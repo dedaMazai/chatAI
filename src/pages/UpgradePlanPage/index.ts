@@ -1,0 +1,1 @@
+export { UpgradePlanPageAsync as UpgradePlanPage } from './ui/UpgradePlanPage.async';

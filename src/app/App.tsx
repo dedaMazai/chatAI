@@ -30,8 +30,7 @@ const App = memo(() => {
     return (
         <div id="app" className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
-                <Navbar />
-                <div className="content-page">
+                <div className="page">
                     <AppRouter />
                 </div>
             </Suspense>

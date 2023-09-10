@@ -1,0 +1,1 @@
+export { PricingPageAsync as PricingPage } from './ui/PricingPage.async';

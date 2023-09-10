@@ -1,9 +1,9 @@
 .Sidebar {
-    background: var(--light-bg);
+    background: var(--inverted-bg-color);
     width: 220px;
     height: 100%;
-    border-radius: 32px;
     position: relative;
+    border-right: 1px solid var(--border);
 
     .appLogo {
         padding-top: 20px;

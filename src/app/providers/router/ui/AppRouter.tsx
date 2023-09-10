@@ -5,13 +5,20 @@ import { RequireAuth } from './RequireAuth';
 import { routeConfig } from '../config/routeConfig';
 import { AppRoutesProps } from '@/shared/types/router';
 import { Sidebar } from '@/widgets/Sidebar';
+import { VStack } from '@/shared/ui/Stack';
+import { Navbar } from '@/widgets/Navbar';
 
 const AppRouter = () => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
         const element = (
             <Suspense fallback={<PageLoader />}>
                 {route.withSidebar && <Sidebar />}
-                {route.element}
+                <VStack max>
+                    <Navbar />
+                    <div className="content-page ">
+                        {route.element}
+                    </div>
+                </VStack>
             </Suspense>
         );
 

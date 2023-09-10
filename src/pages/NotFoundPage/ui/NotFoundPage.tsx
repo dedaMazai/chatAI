@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Page } from '@/shared/layouts';
+import { HStack } from '@/shared/ui/Stack';
 
 import cls from './NotFoundPage.module.scss';
 
@@ -11,10 +11,12 @@ interface NotFoundPageProps {
 export const NotFoundPage = ({ className }: NotFoundPageProps) => {
     const { t } = useTranslation();
     return (
-        <Page
+        <HStack
+            max
+            justify="center"
             className={classNames(cls.NotFoundPage, {}, [className])}
         >
             {t('Страница не найдена')}
-        </Page>
+        </HStack>
     );
 };

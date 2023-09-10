@@ -1,31 +1,37 @@
 .app_dark_theme {
-    --bg-color: #090949;
-    --inverted-bg-color: #e8e8ea;
-    --primary-color: #04ff04;
-    --secondary-color: #049604;
-    --inverted-primary-color: #0232c2;
-    --inverted-secondary-color: #0452ff;
+    --bg-color: #1e2022;
+    --inverted-bg-color: #25282a;
+    --primary-color: #01c54f;
+    --border: #2f3235;
+    --scroll-bard: #bdc5d1;
 
-    --dark-bg: #090F11;
-    --bg: #0C1214;
-    --light-bg: #151C1F;
-    --text: #DBDBDB;
-    --hint: #555555;
-    --cancel: #D95757;
-    --save: #6CD98B;
-    --icon: #74A2B2;
-    --accent: #5ED3F3;
+    // Кнопки
+    --green-button: #01c54f;
+    --grey-button: #eee;
+    --black-button: #fff;
+    --red-button: #ff616d;
 
-    // skeleton
-    --skeleton-color: #1515ad;
-    --skeleton-shadow: #2b2be8;
+    // Тени
+    --shadow-card: 0 0.375rem 1.5rem 0 #8c98a420;
+    --shadow-card-hover: 0 0.4rem 2rem 0 #8c98a420;
 
-    // code
-    --code-bg: #1212a1;
+    // Карточки
+    --card-bd-main: #25282a;
+    --card-bd-grey-one: #f5f5f5;
+    --card-bd-grey-two: #e8eaec;
+    --card-bd-green: #01c54f;
 
-    // card
-    --card-bg: #0d0d6b;
+    // Текст
+    --text-main: #fff;
+    --text-second: #c5c8cc;
+    --text-red: #ff616d;
+    --text-green: #01c54f;
 
-    // listbox
-    --listbox-bg: #0d0d6b;
+    // старое
+    --text: #141C1F;
+    --hint: #ADBCC0;
+    --cancel: #FF7777;
+    --save: #62DE85;
+    --icon: #5ED3F3;
+    --accent: #00C8FF;
 }

@@ -1,31 +1,37 @@
 :root {
-    --bg-color: #e8e8ea;
-    --inverted-bg-color: #090949;
-    --primary-color: #0232c2;
-    --secondary-color: #0449e0;
-    --inverted-primary-color: #04ff04;
-    --inverted-secondary-color: #049604;
+    --bg-color: #fff;
+    --inverted-bg-color: #fff;
+    --primary-color: #01c54f;
+    --border: #e7eaf3b3;
+    --scroll-bard: #bdc5d1;
 
-    --dark-bg: #FFFFFF;
-    --bg: #EFF5F6;
-    --light-bg: #E2EEF1;
+    // Кнопки
+    --green-button: #01c54f;
+    --grey-button: #eee;
+    --black-button: #000;
+    --red-button: #ff616d;
+
+    // Тени
+    --shadow-card: 0 0.375rem 1.5rem 0 #8c98a420;
+    --shadow-card-hover: 0 0.4rem 2rem 0 #8c98a420;
+
+    // Карточки
+    --card-bd-main: #fff;
+    --card-bd-grey-one: #f5f5f5;
+    --card-bd-grey-two: #e8eaec;
+    --card-bd-green: #01c54f;
+
+    // Текст
+    --text-main: #000;
+    --text-second: #000;
+    --text-red: #ff616d;
+    --text-green: #01c54f;
+
+    // старое
     --text: #141C1F;
     --hint: #ADBCC0;
     --cancel: #FF7777;
     --save: #62DE85;
     --icon: #5ED3F3;
     --accent: #00C8FF;
-
-    // skeleton
-    --skeleton-color: #fff;
-    --skeleton-shadow: rgba(0 0 0 / 20%);
-
-    // code
-    --code-bg: #fff;
-
-    // card
-    --card-bg: #d5d5d7;
-
-    // listbox
-    --listbox-bg: #d5d5d7;
 }
