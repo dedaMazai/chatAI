@@ -1,32 +1,13 @@
 .Button {
     cursor: pointer;
-    color: var(--text);
+    color: var(--text-white);
     padding: 6px 16px;
     display: flex;
     align-items: center;
 
     &:hover {
-        color: var(--accent);
-
-        .addonLeft svg,
-        .addonRight svg {
-            color: var(--accent);
-        }
+        opacity: 0.9;
     }
-}
-
-.withAddon {
-    padding: 0 16px;
-}
-
-.addonLeft,
-.addonRight {
-    display: flex;
-}
-
-.addonRight svg,
-.addonLeft svg {
-    color: var(--hint);
 }
 
 .clear {
@@ -37,30 +18,95 @@
 }
 
 .filled {
-    background: var(--inverted-bg-color);
+    background: var(--green-button);
     border: none;
     outline: none;
-    border-radius: 34px;
+    border-radius: 10px;
+
+    &.circle {
+        border-radius: 20px;
+    }
+
+    &.greenLight {
+        background: var(--green-light-button);
+        color: var(--text-green);
+
+        &:hover {
+            color: var(--text-white);
+        }
+    }
+
+    &:hover {
+        background: var(--green-button-hover);
+    }
+
+    &.grey {
+        background: var(--grey-button);
+        color: var(--text-black);
+
+        &:hover {
+            background: var(--grey-button-hover);
+        }
+    }
+
+    &.black {
+        background: var(--black-button);
+        border: 1px solid var(--black-button);
+
+        &:hover {
+            background: var(--black-button-hover);
+            border: 1px solid var(--black-button);
+            color: var(--text-black);
+        }
+    }
+
+    &.red {
+        background: var(--red-button);
+
+        &:hover {
+            background: var(--red-button);
+        }
+    }
 }
 
 .outline {
     background: none;
-    border-radius: 34px;
+    border-radius: 10px;
+    border: 2px solid var(--green-button);
+
+    &.circle {
+        border-radius: 20px;
+    }
 
     &:hover {
-        border: 2px solid var(--accent);
+        border: 2px solid var(--green-button-hover);
     }
 
-    &.normal {
-        border: 2px solid var(--icon);
+    &.greenLight {
+        border: 2px solid var(--green-light-button);
+        color: var(--text-green);
     }
 
-    &.error {
-        border: 2px solid var(--cancel);
+    &.grey {
+        border: 2px solid var(--grey-button);
+        color: var(--text-black);
+
+        &:hover {
+            border: 2px solid var(--grey-button-hover);
+        }
     }
 
-    &.success {
-        border: 2px solid var(--save);
+    &.black {
+        border: 2px solid var(--black-button);
+        color: var(--text-black);
+
+        &:hover {
+            border: 2px solid var(--black-button-hover);
+        }
+    }
+
+    &.red {
+        border: 2px solid var(--red-button);
     }
 }
 

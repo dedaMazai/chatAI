@@ -1,28 +1,58 @@
 .title {
-    color: var(--text);
+    color: var(--text-main);
 }
 
 .text {
-    color: var(--text);
+    color: var(--text-main);
 }
 
-.error {
+.second {
     .title {
-        color: var(--red-light);
+        color: var(--text-second);
     }
 
     .text {
-        color: var(--red-dark);
+        color: var(--text-second);
     }
 }
 
-.accent {
+.red {
     .title {
-        color: var(--accent);
+        color: var(--text-red);
     }
 
     .text {
-        color: var(--accent);
+        color: var(--text-red);
+    }
+}
+
+.white {
+    .title {
+        color: var(--text-white);
+    }
+
+    .text {
+        color: var(--text-white);
+    }
+}
+
+.black {
+    .title {
+        color: var(--text-black);
+    }
+
+    .text {
+        color: var(--text-black);
+    }
+}
+
+.green {
+    .title {
+        color: var(--text-green);
+    }
+
+    .text {
+        color: var(--text-green);
     }
 }
 

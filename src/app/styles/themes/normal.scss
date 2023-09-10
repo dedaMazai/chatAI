@@ -3,17 +3,23 @@
     --inverted-bg-color: #fff;
     --primary-color: #01c54f;
     --border: #e7eaf3b3;
+    --border-active: #c9cbd1b3;
     --scroll-bard: #bdc5d1;
+    --scroll-bard-road: #ebecee;
 
     // Кнопки
     --green-button: #01c54f;
+    --green-light-button: #e8fff1;
+    --green-button-hover: #01e75d;
     --grey-button: #eee;
+    --grey-button-hover: #e2e2e2;
     --black-button: #000;
+    --black-button-hover: #fff;
     --red-button: #ff616d;
 
     // Тени
-    --shadow-card: 0 0.375rem 1.5rem 0 #8c98a420;
-    --shadow-card-hover: 0 0.4rem 2rem 0 #8c98a420;
+    --shadow-card: #8c98a46c;
+    --shadow-card-hover: #8c98a4b7;
 
     // Карточки
     --card-bd-main: #fff;
@@ -24,7 +30,10 @@
     // Текст
     --text-main: #000;
     --text-second: #000;
+    --text-gray: #adbcc0;
     --text-red: #ff616d;
+    --text-white: #fff;
+    --text-black: #000;
     --text-green: #01c54f;
 
     // старое

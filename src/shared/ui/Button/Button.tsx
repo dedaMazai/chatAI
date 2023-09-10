@@ -5,24 +5,23 @@ import {
     ReactNode,
 } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+
 import cls from './Button.module.scss';
 
 export type ButtonVariant = 'clear' | 'outline' | 'filled';
-export type ButtonColor = 'normal' | 'success' | 'error';
-
+export type ButtonColor = 'green' | 'greenLight' | 'grey' | 'black' | 'red';
 export type ButtonSize = 'm' | 'l' | 'xl';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     variant?: ButtonVariant;
-    square?: boolean;
+    color?: ButtonColor;
     size?: ButtonSize;
+    square?: boolean;
+    circle?: boolean;
     disabled?: boolean;
     children?: ReactNode;
     fullWidth?: boolean;
-    color?: ButtonColor;
-    addonLeft?: ReactNode;
-    addonRight?: ReactNode;
 }
 
 export const Button = forwardRef(
@@ -30,22 +29,21 @@ export const Button = forwardRef(
         const {
             className,
             children,
-            variant = 'outline',
+            variant = 'filled',
             square,
+            circle,
             disabled,
             fullWidth,
             size = 'm',
-            addonLeft,
-            addonRight,
-            color = 'normal',
+            color = 'green',
             ...otherProps
         } = props;
 
         const mods: Mods = {
             [cls.square]: square,
+            [cls.circle]: circle,
             [cls.disabled]: disabled,
             [cls.fullWidth]: fullWidth,
-            [cls.withAddon]: Boolean(addonLeft) || Boolean(addonRight),
         };
 
         return (
@@ -61,9 +59,7 @@ export const Button = forwardRef(
                 {...otherProps}
                 ref={ref}
             >
-                <div className={cls.addonLeft}>{addonLeft}</div>
                 {children}
-                <div className={cls.addonRight}>{addonRight}</div>
             </button>
         );
     },

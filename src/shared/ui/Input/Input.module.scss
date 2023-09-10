@@ -1,9 +1,10 @@
 .InputWrapper {
     display: flex;
+    gap: 8px;
     align-items: center;
-    border-radius: 48px;
+    border-radius: 10px;
     padding: 8px 16px;
-    border: 2px solid var(--icon);
+    border: 2px solid var(--border);
     width: 100%;
 }
 
@@ -33,11 +34,11 @@
 }
 
 .focused {
-    border: 2px solid var(--accent);
+    border: 2px solid var(--border-active);
 
     .addonLeft svg,
     .addonRight svg {
-        color: var(--accent);
+        color: var(--border-active);
     }
 }
 
@@ -45,11 +46,11 @@
     border: none;
     outline: none;
     width: 100%;
-    color: var(--text);
+    color: var(--text-second);
     background: none;
 
     &::placeholder {
-        color: var(--hint);
+        color: var(--text-gray);
     }
 }
 

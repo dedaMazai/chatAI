@@ -18,7 +18,8 @@
 
 .content-page {
     display: flex;
-    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
     padding: 1rem 0;
     height: calc(100vh - var(--navbar-height));
 }
@@ -29,7 +30,7 @@
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--scroll-bard);        /* цвет дорожки */
+    background: var(--scroll-bard-road);        /* цвет дорожки */
 }
 
 *::-webkit-scrollbar-thumb {

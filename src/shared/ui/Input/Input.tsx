@@ -9,7 +9,7 @@ import React, {
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 import { HStack } from '../Stack';
-import { Text } from '../Text';
+import { Typography } from '../Text';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -101,7 +101,7 @@ export const Input = memo((props: InputProps) => {
     if (label) {
         return (
             <HStack max gap="8">
-                <Text text={label} />
+                <Typography text={label} />
                 {input}
             </HStack>
         );
