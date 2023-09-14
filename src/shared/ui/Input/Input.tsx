@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
-import { HStack } from '../Stack';
+import { HStack, VStack } from '../Stack';
 import { Typography } from '../Text';
 
 type HTMLInputProps = Omit<
@@ -22,6 +22,7 @@ interface InputProps extends HTMLInputProps {
     className?: string;
     value?: string | number;
     label?: string;
+    validationText?: string;
     onChange?: (value: string) => void;
     autofocus?: boolean;
     readonly?: boolean;
@@ -43,6 +44,7 @@ export const Input = memo((props: InputProps) => {
         addonRight,
         label,
         size = 'm',
+        validationText,
         ...otherProps
     } = props;
     const ref = useRef<HTMLInputElement>(null);
@@ -100,10 +102,11 @@ export const Input = memo((props: InputProps) => {
 
     if (label) {
         return (
-            <HStack max gap="8">
+            <VStack max gap="2">
                 <Typography text={label} />
                 {input}
-            </HStack>
+                <Typography size="s" variant="gray" text={validationText} />
+            </VStack>
         );
     }
 

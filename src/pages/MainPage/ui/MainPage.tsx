@@ -2,19 +2,23 @@ import { Counter } from '@/entities/Counter';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import EditIcon from '@/shared/assets/icons/edit.svg';
+import SearchIcon from '@/shared/assets/icons/Search.svg';
 import { Accordion } from '@/shared/ui/Accordion';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Icon } from '@/shared/ui/Icon';
 import { Input } from '@/shared/ui/Input';
+import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
+import { Toggle } from '@/shared/ui/Toggle/Toggle';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const MainPage = () => {
     const { t } = useTranslation();
     const [value, setValue] = useState('');
+    const [toggle, setToggle] = useState(false);
 
     const onChange = (val: string) => {
         setValue(val);
@@ -73,7 +77,7 @@ const MainPage = () => {
             <Button color="grey">123</Button>
             <Button color="black">123</Button>
             <Button color="red">123</Button>
-            <Typography text="asdasasd" size="l" />
+            <Typography title="asdasasd" size="xl" bold />
             <Typography text="asdasasd" size="m" />
             <Typography text="asdasasd" size="s" />
             <Typography text="asdasasd" variant="main" />
@@ -82,7 +86,7 @@ const MainPage = () => {
             <Typography text="asdasasd" variant="white" />
             <Typography text="asdasasd" variant="black" />
             <Typography text="asdasasd" variant="green" />
-            {/* <Accordion list={LIST} /> */}
+            <Accordion list={LIST} />
             <Card>
                 <Typography text="asdasasd" variant="black" />
             </Card>
@@ -102,7 +106,7 @@ const MainPage = () => {
                 variant="outline"
                 border="partial"
                 header={(
-                    <Typography text="asdasasd" variant="black" />
+                    <Typography text="aaaaaaaaaaaa" variant="black" />
                 )}
             >
                 <Typography text="asdasasd" variant="black" />
@@ -111,22 +115,23 @@ const MainPage = () => {
                 <Typography text="asdasasd" variant="black" />
                 <Typography text="asdasasd" variant="black" />
             </Card>
+            <InputDrop />
             <Typography text="asdasasd" variant="green" />
             <Typography text="asdasasd" variant="green" />
-            <Typography text="asdasasd" variant="green" />
+            <Typography text="asdasasd" variant="green" bold />
+            <Toggle onChange={() => setToggle((prev) => !prev)} checked={toggle} />
             <Input
                 placeholder='asdasdas'
                 addonLeft={(
-                    <Typography text="11" variant="black" />
+                    <Icon Svg={SearchIcon} />
                 )}
-                addonRight={(
-                    <Typography text="11" variant="black" />
-                )}
+                label="Name"
+                validationText="validationText"
             />
-            {/* {t('Главная страница')}
+            {t('Главная страница')}
             <Counter />
             <LangSwitcher />
-            <ThemeSwitcher /> */}
+            <ThemeSwitcher />
         </VStack>
     );
 };

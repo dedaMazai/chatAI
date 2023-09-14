@@ -25,6 +25,11 @@
     display: flex;
 }
 
+.addonLeft svg,
+.addonRight svg {
+    color: var(--border-active);
+}
+
 .withAddonLeft {
     padding-left: 8px;
 }
@@ -35,11 +40,7 @@
 
 .focused {
     border: 2px solid var(--border-active);
-
-    .addonLeft svg,
-    .addonRight svg {
-        color: var(--border-active);
-    }
+    box-shadow: 0 0 1rem 0 var(--shadow-card);
 }
 
 .input {

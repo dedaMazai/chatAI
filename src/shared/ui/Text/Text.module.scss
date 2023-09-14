@@ -6,6 +6,16 @@
     color: var(--text-main);
 }
 
+.gray {
+    .title {
+        color: var(--text-gray);
+    }
+
+    .text {
+        color: var(--text-gray);
+    }
+}
+
 .second {
     .title {
         color: var(--text-second);
@@ -95,6 +105,16 @@
 
     .text {
         font: var(--font-l);
+    }
+}
+
+.size_xl {
+    .title {
+        font: var(--font-xxl);
+    }
+
+    .text {
+        font: var(--font-xl);
     }
 }
 

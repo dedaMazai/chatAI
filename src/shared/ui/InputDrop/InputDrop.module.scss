@@ -1,0 +1,49 @@
+.StyledInput {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 20px 14px 3px;
+    border: dashed 2px var(--primary-color);
+    color: var(--primary-color);
+    flex-shrink: 0;
+
+    .icon {
+        margin: 2px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .fileInput {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        display: block;
+        width: 0;
+        height: 0;
+    }
+
+    &:focus {
+        outline: none;
+        border: 1px solid var(--green-button-hover);
+    }
+
+    &::placeholder {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 2%;
+    }
+
+    &::file-selector-button {
+        display: none;
+    }
+}
+
+.Wrapper.fullWidth {
+    width: 100%;
+}
