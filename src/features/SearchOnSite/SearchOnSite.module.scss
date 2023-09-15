@@ -1,0 +1,42 @@
+.SearchOnSite {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.dropMenu {
+    position: absolute;
+    display: flex;
+    gap: 4px;
+    top: 38px;
+    border-radius: 0 0 10px 10px;
+    width: 500px;
+    background-color: var(--bg-color);
+    padding: 8px 16px;
+    border: 2px solid var(--border);
+    border-top: none;
+    opacity: 0;
+}
+
+.iconSms {
+    height: 30px;
+    width: 30px;
+
+    g {
+        rect {
+            fill: var(--bg-color);
+        }
+    }
+}
+
+.input {
+    width: 500px;
+}
+
+.input.openDropMenu {
+    border-radius: 10px 10px 0 0;
+}
+
+.openDropMenu {
+    opacity: 1;
+}

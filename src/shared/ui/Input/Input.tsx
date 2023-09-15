@@ -26,6 +26,7 @@ interface InputProps extends HTMLInputProps {
     onChange?: (value: string) => void;
     autofocus?: boolean;
     readonly?: boolean;
+    withShadow?: boolean;
     addonLeft?: ReactNode;
     addonRight?: ReactNode;
     size?: InputSize;
@@ -45,6 +46,7 @@ export const Input = memo((props: InputProps) => {
         label,
         size = 'm',
         validationText,
+        withShadow,
         ...otherProps
     } = props;
     const ref = useRef<HTMLInputElement>(null);
@@ -71,7 +73,7 @@ export const Input = memo((props: InputProps) => {
 
     const mods: Mods = {
         [cls.readonly]: readonly,
-        [cls.focused]: isFocused,
+        [cls.focused]: isFocused && withShadow,
         [cls.withAddonLeft]: Boolean(addonLeft),
         [cls.withAddonRight]: Boolean(addonRight),
     };

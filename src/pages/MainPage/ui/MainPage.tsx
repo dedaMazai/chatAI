@@ -1,14 +1,18 @@
 import { Counter } from '@/entities/Counter';
 import { LangSwitcher } from '@/features/LangSwitcher';
+import { SearchOnSite } from '@/features/SearchOnSite/SearchOnSite';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import EditIcon from '@/shared/assets/icons/edit.svg';
-import SearchIcon from '@/shared/assets/icons/Search.svg';
 import { Accordion } from '@/shared/ui/Accordion';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
+import { Dropdown } from '@/shared/ui/Dropdown';
 import { Icon } from '@/shared/ui/Icon';
 import { Input } from '@/shared/ui/Input';
 import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
+import { LoaderInput } from '@/shared/ui/LoaderInput';
+import { Progress } from '@/shared/ui/Progress/Progress';
+import { SearchField } from '@/shared/ui/SearchField/SearchField';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
 import { Toggle } from '@/shared/ui/Toggle/Toggle';
@@ -63,6 +67,8 @@ const MainPage = () => {
     return (
         <VStack max>
             <div>Кнопки</div>
+            <SearchOnSite />
+            <LoaderInput />
             <Button variant="clear">123</Button>
             <Button variant="outline">
                 <HStack>
@@ -120,14 +126,9 @@ const MainPage = () => {
             <Typography text="asdasasd" variant="green" />
             <Typography text="asdasasd" variant="green" bold />
             <Toggle onChange={() => setToggle((prev) => !prev)} checked={toggle} />
-            <Input
-                placeholder='asdasdas'
-                addonLeft={(
-                    <Icon Svg={SearchIcon} />
-                )}
-                label="Name"
-                validationText="validationText"
-            />
+            <Progress percent={20} />
+            <Dropdown trigger="0000" items={[{ content: '123', onClick: () => {}}, { content: '123', onClick: () => {}}]} />
+            <SearchField />
             {t('Главная страница')}
             <Counter />
             <LangSwitcher />
