@@ -3,6 +3,7 @@ import { AppRoutes } from "../types/router";
 export const RoutePath: Record<AppRoutes, (...args: Array<string>) => string> = {
     [AppRoutes.MAIN]: () => '/',
     [AppRoutes.FEATURES]: () => '/features',
+    [AppRoutes.PRODUCT]: () => '/product',
     [AppRoutes.BLOG]: () => '/blog',
     [AppRoutes.ABOUT]: () => '/about',
     [AppRoutes.PRICING]: () => '/pricing',

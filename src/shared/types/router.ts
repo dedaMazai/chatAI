@@ -7,6 +7,7 @@ export type AppRoutesProps = RouteProps & {
 
 export enum AppRoutes {
     MAIN = 'MAIN',
+    PRODUCT = 'PRODUCT',
     FEATURES = 'FEATURES',
     BLOG = 'BLOG',
     ABOUT = 'ABOUT',

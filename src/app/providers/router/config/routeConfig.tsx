@@ -15,8 +15,13 @@ import { ChatsPage } from '@/pages/ChatsPage';
 import { FilesPage } from '@/pages/FilesPage';
 import { FileViewPage } from '@/pages/FileViewPage';
 import { SettingPage } from '@/pages/SettingPage';
+import { ProductPage } from '@/pages/ProductPage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
+    [AppRoutes.PRODUCT]: {
+        path: RoutePath.PRODUCT(),
+        element: <ProductPage />,
+    },
     [AppRoutes.MAIN]: {
         path: RoutePath.MAIN(),
         element: <MainPage />,
