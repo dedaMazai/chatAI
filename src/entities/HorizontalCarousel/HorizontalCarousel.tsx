@@ -16,28 +16,24 @@ export const HorizontalCarousel = (props: HorizontalCarouselProps) => {
 
     const CONTENT = [
         {
-            text: t('ADasdf e ewffew wef ewf wef ewf ewf ewf ewfewfewffwe wef'),
-            person: t('Name name'),
+            text: t('Первый отзыв мок значение, отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значениеотзыв мок значение'),
+            person: t('@Name name'),
         },
         {
-            text: t('ADasdf e ewffew wef ewf wef ewf ewf ewf ewfewfewffwe wef'),
-            person: t('Name name'),
+            text: t('Первый отзыв мок значение, отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значениеотзыв мок значение'),
+            person: t('Name name 2'),
         },
         {
-            text: t('ADasdf e ewffew wef ewf wef ewf ewf ewf ewfewfewffwe wef'),
-            person: t('Name name'),
+            text: t('Первый отзыв мок значение, отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значениеотзыв мок значение'),
+            person: t('@Name name 3'),
         },
         {
-            text: t('ADasdf e ewffew wef ewf wef ewf ewf ewf ewfewfewffwe wef'),
-            person: t('Name name'),
+            text: t('Первый отзыв мок значение, отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значениеотзыв мок значение'),
+            person: t('Name name 4'),
         },
         {
-            text: t('ADasdf e ewffew wef ewf wef ewf ewf ewf ewfewfewffwe wef'),
-            person: t('Name name'),
-        },
-        {
-            text: t('ADasdf e ewffew wef ewf wef ewf ewf ewf ewfewfewffwe wef'),
-            person: t('Name name'),
+            text: t('Первый отзыв мок значение, отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значение отзыв мок значениеотзыв мок значение'),
+            person: t('@Name name 5'),
         },
     ];
 
@@ -47,7 +43,7 @@ export const HorizontalCarousel = (props: HorizontalCarouselProps) => {
                 <div className="items marquee reverce">
                     {CONTENT.map((element, index) => (
                         <div className="item" key={index}>
-                            <Card style={{ width: '285px' }}>
+                            <Card style={{ width: '285px' }} padding='24'>
                                 <VStack max gap="16">
                                     <Typography text={element.text} />
                                     <Typography text={element.person} variant="gray" bold />
@@ -59,7 +55,7 @@ export const HorizontalCarousel = (props: HorizontalCarouselProps) => {
                 <div aria-hidden="true" className="items marquee reverce">
                     {CONTENT.map((element, index) => (
                         <div className="item" key={index}>
-                            <Card style={{ width: '285px' }}>
+                            <Card style={{ width: '285px' }} padding='24'>
                                 <VStack max gap="16">
                                     <Typography text={element.text} />
                                     <Typography text={element.person} variant="gray" bold />

@@ -37,7 +37,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     return (
         <header className={classNames(cls.Navbar, {}, [className])}>
-            <HStack justify='center' max gap="16">
+            <HStack justify='between' max gap="16">
                 <Button
                     variant="clear"
                     onClick={() => {}}
