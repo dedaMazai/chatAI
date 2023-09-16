@@ -16,6 +16,7 @@ interface TextProps {
     align?: TextAlign;
     size?: TextSize;
     bold?: boolean;
+    wrap?: boolean;
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3' | 'h4';
@@ -43,6 +44,7 @@ export const Typography = memo((props: TextProps) => {
         align = 'left',
         size = 'm',
         bold,
+        wrap,
     } = props;
 
     const HeaderTag = mapSizeToHeaderTag[size];
@@ -54,7 +56,10 @@ export const Typography = memo((props: TextProps) => {
         <div
             className={classNames(
                 cls.Text,
-                { [cls.bold]: bold },
+                {
+                    [cls.bold]: bold,
+                    [cls.wrap]: wrap,
+                },
                 additionalClasses,
             )}
         >

@@ -19,7 +19,6 @@ import { SettingPage } from '@/pages/SettingPage';
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
         path: RoutePath.MAIN(),
-        withSidebar: true,
         element: <MainPage />,
     },
     [AppRoutes.FEATURES]: {

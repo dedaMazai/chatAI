@@ -2,12 +2,9 @@ import { memo, useMemo, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
-import { Button } from '@/shared/ui/Button';
 import { VStack } from '@/shared/ui/Stack';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { useSidebarItems } from '../../model/selectors/getSidebarItems';
-import { Icon } from '@/shared/ui/Icon';
-import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 
 import cls from './Sidebar.module.scss';
 

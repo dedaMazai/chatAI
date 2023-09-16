@@ -8,7 +8,7 @@ import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 
 import cls from './Button.module.scss';
 
-export type ButtonVariant = 'clear' | 'outline' | 'filled';
+export type ButtonVariant = 'clear' | 'outline' | 'filled' | 'clearActive';
 export type ButtonColor = 'green' | 'greenLight' | 'grey' | 'black' | 'red';
 export type ButtonSize = 'm' | 'l' | 'xl';
 
@@ -19,6 +19,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: ButtonSize;
     square?: boolean;
     circle?: boolean;
+    jump?: boolean;
     disabled?: boolean;
     children?: ReactNode;
     fullWidth?: boolean;
@@ -36,10 +37,12 @@ export const Button = forwardRef(
             fullWidth,
             size = 'm',
             color = 'green',
+            jump,
             ...otherProps
         } = props;
 
         const mods: Mods = {
+            [cls.jump]: jump,
             [cls.square]: square,
             [cls.circle]: circle,
             [cls.disabled]: disabled,

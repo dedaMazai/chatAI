@@ -15,7 +15,7 @@ const AppRouter = () => {
                 {route.withSidebar && <Sidebar />}
                 <VStack max>
                     <Navbar />
-                    <div className="content-page ">
+                    <div className="content-page">
                         {route.element}
                     </div>
                 </VStack>

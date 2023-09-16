@@ -1,9 +1,9 @@
 .Button {
     cursor: pointer;
     color: var(--text-white);
-    padding: 6px 16px;
     display: flex;
     align-items: center;
+    transition: all 0.2s ease-in-out;
 
     &:hover {
         opacity: 0.9;
@@ -18,15 +18,23 @@
     color: var(--primary-color);
 }
 
+.clearActive {
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--text-main);
+
+    &:hover {
+        color: var(--text-green);
+    }
+}
+
 .filled {
     background: var(--green-button);
     border: none;
     outline: none;
     border-radius: 10px;
-
-    &.circle {
-        border-radius: 20px;
-    }
 
     &.greenLight {
         background: var(--green-light-button);
@@ -74,10 +82,6 @@
     background: none;
     border-radius: 10px;
     border: 2px solid var(--green-button);
-
-    &.circle {
-        border-radius: 20px;
-    }
 
     &:hover {
         border: 2px solid var(--green-button-hover);
@@ -132,14 +136,29 @@
 
 .m {
     font: var(--font-m);
+    padding: 8px 18px;
+
+    &.circle {
+        border-radius: 20px;
+    }
 }
 
 .l {
     font: var(--font-l);
+    padding: 12px 32px;
+
+    &.circle {
+        border-radius: 30px;
+    }
 }
 
 .xl {
     font: var(--font-xl);
+    padding: 18px 42px;
+
+    &.circle {
+        border-radius: 35px;
+    }
 }
 
 .disabled {
@@ -148,4 +167,10 @@
 
 .fullWidth {
     width: 100%;
+}
+
+.jump {
+    &:hover {
+        transform: translateY(-0.1875rem);
+    }
 }

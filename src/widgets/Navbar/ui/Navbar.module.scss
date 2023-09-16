@@ -4,19 +4,15 @@
     background: var(--inverted-bg-color);
     display: flex;
     align-items: center;
-    padding: 20px;
+    border-bottom: 1px solid var(--border);
 }
 
-.links,
-.actions {
-    margin-left: auto;
+.iconLogo {
+    height: 40px;
+    width: 55px;
+    fill: var(--primary-color);
 }
 
-.mainLink {
-    margin-right: 15px;
-}
-
-.appName {
-    width: var(--sidebar-width);
-    margin-left: 15px;
+.buttonBlock {
+    margin-left: 20rem;
 }
