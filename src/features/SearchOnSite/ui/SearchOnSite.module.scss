@@ -5,8 +5,11 @@
 }
 
 .dropMenu {
+    display: none;
+}
+
+.openDropMenu {
     position: absolute;
-    display: flex;
     gap: 4px;
     top: 38px;
     border-radius: 0 0 10px 10px;
@@ -15,16 +18,16 @@
     padding: 8px 16px;
     border: 2px solid var(--border);
     border-top: none;
-    opacity: 0;
-}
+    display: flex;
 
-.iconSms {
-    height: 30px;
-    width: 30px;
+    .iconSms {
+        height: 30px;
+        width: 30px;
 
-    g {
-        rect {
-            fill: var(--bg-color);
+        g {
+            rect {
+                fill: var(--bg-color);
+            }
         }
     }
 }
@@ -33,10 +36,6 @@
     width: 500px;
 }
 
-.input.openDropMenu {
+.inputOpenDropMenu {
     border-radius: 10px 10px 0 0;
-}
-
-.openDropMenu {
-    opacity: 1;
 }

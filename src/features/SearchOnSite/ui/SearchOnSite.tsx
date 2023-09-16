@@ -5,7 +5,8 @@ import { SearchField } from '@/shared/ui/SearchField/SearchField';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Icon } from '@/shared/ui/Icon';
 import { Typography } from '@/shared/ui/Text';
-import { useState } from 'react';
+import { useDebounceState } from '@/shared/lib/hooks/useDebounce/useDebounceState';
+import { useSearchOnSiteQuery } from '../api/searchOnSiteApi';
 
 import cls from './SearchOnSite.module.scss';
 
@@ -16,19 +17,20 @@ interface SearchOnSiteProps {
 export const SearchOnSite = (props: SearchOnSiteProps) => {
     const { className } = props;
     const { t } = useTranslation();
-    const [state, setState] = useState('');
+    const [filter, filterDebounce, setFilter, debounceFilter] = useDebounceState('');
+    const { data, isLoading } = useSearchOnSiteQuery({ field: filterDebounce });
 
     return (
         <div className={classNames(cls.SearchOnSite, {}, [className])}>
             <SearchField
-                value={state}
-                onChange={(value) => setState(value)}
+                value={filter}
+                onChange={(value) => debounceFilter(value)}
                 className={classNames(cls.input, {
-                    [cls.openDropMenu]: !!state.length,
+                    [cls.inputOpenDropMenu]: !!filter.length,
                 })}
-                loading
+                loading={isLoading}
             />
-            <div className={classNames(cls.dropMenu, { [cls.openDropMenu]: !!state.length })}>
+            <div className={classNames(cls.dropMenu, { [cls.openDropMenu]: !!filter.length })}>
                 <HStack gap="16">
                     <Icon Svg={IconSms} className={cls.iconSms} />
                     <VStack>

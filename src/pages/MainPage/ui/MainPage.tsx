@@ -1,6 +1,7 @@
+import { HorizontalCarousel } from '@/entities/Connect';
 import { Counter } from '@/entities/Counter';
 import { LangSwitcher } from '@/features/LangSwitcher';
-import { SearchOnSite } from '@/features/SearchOnSite/SearchOnSite';
+import { SearchOnSite } from '@/features/SearchOnSite';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import EditIcon from '@/shared/assets/icons/edit.svg';
 import { Accordion } from '@/shared/ui/Accordion';
@@ -8,8 +9,8 @@ import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { Icon } from '@/shared/ui/Icon';
-import { Input } from '@/shared/ui/Input';
 import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
+import { LinkScroll } from '@/shared/ui/LinkScroll/LinkScroll';
 import { LoaderInput } from '@/shared/ui/LoaderInput';
 import { Progress } from '@/shared/ui/Progress/Progress';
 import { SearchField } from '@/shared/ui/SearchField/SearchField';
@@ -68,6 +69,10 @@ const MainPage = () => {
         <VStack max>
             <div>Кнопки</div>
             <SearchOnSite />
+            <LinkScroll
+                name="ТТТТЫЫЫЫККК"
+                href="#work"
+            />
             <LoaderInput />
             <Button variant="clear">123</Button>
             <Button variant="outline">
@@ -76,6 +81,7 @@ const MainPage = () => {
                 </HStack>
             </Button>
             <Button circle>123</Button>
+            <HorizontalCarousel />
             <Button size="l">123</Button>
             <Button size="m">123</Button>
             <Button size="xl">123</Button>
@@ -133,6 +139,7 @@ const MainPage = () => {
             <Counter />
             <LangSwitcher />
             <ThemeSwitcher />
+            <p id="work">1111</p>
         </VStack>
     );
 };

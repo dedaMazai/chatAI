@@ -1,0 +1,44 @@
+.items-wrap {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    gap: 20px;
+    padding: 2rem 0;
+}
+
+.items-wrap::before,
+.items-wrap::after {
+    height: 100%;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.items {
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    min-width: 120%;
+}
+
+.marquee {
+    animation: scroll 20s linear infinite;
+}
+
+.reverce {
+    animation-direction: reverse;
+}
+
+.items-wrap:hover .marquee {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-100% - 20px));
+    }
+}
