@@ -332,41 +332,6 @@ const MainPage = () => {
             </VStack>
             <VStack max align='center' style={{ background: 'black', padding: '4rem 0' }}>
                 <VStack gap="64" style={{ width: '1100px' }}>
-                    {/* <Card jump variant="blackTwo" padding="54">
-                        <HStack gap="16" align='start'>
-                            <VStack gap="16">
-                                <HStack gap="8">
-                                    <Typography
-                                        size='xl'
-                                        bold
-                                        variant="white"
-                                        title={t('AiChat')}
-                                        wrap
-                                    />
-                                    <Card variant='greyTwo'>
-                                        <Typography
-                                            text={t('Чат')}
-                                        />
-                                    </Card>
-                                </HStack>
-                                <Typography
-                                    variant="white"
-                                    size='m'
-                                    text={t('GPT, который повысит эффективность вашего бизнеса. В отличие от других чат-платформ, Panda Chan специально разработана для установки у вас дома, что дает вам полный контроль над вашими данными.')}
-                                    wrap
-                                />
-                                <Button
-                                    color='green'
-                                    circle
-                                    jump
-                                    onClick={() => {}}
-                                >
-                                    {t('Узнать больше')}
-                                </Button>
-                            </VStack>
-                            <img height={300} width={300} src={graph} />
-                        </HStack>
-                    </Card> */}
                     <Card jump variant="blackTwo" padding="54">
                         <HStack gap="64" align='start'>
                             <VStack gap="16">
