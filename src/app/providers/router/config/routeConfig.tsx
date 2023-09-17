@@ -16,31 +16,55 @@ import { FilesPage } from '@/pages/FilesPage';
 import { FileViewPage } from '@/pages/FileViewPage';
 import { SettingPage } from '@/pages/SettingPage';
 import { ProductPage } from '@/pages/ProductPage';
+import { LoginPage } from '@/pages/LoginPage';
+import { RegisterPage } from '@/pages/RegisterPage';
+import { FaqPage } from '@/pages/FaqPage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.PRODUCT]: {
         path: RoutePath.PRODUCT(),
         element: <ProductPage />,
+        withFooter: true,
+    },
+    [AppRoutes.FAQ]: {
+        path: RoutePath.FAQ(),
+        element: <FaqPage />,
+        withFooter: true,
+    },
+    [AppRoutes.REGISTER]: {
+        path: RoutePath.REGISTER(),
+        element: <RegisterPage />,
+        withFooter: true,
+    },
+    [AppRoutes.LOGIN]: {
+        path: RoutePath.LOGIN(),
+        element: <LoginPage />,
+        withFooter: true,
     },
     [AppRoutes.MAIN]: {
         path: RoutePath.MAIN(),
         element: <MainPage />,
+        withFooter: true,
     },
     [AppRoutes.FEATURES]: {
         path: RoutePath.FEATURES(),
         element: <FeaturesPage />,
+        withFooter: true,
     },
     [AppRoutes.BLOG]: {
         path: RoutePath.BLOG(),
         element: <BlogPage />,
+        withFooter: true,
     },
     [AppRoutes.ABOUT]: {
         path: RoutePath.ABOUT(),
         element: <AboutPage />,
+        withFooter: true,
     },
     [AppRoutes.PRICING]: {
         path: RoutePath.PRICING(),
         element: <PricingPage />,
+        withFooter: true,
     },
     [AppRoutes.HOME]: {
         path: RoutePath.HOME(),

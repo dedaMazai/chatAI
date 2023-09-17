@@ -3,11 +3,15 @@ import { RouteProps } from 'react-router-dom';
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;
     withSidebar?: boolean;
+    withFooter?: boolean;
 };
 
 export enum AppRoutes {
     MAIN = 'MAIN',
+    FAQ = 'FAQ',
     PRODUCT = 'PRODUCT',
+    REGISTER = 'REGISTER',
+    LOGIN = 'LOGIN',
     FEATURES = 'FEATURES',
     BLOG = 'BLOG',
     ABOUT = 'ABOUT',

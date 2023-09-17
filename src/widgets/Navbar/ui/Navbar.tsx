@@ -7,9 +7,11 @@ import { HStack } from '@/shared/ui/Stack';
 import { Button } from '@/shared/ui/Button';
 import Logo from '@/shared/assets/icons/Logo.svg';
 import { Icon } from '@/shared/ui/Icon';
+import { Typography } from '@/shared/ui/Text';
+import { useNavigate } from 'react-router-dom';
 
 import cls from './Navbar.module.scss';
-import { Typography } from '@/shared/ui/Text';
+import { RoutePath } from '@/shared/const/router';
 
 interface NavbarProps {
     className?: string;
@@ -17,7 +19,12 @@ interface NavbarProps {
 
 export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
     const authData = useSelector(getUserAuthData);
+
+    const logout = () => {
+        navigate(RoutePath.MAIN())
+    }
 
     if (authData) {
         return (
@@ -26,7 +33,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     <Button
                         variant="clear"
                         className={cls.links}
-                        onClick={() => {}}
+                        onClick={logout}
                     >
                         {t('Выйти')}
                     </Button>
@@ -40,7 +47,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <HStack justify='between' max gap="16">
                 <Button
                     variant="clear"
-                    onClick={() => {}}
+                    onClick={() => navigate(RoutePath.MAIN())}
                 >
                     <Icon Svg={Logo} className={cls.iconLogo} />
                     <Typography text={t('Chat')} variant="green" bold size='l' />
@@ -48,25 +55,31 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 <HStack gap="16" className={cls.buttonBlock}>
                     <Button
                         variant="clearActive"
-                        onClick={() => {}}
+                        onClick={() => navigate(RoutePath.PRODUCT())}
+                    >
+                        {t('Продукт')}
+                    </Button>
+                    <Button
+                        variant="clearActive"
+                        onClick={() => navigate(RoutePath.FEATURES())}
                     >
                         {t('Особенности')}
                     </Button>
                     <Button
                         variant="clearActive"
-                        onClick={() => {}}
+                        onClick={() => navigate(RoutePath.BLOG())}
                     >
                         {t('Блог')}
                     </Button>
                     <Button
                         variant="clearActive"
-                        onClick={() => {}}
+                        onClick={() => navigate(RoutePath.ABOUT())}
                     >
                         {t('О нас')}
                     </Button>
                     <Button
                         variant="clearActive"
-                        onClick={() => {}}
+                        onClick={() => navigate(RoutePath.PRICING())}
                     >
                         {t('Цены')}
                     </Button>
@@ -74,7 +87,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         color='grey'
                         circle
                         jump
-                        onClick={() => {}}
+                        onClick={() => navigate(RoutePath.LOGIN())}
                     >
                         {t('Войти')}
                     </Button>
@@ -82,7 +95,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         color='green'
                         circle
                         jump
-                        onClick={() => {}}
+                        onClick={() => navigate(RoutePath.REGISTER())}
                     >
                         {t('Зарегистрироваться')}
                     </Button>

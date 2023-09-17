@@ -1,5 +1,6 @@
 .Card {
     padding: 24px;
+    transition: all 0.2s ease-in-out;
 
     &.header {
         display: flex;
@@ -42,6 +43,10 @@
 
 .black {
     background: var(--card-bd-black);
+}
+
+.blackTwo {
+    background: var(--card-bd-black-two);
 }
 
 .outline {

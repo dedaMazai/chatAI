@@ -7,19 +7,23 @@ import { AppRoutesProps } from '@/shared/types/router';
 import { Sidebar } from '@/widgets/Sidebar';
 import { VStack } from '@/shared/ui/Stack';
 import { Navbar } from '@/widgets/Navbar';
+import { Footer } from '@/widgets/Footer';
 
 const AppRouter = () => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
         const element = (
-            <Suspense fallback={<PageLoader />}>
+            <>
                 {route.withSidebar && <Sidebar />}
                 <VStack max>
                     <Navbar />
-                    <div className="content-page">
-                        {route.element}
-                    </div>
+                        <div className="content-page">
+                            <Suspense fallback={<PageLoader />}>
+                                {route.element}
+                            </Suspense>
+                            {route.withFooter && <Footer />}
+                        </div>
                 </VStack>
-            </Suspense>
+            </>
         );
 
         return (

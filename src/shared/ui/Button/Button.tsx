@@ -21,6 +21,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     circle?: boolean;
     jump?: boolean;
     disabled?: boolean;
+    bold?: boolean;
     children?: ReactNode;
     fullWidth?: boolean;
 }
@@ -37,11 +38,13 @@ export const Button = forwardRef(
             fullWidth,
             size = 'm',
             color = 'green',
+            bold,
             jump,
             ...otherProps
         } = props;
 
         const mods: Mods = {
+            [cls.bold]: bold,
             [cls.jump]: jump,
             [cls.square]: square,
             [cls.circle]: circle,

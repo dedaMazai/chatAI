@@ -1,22 +1,9 @@
 import { HorizontalCarousel } from '@/entities/HorizontalCarousel';
-import { Counter } from '@/entities/Counter';
-import { LangSwitcher } from '@/features/LangSwitcher';
-import { SearchOnSite } from '@/features/SearchOnSite';
-import { ThemeSwitcher } from '@/features/ThemeSwitcher';
-import EditIcon from '@/shared/assets/icons/Edit.svg';
-import { Accordion } from '@/shared/ui/Accordion';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
-import { Dropdown } from '@/shared/ui/Dropdown';
 import { Icon } from '@/shared/ui/Icon';
-import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
-import { LinkScroll } from '@/shared/ui/LinkScroll/LinkScroll';
-import { LoaderInput } from '@/shared/ui/LoaderInput';
-import { Progress } from '@/shared/ui/Progress/Progress';
-import { SearchField } from '@/shared/ui/SearchField/SearchField';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
-import { Toggle } from '@/shared/ui/Toggle/Toggle';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CoverLaptop from '@/shared/assets/img/cover-laptop.webp';
@@ -29,6 +16,7 @@ import resources from '@/shared/assets/img/human-resources.webp';
 import insurance from '@/shared/assets/img/insurance.webp';
 import tourism from '@/shared/assets/img/tourism.webp';
 import graph from '@/shared/assets/img/graph-section.webp';
+import businessCover from '@/shared/assets/img/pandachat-business-cover.webp';
 import YouTube from '@/shared/assets/icons/YouTube.svg';
 import Jira from '@/shared/assets/icons/Jira.svg';
 import Mp3 from '@/shared/assets/icons/Mp3.svg';
@@ -45,52 +33,11 @@ import Insta from '@/shared/assets/icons/Insta.svg';
 import Meta from '@/shared/assets/icons/Meta.svg';
 import Oxford from '@/shared/assets/icons/Oxford.svg';
 import { AppCard } from '@/entities/AppCard/AppCard';
+import { Footer } from '@/widgets/Footer';
 
 const MainPage = () => {
     const { t } = useTranslation();
-    const [value, setValue] = useState('');
-    const [toggle, setToggle] = useState(false);
-    const [activeButton, setActiveButton] = useState<string>();
-
-    const onChange = (val: string) => {
-        setValue(val);
-    };
-    const LIST = [
-        {
-            summary: (
-                <Typography
-                    text={t('1. Registration')}
-                    bold
-                    variant="main"
-                />
-            ),
-            details: (
-                <VStack gap="8" align="start">
-                    <Typography
-                        text={t('1.FAQ info first')}
-                        variant="second"
-                    />
-                </VStack>
-            ),
-        },
-        {
-            summary: (
-                <Typography
-                    text={t('1. Registration')}
-                    bold
-                    variant="main"
-                />
-            ),
-            details: (
-                <VStack gap="8" align="start">
-                    <Typography
-                        text={t('1. FAQ info first')}
-                        variant="second"
-                    />
-                </VStack>
-            ),
-        },
-    ]
+    const [activeButton, setActiveButton] = useState('Образование');
 
     return (
         <VStack align='center' gap="64" max>
@@ -134,13 +81,13 @@ const MainPage = () => {
                     <iframe width="960" height="515" src="https://www.youtube.com/embed/RlwFqc7gS7Q" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                 </HStack>
                 <HStack max gap="32" justify='center'>
-                    <Card padding='24' variant='greyOne'>
+                    <Card jump padding='24' variant='greyOne'>
                         <VStack gap="16">
                             <Typography size="l" bold text={t('Загружайте любые данные за секунды')} />
                             <Typography text={t('Безопасно загружайте все, что угодно, из PowerPoints, документов Word, Excel, изображений, веб-сайтов в PDF-файлы или просматривайте весь веб-сайт целиком. Panda, которая будет искать ваши данные и использовать их для выработки разумных ответов.')} />
                         </VStack>
                     </Card>
-                    <Card padding='24' variant='greyOne'>
+                    <Card jump padding='24' variant='greyOne'>
                         <VStack gap="16">
                             <Typography size="l" bold text={t('Мгновенные ответы на ваши вопросы')} />
                             <Typography text={t('Нет необходимости искать руководства или просматривать бесконечные документы. Pandashan анализирует все накопленные документы и выступает в качестве эксперта по всем вашим процессам, чтобы за считанные секунды предоставить необходимый вам ответ.')} />
@@ -329,13 +276,13 @@ const MainPage = () => {
                     />
                 </VStack>
                 <HStack max gap="32" justify='center'>
-                    <Card padding='24' variant='greyOne' width='50%'>
+                    <Card jump padding='24' variant='greyOne' width='50%'>
                         <VStack gap="16">
                             <Typography size="l" bold text={t('Целевые результаты поиска')} />
                             <Typography text={t('Благодаря сложным методам поиска платформа генерирует точные результаты поиска, гарантируя, что пользователи смогут легко и быстро найти нужную им информацию. Это особенно полезно при поиске в длинных документах или попытке найти конкретные детали.')} />
                         </VStack>
                     </Card>
-                    <Card padding='24' variant='greyOne' width='50%'>
+                    <Card jump padding='24' variant='greyOne' width='50%'>
                         <VStack gap="16">
                             <Typography size="l" bold text={t('Обработка естественного языка')} />
                             <Typography text={t('Наша платформа использует алгоритмы, основанные на NLP, позволяя пользователям задавать вопросы на естественном языке, точно так же, как они задавали бы их другому человеку. Система распознает тонкости языка, контекста и намерений, предоставляя быстрые и точные ответы.')} />
@@ -343,93 +290,19 @@ const MainPage = () => {
                     </Card>
                 </HStack>
                 <HStack max gap="32" justify='center'>
-                    <Card padding='24' variant='greyOne' width='50%'>
+                    <Card jump padding='24' variant='greyOne' width='50%'>
                         <VStack gap="16">
                             <Typography size="l" bold text={t('Синтаксический анализ документа')} />
                             <Typography text={t('Наша платформа использует искусственный интеллект для интеллектуальной обработки любого загруженного документа, извлечения важной информации и понимания контекста, что облегчает пользователям поиск и задавание вопросов.')} />
                         </VStack>
                     </Card>
-                    <Card padding='24' variant='greyOne' width='50%'>
+                    <Card jump padding='24' variant='greyOne' width='50%'>
                         <VStack gap="16">
                             <Typography size="l" bold text={t('Multi-Format Compatibility')} />
                             <Typography text={t('Our platform provides comprehensive support for various file formats, including PDFs, Word documents, and images, enabling users to upload any document or image and receive relevant information based on the content.')} />
                         </VStack>
                     </Card>
                 </HStack>
-                {/* <VStack>
-                    <div>Кнопки</div>
-                    <SearchOnSite />
-                    <LinkScroll
-                        name="ТТТТЫЫЫЫККК"
-                        href="#work"
-                    />
-                    <LoaderInput />
-                    <Button variant="clear">123</Button>
-                    <Button variant="outline">
-                        <HStack>
-                            <Icon Svg={EditIcon} />
-                        </HStack>
-                    </Button>
-                    <Button circle>123</Button>
-                    <Button size="l">123</Button>
-                    <Button size="m">123</Button>
-                    <Button size="xl">123</Button>
-                    <Button color="greenLight">123</Button>
-                    <Button color="grey">123</Button>
-                    <Button color="black">123</Button>
-                    <Button color="red">123</Button>
-                    <Typography title="asdasasd" size="xl" bold />
-                    <Typography text="asdasasd" size="m" />
-                    <Typography text="asdasasd" size="s" />
-                    <Typography text="asdasasd" variant="main" />
-                    <Typography text="asdasasd" variant="second" />
-                    <Typography text="asdasasd" variant="red" />
-                    <Typography text="asdasasd" variant="white" />
-                    <Typography text="asdasasd" variant="black" />
-                    <Typography text="asdasasd" variant="green" />
-                    <Accordion list={LIST} />
-                    <Card>
-                        <Typography text="asdasasd" variant="black" />
-                    </Card>
-                    <Card variant="greyOne">
-                        <Typography text="asdasasd" variant="black" />
-                    </Card>
-                    <Card variant="greyTwo" border="round">
-                        <Typography text="asdasasd" variant="black" />
-                        <Typography text="asdasasd" variant="black" />
-                        <Typography text="asdasasd" variant="black" />
-                        <Typography text="asdasasd" variant="black" />
-                        <Typography text="asdasasd" variant="black" />
-                        <Typography text="asdasasd" variant="black" />
-                        <Typography text="asdasasd" variant="black" />
-                    </Card>
-                    <Card
-                        variant="outline"
-                        border="partial"
-                        header={(
-                            <Typography text="aaaaaaaaaaaa" variant="black" />
-                        )}
-                    >
-                        <Typography text="asdasasd" variant="black" />
-                        <Typography text="asdasasd" variant="black" />
-                        <Typography text="asdasasd" variant="black" />
-                        <Typography text="asdasasd" variant="black" />
-                        <Typography text="asdasasd" variant="black" />
-                    </Card>
-                    <InputDrop />
-                    <Typography text="asdasasd" variant="green" />
-                    <Typography text="asdasasd" variant="green" />
-                    <Typography text="asdasasd" variant="green" bold />
-                    <Toggle onChange={() => setToggle((prev) => !prev)} checked={toggle} />
-                    <Progress percent={20} />
-                    <Dropdown trigger="0000" items={[{ content: '123', onClick: () => {}}, { content: '123', onClick: () => {}}]} />
-                    <SearchField />
-                    {t('Главная страница')}
-                    <Counter />
-                    <LangSwitcher />
-                    <ThemeSwitcher />
-                    <p id="work">1111</p>
-                </VStack> */}
             </VStack>
             <HorizontalCarousel />
             <VStack align='center' gap="64" max style={{ width: '1100px', paddingBottom: '2rem' }}>
@@ -455,6 +328,87 @@ const MainPage = () => {
                         <Icon height={70} width={120} Svg={Meta} />
                         <Icon height={70} width={150} Svg={Oxford} />
                     </HStack>
+                </VStack>
+            </VStack>
+            <VStack max align='center' style={{ background: 'black', padding: '4rem 0' }}>
+                <VStack gap="64" style={{ width: '1100px' }}>
+                    {/* <Card jump variant="blackTwo" padding="54">
+                        <HStack gap="16" align='start'>
+                            <VStack gap="16">
+                                <HStack gap="8">
+                                    <Typography
+                                        size='xl'
+                                        bold
+                                        variant="white"
+                                        title={t('AiChat')}
+                                        wrap
+                                    />
+                                    <Card variant='greyTwo'>
+                                        <Typography
+                                            text={t('Чат')}
+                                        />
+                                    </Card>
+                                </HStack>
+                                <Typography
+                                    variant="white"
+                                    size='m'
+                                    text={t('GPT, который повысит эффективность вашего бизнеса. В отличие от других чат-платформ, Panda Chan специально разработана для установки у вас дома, что дает вам полный контроль над вашими данными.')}
+                                    wrap
+                                />
+                                <Button
+                                    color='green'
+                                    circle
+                                    jump
+                                    onClick={() => {}}
+                                >
+                                    {t('Узнать больше')}
+                                </Button>
+                            </VStack>
+                            <img height={300} width={300} src={graph} />
+                        </HStack>
+                    </Card> */}
+                    <Card jump variant="blackTwo" padding="54">
+                        <HStack gap="64" align='start'>
+                            <VStack gap="16">
+                                <HStack gap="16">
+                                    <Typography
+                                        size='xl'
+                                        bold
+                                        variant="white"
+                                        title={t('AiChat')}
+                                        wrap
+                                    />
+                                    <Card variant='black'>
+                                        <Typography
+                                            variant="green"
+                                            text={t('Бизнес')}
+                                        />
+                                    </Card>
+                                </HStack>
+                                <Typography
+                                    variant="white"
+                                    size='m'
+                                    text={t('GPT, который повысит эффективность вашего бизнеса. В отличие от других чат-платформ, Panda Chan специально разработана для установки у вас дома, что дает вам полный контроль над вашими данными.')}
+                                    wrap
+                                />
+                                <Typography
+                                    variant="white"
+                                    size='m'
+                                    text={t('Наша миссия состоит в том, чтобы повысить эффективность вашей команды с помощью безопасной и быстрой коммуникации. Обмен сообщениями в режиме реального времени позволяет быстро принимать решения, делая вашу команду более гибкой и отзывчивой, чем когда-либо прежде.')}
+                                    wrap
+                                />
+                                <Button
+                                    color='green'
+                                    circle
+                                    jump
+                                    onClick={() => {}}
+                                >
+                                    {t('Посетить сайт')}
+                                </Button>
+                            </VStack>
+                            <img height={400} width={400} src={businessCover} />
+                        </HStack>
+                    </Card>
                 </VStack>
             </VStack>
         </VStack>
