@@ -52,7 +52,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     <Icon Svg={Logo} className={cls.iconLogo} />
                     <Typography text={t('Chat')} variant="green" bold size='l' />
                 </Button>
-                <HStack gap="16" className={cls.buttonBlock}>
+                <HStack gap="32" className={cls.buttonBlock}>
                     <Button
                         variant="clearActive"
                         onClick={() => navigate(RoutePath.PRODUCT())}

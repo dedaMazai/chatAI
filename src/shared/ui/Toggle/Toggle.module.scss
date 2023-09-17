@@ -6,8 +6,8 @@
     .Switch {
         position: relative;
         display: inline-block;
-        width: 30px;
-        height: 17px;
+        width: 55px;
+        height: 30px;
     }
 
     .Switch input {
@@ -25,14 +25,14 @@
         bottom: 0;
         background-color: var(--grey-button-hover);
         transition: 0.4s;
-        border-radius: 17px;
+        border-radius: 30px;
     }
 
     .Slider::before {
         position: absolute;
         content: "";
-        height: 13px;
-        width: 13px;
+        height: 26px;
+        width: 26px;
         left: 2px;
         bottom: 2px;
         background-color: var(--bg-color);
@@ -45,6 +45,6 @@
     }
 
     input:checked + .Slider::before {
-        transform: translateX(13px);
+        transform: translateX(25px);
     }
 }

@@ -4,7 +4,7 @@ import { Card } from '@/shared/ui/Card';
 import { Icon } from '@/shared/ui/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
-import { useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CoverLaptop from '@/shared/assets/img/cover-laptop.webp';
 import banking from '@/shared/assets/img/banking.webp';
@@ -174,7 +174,7 @@ const MainPage = () => {
                 <Card variant="black" padding="54">
                     <HStack gap="16" align='start'>
                         <VStack gap="16">
-                            <Card variant='greyTwo'>
+                            <Card variant='greyOne'>
                                 <Typography
                                     text={t('ИСТОЧНИК: JUNIPER RESEARCH')}
                                 />

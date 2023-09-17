@@ -25,8 +25,8 @@ export const Toggle = (props: ToggleProps) => {
     };
 
     return (
-        <Button variant="clear" onClick={handleChange}>
-            <div className={classNames(cls.Toggle, {}, [className])}>
+        <Button variant="clear" onClick={handleChange} className={classNames([className])}>
+            <div className={classNames(cls.Toggle)}>
                 <label className={cls.Switch}>
                     <input {...otherProps} type="checkbox" checked={checked} onChange={() => {}} />
                     <span className={cls.Slider} />

@@ -1,0 +1,26 @@
+.icon {
+    width: 50px;
+    height: 50px;
+    stroke: var(--text-gray);
+}
+
+.cardEdit {
+    padding: 0 5px;
+    margin-left: -25px;
+    margin-bottom: -5px;
+}
+
+.toggle {
+    margin-bottom: -10px;
+}
+
+.editHStack {
+    margin-left: 30px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+}

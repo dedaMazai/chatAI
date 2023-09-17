@@ -10,9 +10,63 @@ import smsIcon from '@/shared/assets/img/smsIcon.webp';
 import headIcon from '@/shared/assets/img/headIcon.webp';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
+import { Accordion } from '@/shared/ui/Accordion';
 
 const ProductPage = () => {
     const { t } = useTranslation('');
+    const LIST = [
+        {
+            summary: (
+                <Typography
+                    text={t('1. Registration')}
+                    bold
+                    variant="main"
+                />
+            ),
+            details: (
+                <VStack gap="8" align="start">
+                    <Typography
+                        text={t('1.FAQ info first')}
+                        variant="second"
+                    />
+                </VStack>
+            ),
+        },
+        {
+            summary: (
+                <Typography
+                    text={t('1. Registration')}
+                    bold
+                    variant="main"
+                />
+            ),
+            details: (
+                <VStack gap="8" align="start">
+                    <Typography
+                        text={t('1. FAQ info first')}
+                        variant="second"
+                    />
+                </VStack>
+            ),
+        },
+        {
+            summary: (
+                <Typography
+                    text={t('1. Registration')}
+                    bold
+                    variant="main"
+                />
+            ),
+            details: (
+                <VStack gap="8" align="start">
+                    <Typography
+                        text={t('1. FAQ info first')}
+                        variant="second"
+                    />
+                </VStack>
+            ),
+        },
+    ]
 
     return (
         <VStack align='center' gap="64" style={{ width: '1100px' }}>
@@ -145,6 +199,16 @@ const ProductPage = () => {
             <HStack max justify='center'>
                 <iframe width="960" height="515" src="https://www.youtube.com/embed/RlwFqc7gS7Q" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
             </HStack>
+            <VStack gap="24" max align='center'>
+                <Typography
+                    size='xl'
+                    bold
+                    title={t('FAQ')}
+                    align='center'
+                    wrap
+                />
+                <Accordion list={LIST} />
+            </VStack>
         </VStack>
     );
 };

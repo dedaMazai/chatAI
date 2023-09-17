@@ -5,6 +5,7 @@ import {
     ReactNode,
 } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import { HStack } from '../Stack';
 
 import cls from './Button.module.scss';
 
@@ -65,7 +66,9 @@ export const Button = forwardRef(
                 {...otherProps}
                 ref={ref}
             >
-                {children}
+                {typeof children === 'string' ? (
+                    <HStack max justify='center'>{children}</HStack>
+                ) : children}
             </button>
         );
     },
