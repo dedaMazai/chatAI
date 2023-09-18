@@ -60,7 +60,11 @@ const LoginPage = () => {
                             </Button>
                         )}
                     />
-                    <Button fullWidth style={{ marginTop: '2rem' }}>
+                    <Button
+                        fullWidth
+                        style={{ marginTop: '2rem' }}
+                        onClick={() => navigate(RoutePath.HOME())}
+                    >
                         {t('Войти')}
                     </Button>
                 </VStack>

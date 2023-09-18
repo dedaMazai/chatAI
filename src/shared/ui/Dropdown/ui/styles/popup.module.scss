@@ -3,8 +3,9 @@
 }
 
 .menu {
-    border-radius: 18px;
-    border: 1px solid var(--accent);
+    border-radius: 10px;
+    box-shadow: 0 0.4rem 1.7rem 0 var(--shadow-card);
+    border: 1px solid var(--border);
     overflow: hidden;
 }
 

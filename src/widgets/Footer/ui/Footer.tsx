@@ -107,7 +107,7 @@ export const Footer = (props: FooterProps) => {
                                 variant="clearActive"
                                 onClick={() => navigate(RoutePath.BLOG())}
                             >
-                                {t('Блог')}
+                                {t('Новости')}
                             </Button>
                             <Button
                                 bold

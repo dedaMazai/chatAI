@@ -18,7 +18,9 @@ export const SearchOnSite = (props: SearchOnSiteProps) => {
     const { className } = props;
     const { t } = useTranslation();
     const [filter, filterDebounce, setFilter, debounceFilter] = useDebounceState('');
-    const { data, isLoading } = useSearchOnSiteQuery({ field: filterDebounce });
+    const { data, isLoading } = useSearchOnSiteQuery({ field: filterDebounce }, {
+        skip: !filter,
+    });
 
     return (
         <div className={classNames(cls.SearchOnSite, {}, [className])}>

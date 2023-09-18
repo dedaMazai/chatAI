@@ -17,3 +17,23 @@
 .buttonBlock {
     margin-left: 20rem;
 }
+
+.iconBtn {
+    width: 17px;
+    height: 17px;
+}
+
+.iconSms {
+    width: 20px;
+    height: 20px;
+}
+
+.circle {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    background-color: var(--card-bd-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

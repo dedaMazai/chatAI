@@ -6,12 +6,17 @@ import { getUserAuthData } from '@/entities/User';
 import { HStack } from '@/shared/ui/Stack';
 import { Button } from '@/shared/ui/Button';
 import Logo from '@/shared/assets/icons/Logo.svg';
+import Folder from '@/shared/assets/icons/Folder.svg';
+import Sms from '@/shared/assets/icons/Sms.svg';
 import { Icon } from '@/shared/ui/Icon';
 import { Typography } from '@/shared/ui/Text';
 import { useNavigate } from 'react-router-dom';
+import { RoutePath } from '@/shared/const/router';
+import { LangSwitcher } from '@/features/LangSwitcher';
 
 import cls from './Navbar.module.scss';
-import { RoutePath } from '@/shared/const/router';
+import { SearchOnSite } from '@/features/SearchOnSite';
+import { Dropdown } from '@/shared/ui/Dropdown';
 
 interface NavbarProps {
     className?: string;
@@ -26,17 +31,49 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         navigate(RoutePath.MAIN())
     }
 
-    if (authData) {
+    if (true) {
         return (
             <header className={classNames(cls.Navbar, {}, [className])}>
-                <HStack gap="16" className={cls.actions}>
-                    <Button
-                        variant="clear"
-                        className={cls.links}
-                        onClick={logout}
-                    >
-                        {t('Выйти')}
-                    </Button>
+                <HStack justify='between' max gap="16">
+                    <SearchOnSite />
+                    <HStack gap="16">
+                        <Button
+                            color="grey"
+                            onClick={() => navigate(RoutePath.MAIN())}
+                        >
+                            <HStack gap="8">
+                                <Icon Svg={Sms} className={cls.iconSms} />
+                                <Typography text={t('Все чаты')} />
+                            </HStack>
+                        </Button>
+                        <Button
+                            color="grey"
+                            onClick={() => navigate(RoutePath.MAIN())}
+                        >
+                            <HStack gap="8">
+                                <Icon Svg={Folder} className={cls.iconBtn} />
+                                <Typography text={t('Библиотека')} />
+                            </HStack>
+                        </Button>
+                        <Dropdown
+                            trigger={(
+                                <div className={cls.circle}>
+                                    <Typography title="A" variant="white" bold />
+                                </div>
+                            )}
+                            items={[
+                                {
+                                    content: t('Настройки'),
+                                    onClick: () => {},
+                                },
+                                {
+                                    content: t('Выйти'),
+                                    onClick: () => {},
+                                }
+                            ]}
+                            direction="bottom left"
+                        />
+                    </HStack>
                 </HStack>
             </header>
         );
@@ -45,13 +82,16 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     return (
         <header className={classNames(cls.Navbar, {}, [className])}>
             <HStack justify='between' max gap="16">
-                <Button
-                    variant="clear"
-                    onClick={() => navigate(RoutePath.MAIN())}
-                >
-                    <Icon Svg={Logo} className={cls.iconLogo} />
-                    <Typography text={t('Chat')} variant="green" bold size='l' />
-                </Button>
+                <HStack gap="16">
+                    <Button
+                        variant="clear"
+                        onClick={() => navigate(RoutePath.MAIN())}
+                    >
+                        <Icon Svg={Logo} className={cls.iconLogo} />
+                        <Typography text={t('Chat')} variant="green" bold size='l' />
+                    </Button>
+                    <LangSwitcher short />
+                </HStack>
                 <HStack gap="32" className={cls.buttonBlock}>
                     <Button
                         variant="clearActive"
@@ -69,7 +109,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         variant="clearActive"
                         onClick={() => navigate(RoutePath.BLOG())}
                     >
-                        {t('Блог')}
+                        {t('Новости')}
                     </Button>
                     <Button
                         variant="clearActive"
