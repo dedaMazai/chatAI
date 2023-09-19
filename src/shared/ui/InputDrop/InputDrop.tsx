@@ -25,8 +25,6 @@ export const InputDrop = (props: InputDropProps) => {
     const {
         className,
         onChange,
-        height = '300px',
-        width = '600px',
         countFiles,
         fullWidth,
     } = props;
@@ -62,7 +60,6 @@ export const InputDrop = (props: InputDropProps) => {
     return (
         <label
             className={classNames(cls.StyledInput, mods, [className])}
-            style={{ height, width }}
             onDragStart={(e) => dragStartHandler(e)}
             onDragLeave={(e) => dragLeaveHandler(e)}
             onDragOver={(e) => dragStartHandler(e)}

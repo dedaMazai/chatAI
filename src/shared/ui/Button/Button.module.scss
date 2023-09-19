@@ -78,6 +78,10 @@
         background: var(--grey-button);
         color: var(--text-black);
 
+        svg {
+            fill: var(--text-black);
+        }
+
         &:hover {
             background: var(--grey-button-hover);
         }
