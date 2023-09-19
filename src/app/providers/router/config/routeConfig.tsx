@@ -19,6 +19,7 @@ import { ProductPage } from '@/pages/ProductPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { RegisterPage } from '@/pages/RegisterPage';
 import { FaqPage } from '@/pages/FaqPage';
+import { SupportPage } from '@/pages/SupportPage';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.PRODUCT]: {
@@ -71,6 +72,12 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         // authOnly: true,
         withSidebar: true,
         element: <HomePage />,
+    },
+    [AppRoutes.SUPPORT]: {
+        path: RoutePath.SUPPORT(),
+        // authOnly: true,
+        withSidebar: true,
+        element: <SupportPage />,
     },
     [AppRoutes.HOME_ID]: {
         path: RoutePath.HOME_ID(':id'),

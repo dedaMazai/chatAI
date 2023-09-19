@@ -1,48 +1,40 @@
-import { memo, useMemo, useState } from 'react';
+import { memo, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { SidebarItem } from '../SidebarItem/SidebarItem';
-import { useSidebarItems } from '../../model/selectors/getSidebarItems';
 import Logo from '@/shared/assets/icons/Logo.svg';
 import Upload from '@/shared/assets/icons/Upload.svg';
 import SmsSingle from '@/shared/assets/icons/SmsSingle.svg';
 import Edit from '@/shared/assets/icons/Edit.svg';
-
-import cls from './Sidebar.module.scss';
+import Suport from '@/shared/assets/icons/Suport.svg';
+import ArrowDown from '@/shared/assets/icons/ArrowDown.svg';
+import Cart from '@/shared/assets/icons/Cart.svg';
 import { Icon } from '@/shared/ui/Icon';
 import { Typography } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/shared/ui/Button';
+import { RoutePath } from '@/shared/const/router';
+import { useNavigate } from 'react-router-dom';
+import { Progress } from '@/shared/ui/Progress/Progress';
+
+import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
     className?: string;
 }
 
-const CHATS = ['Chat#1', 'Chat#2', 'Chat#3', 'Chat#4']
+const CHATS = ['Chat#1', 'Chat#2', 'Chat#3']
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const { t } = useTranslation();
     const [collapsed, setCollapsed] = useState(false);
-    const sidebarItemsList = useSidebarItems();
+    const navigate = useNavigate();
 
     const onToggle = () => {
         console.log(collapsed);
         setCollapsed((prev) => !prev);
     };
-
-    const itemsList = useMemo(
-        () =>
-            sidebarItemsList.map((item) => (
-                <SidebarItem
-                    item={item}
-                    collapsed={collapsed}
-                    key={item.path}
-                />
-            )),
-        [collapsed, sidebarItemsList],
-    );
 
     return (
         <aside
@@ -52,55 +44,83 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 [className],
             )}
         >
-            <HStack>
-                <Icon Svg={Logo} className={cls.iconLogo} />
-                <Typography text={t('Chat')} variant="green" bold size='l' />
-            </HStack>
-            <Button
-                color='green'
-                fullWidth
-                bold
-                onClick={() => {}}
-            >
-                <HStack max gap="8" justify="center">
-                    <Icon Svg={Upload} className={cls.upload} />
-                    {t('Новый чат')}
+            <VStack max gap="16" align='center'>
+                <Button
+                    variant="clear"
+                    onClick={onToggle}
+                    className={cls.collapseBtn}
+                    circle
+                >
+                    <Icon Svg={ArrowDown} height={20} width={20} />
+                </Button>
+                <HStack>
+                    <Icon Svg={Logo} className={cls.iconLogo} />
+                    {!collapsed && (<Typography text={t('Chat')} variant="green" bold size='l' />)}
                 </HStack>
-            </Button>
-            <VStack gap="8" max>
-                <Typography text={t('Chats')} />
-                <div className={cls.list}>
-                    {CHATS.map((chat) => (
-                        <HStack gap="2" max>
-                            <Button
-                                variant="clearGrey"
-                                fullWidth
-                            >
-                                <HStack gap="8">
-                                    <Icon Svg={SmsSingle} className={cls.smsSingle} />
-                                    <Typography text={chat} />
-                                </HStack>
-                            </Button>
-                            <Button
-                                fullHeight
-                                variant="clearGreen"
-                            >
-                                <Icon Svg={Edit} className={cls.editIcon} />
-                            </Button>
-                        </HStack>
-                    ))}
-                </div>
+                <Button
+                    color='green'
+                    fullWidth
+                    bold
+                    onClick={() => {}}
+                >
+                    <HStack max gap="8" justify="center">
+                        <Icon Svg={Upload} className={cls.upload} />
+                        {t('Новый чат')}
+                    </HStack>
+                </Button>
+                <VStack gap="8" max>
+                    {!collapsed && (<Typography text={t('Чаты')} />)}
+                    <div className={cls.list}>
+                        {CHATS.map((chat) => (
+                            <HStack gap="2" max>
+                                <Button
+                                    variant="clearGrey"
+                                    fullWidth
+                                >
+                                    <HStack gap="8">
+                                        <Icon Svg={SmsSingle} className={cls.smsSingle} />
+                                        {!collapsed && <Typography text={chat} />}
+                                    </HStack>
+                                </Button>
+                                <Button
+                                    fullHeight
+                                    variant="clearGreen"
+                                >
+                                    <Icon Svg={Edit} className={cls.editIcon} />
+                                </Button>
+                            </HStack>
+                        ))}
+                    </div>
+                </VStack>
             </VStack>
-            {/* <Icon
-                data-testid="sidebar-toggle"
-                onClick={onToggle}
-                className={cls.collapseBtn}
-                Svg={ArrowIcon}
-            /> */}
-            <div className={cls.switchers}>
-                <ThemeSwitcher />
-                <LangSwitcher short={collapsed} className={cls.lang} />
-            </div>
+            {!collapsed && (
+                <VStack max align='center' gap="16">
+                    <Button
+                        circle
+                        color='black'
+                        onClick={() => navigate(RoutePath.SUPPORT())}
+                    >
+                        <HStack gap="8">
+                            <Icon Svg={Cart} height={20} width={20} />
+                            {t('Обновить план')}
+                        </HStack>
+                    </Button>
+                    <VStack gap="8" max align='center'>
+                        <HStack gap="24">
+                            <Typography text={`${t('Кредиты')}:`} />
+                            <Typography text="8 / 10" bold />
+                        </HStack>
+                        <Progress percent={50} />
+                    </VStack>
+                    <HStack>
+                        <Button fullHeight variant="clearGrey" onClick={() => navigate(RoutePath.SUPPORT())}>
+                            <Icon Svg={Suport} height={20} width={20} />
+                        </Button>
+                        <ThemeSwitcher />
+                        <LangSwitcher short={collapsed} className={cls.lang} />
+                    </HStack>
+                </VStack>
+            )}
         </aside>
     );
 });

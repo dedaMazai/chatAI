@@ -7,14 +7,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     padding: 10px 20px;
     gap: 12px;
 
     .list {
         width: 100%;
+        max-height: calc(100vh - 350px);
+        overflow-y: auto;
         display: flex;
         flex-direction: column;
         gap: 4px;
+    }
+
+    .smsSingle {
+        fill: var(--black-button);
+        height: 20px;
+        width: 18px;
     }
 
     .upload {
@@ -29,29 +38,19 @@
 
     .collapseBtn {
         position: absolute;
-        right: 0;
-        top: 50%;
+        right: -16px;
+        top: 14px;
+        background: var(--inverted-bg-color);
         z-index: 10;
         transform: rotate(90deg);
-    }
-
-    .switchers {
-        position: absolute;
-        bottom: 40px;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        gap: 16px;
+        border: 1px solid var(--border);
+        padding: 5px !important;
     }
 }
 
 .collapsed {
-    width: 50px;
-
-    .switchers {
-        flex-direction: column;
-        align-items: center;
-    }
+    width: 150px;
+    padding: 10px;
 
     .lang {
         margin-left: 0;

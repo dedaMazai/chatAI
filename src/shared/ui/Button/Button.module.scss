@@ -85,12 +85,20 @@
 
     &.black {
         background: var(--black-button);
-        border: 1px solid var(--black-button);
+        border: 2px solid var(--black-button);
+
+        svg {
+            fill: var(--bg-color);
+        }
 
         &:hover {
             background: var(--black-button-hover);
-            border: 1px solid var(--black-button);
+            border: 2px solid var(--black-button);
             color: var(--text-black);
+
+            svg {
+                fill: var(--text-black);
+            }
         }
     }
 

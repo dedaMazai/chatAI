@@ -20,14 +20,15 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
 
     return (
         <Button
-            variant="clear"
+            variant="clearGrey"
             className={classNames('', {}, [className])}
             onClick={onToggleHandler}
+            fullHeight
         >
             <Icon
                 Svg={ThemeIcon}
-                width={40}
-                height={40}
+                width={20}
+                height={20}
             />
         </Button>
     );
