@@ -9,7 +9,7 @@ import { HStack } from '../Stack';
 
 import cls from './Button.module.scss';
 
-export type ButtonVariant = 'clear' | 'outline' | 'filled' | 'clearActive';
+export type ButtonVariant = 'clear' | 'outline' | 'filled' | 'clearActive' | 'clearGreen' | 'clearGrey';
 export type ButtonColor = 'green' | 'greenLight' | 'grey' | 'black' | 'red';
 export type ButtonSize = 'm' | 'l' | 'xl';
 
@@ -25,6 +25,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     bold?: boolean;
     children?: ReactNode;
     fullWidth?: boolean;
+    fullHeight?: boolean;
 }
 
 export const Button = forwardRef(
@@ -41,6 +42,7 @@ export const Button = forwardRef(
             color = 'green',
             bold,
             jump,
+            fullHeight,
             ...otherProps
         } = props;
 
@@ -51,6 +53,7 @@ export const Button = forwardRef(
             [cls.circle]: circle,
             [cls.disabled]: disabled,
             [cls.fullWidth]: fullWidth,
+            [cls.fullHeight]: fullHeight,
         };
 
         return (
