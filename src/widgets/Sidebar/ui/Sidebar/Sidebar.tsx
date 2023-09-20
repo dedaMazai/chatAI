@@ -24,7 +24,7 @@ interface SidebarProps {
     className?: string;
 }
 
-const CHATS = ['Chat#1', 'Chat#2', 'Chat#3']
+const CHATS = ['Chat-1', 'Chat-2', 'Chat-3']
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const { t } = useTranslation();
@@ -76,6 +76,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                                 <Button
                                     variant="clearGrey"
                                     fullWidth
+                                    onClick={() => navigate(RoutePath.HOME_ID(chat))}
                                 >
                                     <HStack gap="8">
                                         <Icon Svg={SmsSingle} className={cls.smsSingle} />
@@ -85,6 +86,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                                 <Button
                                     fullHeight
                                     variant="clearGreen"
+                                    onClick={() => navigate(RoutePath.HOME_EDIT(chat))}
                                 >
                                     <Icon Svg={Edit} className={cls.editIcon} />
                                 </Button>

@@ -46,6 +46,12 @@
     &::file-selector-button {
         display: none;
     }
+
+    .iconLogo {
+        height: 80px;
+        width: 110px;
+        fill: var(--primary-color);
+    }
 }
 
 .Wrapper.fullWidth {

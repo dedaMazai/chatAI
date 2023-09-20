@@ -1,0 +1,35 @@
+.header {
+    padding: 0 1rem;
+}
+
+.pdfViewer {
+    width: 50%;
+    height: 100%;
+    background-color: var(--border);
+}
+
+.chat {
+    width: 100%;
+    min-height: 100%;
+    height: calc(100vh - 350px - var(--navbar-height));
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.chatWrapper {
+    width: 50%;
+    padding: 1rem;
+    height: calc(100vh - 140px - var(--navbar-height));
+}
+
+.smsCard {
+    width: max-content;
+    max-width: 95%;
+}
+
+.send {
+    fill: var(--bg-color);
+}

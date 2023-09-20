@@ -10,13 +10,15 @@ import { useState } from 'react';
 import { Modal } from '@/shared/ui/Modal';
 import { Input } from '@/shared/ui/Input/Input';
 
+import cls from './HomePage.module.scss';
+
 const HomePage = () => {
     const { t } = useTranslation('');
     const [isOpenWorld, setIsOpenWorld] = useState(false);
     const [isOpenYouTube, setIsOpenYouTube] = useState(false);
 
     return (
-        <VStack max align="center" gap="32">
+        <VStack style={{ paddingTop: '1rem' }} max align="center" gap="32">
             <Typography
                 size='xl'
                 bold
@@ -47,25 +49,25 @@ const HomePage = () => {
                 </Button>
             </HStack>
             <Modal isOpen={isOpenWorld} onClose={() => setIsOpenWorld(false)} lazy>
-                <VStack max gap="24" align='center'>
+                <VStack max gap="24" align='center' className={cls.modalInput}>
                     <Typography
                         bold
                         text={t('Веб-страница')}
                         align='center'
                         wrap
                     />
-                    <Input />
+                    <Input addonLeft={<Icon Svg={World} />} />
                 </VStack>
             </Modal>
             <Modal isOpen={isOpenYouTube} onClose={() => setIsOpenYouTube(false)} lazy>
-                <VStack max gap="24" align='center'>
+                <VStack max gap="24" align='center' className={cls.modalInput}>
                     <Typography
                         bold
                         text={t('YouTube')}
                         align='center'
                         wrap
                     />
-                    <Input />
+                    <Input addonLeft={<Icon Svg={YoutubeIcon} />} />
                 </VStack>
             </Modal>
         </VStack>
