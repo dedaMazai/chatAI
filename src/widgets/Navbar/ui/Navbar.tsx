@@ -56,6 +56,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                             </HStack>
                         </Button>
                         <Dropdown
+                            gap
                             trigger={(
                                 <div className={cls.circle}>
                                     <Typography title="A" variant="white" bold />

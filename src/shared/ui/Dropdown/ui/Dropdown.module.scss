@@ -1,10 +1,14 @@
 .menu {
     background: var(--inverted-bg-color);
-    top: 55px;
     position: absolute;
     z-index: 10000;
+    top: 45px;
     flex-direction: column;
     display: flex;
+}
+
+.menu.gap {
+    top: 55px;
 }
 
 .item {

@@ -8,6 +8,12 @@
     background-color: var(--border);
 }
 
+.chatWrapper {
+    width: 50%;
+    padding: 1rem;
+    height: calc(100vh - 140px - var(--navbar-height));
+}
+
 .chat {
     width: 100%;
     min-height: 100%;
@@ -19,14 +25,7 @@
     position: relative;
 }
 
-.chatWrapper {
-    width: 50%;
-    padding: 1rem;
-    height: calc(100vh - 140px - var(--navbar-height));
-}
-
 .smsCard {
-    width: max-content;
     max-width: 95%;
 }
 
