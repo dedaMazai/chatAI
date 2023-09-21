@@ -61,7 +61,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     color='green'
                     fullWidth
                     bold
-                    onClick={() => {}}
+                    onClick={() => navigate(RoutePath.HOME())}
                 >
                     <HStack max gap="8" justify="center">
                         <Icon Svg={Upload} className={cls.upload} />
