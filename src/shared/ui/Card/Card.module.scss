@@ -14,6 +14,8 @@
 
 .headerContent {
     border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .main {
@@ -52,6 +54,11 @@
 .outline {
     background: var(--card-bd-main);
     border: 2px solid var(--border-active);
+}
+
+.outlineLight {
+    background: var(--card-bd-main);
+    border: 1px solid var(--border);
 }
 
 /* stylelint-disable-next-line no-duplicate-selectors */

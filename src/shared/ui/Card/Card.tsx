@@ -3,7 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './Card.module.scss';
 
-export type CardVariant = 'main' | 'black' | 'blackTwo' | 'greyOne' | 'greyTwo' | 'green' | 'greenLight' | 'outline';
+export type CardVariant = 'main' | 'black' | 'blackTwo' | 'greyOne' | 'greyTwo' | 'green' | 'greenLight' | 'outline' | 'outlineLight';
 export type CardPadding = '0' | '8' | '16' | '24' | '32' | '54';
 export type CardBorder = 'round' | 'normal' | 'partial';
 
