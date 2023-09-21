@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { CSSProperties, memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Text.module.scss';
 
@@ -17,6 +17,7 @@ interface TextProps {
     size?: TextSize;
     bold?: boolean;
     wrap?: boolean;
+    style?: CSSProperties;
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3' | 'h4';
@@ -45,6 +46,7 @@ export const Typography = memo((props: TextProps) => {
         size = 'm',
         bold,
         wrap,
+        style,
     } = props;
 
     const HeaderTag = mapSizeToHeaderTag[size];
@@ -54,6 +56,7 @@ export const Typography = memo((props: TextProps) => {
 
     return (
         <div
+            style={style}
             className={classNames(
                 cls.Text,
                 {

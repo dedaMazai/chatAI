@@ -12,6 +12,7 @@ import cls from './HomeIdPage.module.scss';
 import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
 import { Typewriter } from '@/shared/ui/Typewriter';
+import { MutableRefObject, useEffect, useRef } from 'react';
 
 const EXAMPLE = [
     {
@@ -74,6 +75,11 @@ const EXAMPLE = [
 const HomeIdPage = () => {
     const { t } = useTranslation('');
     const { id } = useParams<{ id: string }>();
+    const chatRef:  MutableRefObject<HTMLDivElement | null> = useRef(null);
+
+    useEffect(() => {
+        chatRef.current?.scrollIntoView(false);
+    }, [])
 
     return (
         <VStack max fullHeight>
@@ -117,9 +123,12 @@ const HomeIdPage = () => {
                     <div className={cls.chat}>
                         {EXAMPLE.map((sms, index) => (
                             <HStack key={sms.id} max justify={sms.type === 'to' ? "end" : "start"}>
-                                <Card className={cls.smsCard} variant={sms.type === 'to' ? "green" : "greyOne"}>
+                                <Card
+                                    ref={index === EXAMPLE.length - 1 ? chatRef : undefined}
+                                    className={cls.smsCard} variant={sms.type === 'to' ? "green" : "greyOne"}
+                                >
                                     {(index === EXAMPLE.length - 1) && sms.type === "from" ? (
-                                        <Typewriter text={sms.text} delay={100} />
+                                        <Typewriter text={sms.text} delay={50}  />
                                     ) : sms.text}
                                 </Card>
                             </HStack>

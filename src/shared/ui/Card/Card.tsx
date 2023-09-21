@@ -1,4 +1,4 @@
-import { HTMLAttributes, memo, ReactNode } from 'react';
+import { ForwardedRef, forwardRef, HTMLAttributes, memo, MutableRefObject, ReactNode, useEffect } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './Card.module.scss';
@@ -19,6 +19,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     height?: string;
     jump?: boolean;
     fullHeight?: boolean;
+    ref?: MutableRefObject<HTMLDivElement | null>;
 }
 
 const mapPaddingToClass: Record<CardPadding, string> = {
@@ -30,7 +31,7 @@ const mapPaddingToClass: Record<CardPadding, string> = {
     '54': 'gap_54',
 };
 
-export const Card = memo((props: CardProps) => {
+export const Card = forwardRef((props: CardProps, ref: ForwardedRef<HTMLDivElement | null>) => {
     const {
         className,
         children,
@@ -50,6 +51,7 @@ export const Card = memo((props: CardProps) => {
 
     return (
         <div
+            ref={ref}
             style={{ width, height }}
             className={classNames(
                 cls.Card,

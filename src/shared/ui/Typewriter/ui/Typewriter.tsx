@@ -1,7 +1,3 @@
-import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
-
-import cls from './Typewriter.module.scss';
 import { useEffect, useState } from 'react';
 import { Typography } from '../../Text';
 
@@ -33,5 +29,5 @@ export const Typewriter = ({ text, delay, infinite }: TypewriterProps) => {
         return () => clearTimeout(timeout);
     }, [currentIndex, delay, infinite, text]);
 
-    return <Typography text={currentText} />;
+    return <Typography text={currentText || text} style={{ opacity: !currentText ? 0 : 1 }} />;
 };
