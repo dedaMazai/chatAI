@@ -14,9 +14,9 @@ import Harvard from '@/shared/assets/icons/Harvard.svg';
 import Insta from '@/shared/assets/icons/Insta.svg';
 import Meta from '@/shared/assets/icons/Meta.svg';
 import Oxford from '@/shared/assets/icons/Oxford.svg';
+import { Button } from '@/shared/ui/Button';
 
 import cls from './PricingPage.module.scss';
-import { Button } from '@/shared/ui/Button';
 
 const FREE = [
     '10 кредитов в месяц',

@@ -100,7 +100,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     <Button
                         circle
                         color='black'
-                        onClick={() => navigate(RoutePath.SUPPORT())}
+                        onClick={() => navigate(RoutePath.UPGRADE_PLAN())}
                     >
                         <HStack gap="8">
                             <Icon Svg={Cart} height={20} width={20} />

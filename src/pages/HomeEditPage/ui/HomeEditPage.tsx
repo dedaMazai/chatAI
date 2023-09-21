@@ -10,11 +10,14 @@ import pdf from '@/shared/assets/icons/pdf-icon.svg';
 import ArrowDown from '@/shared/assets/icons/ArrowDown.svg';
 import { Icon } from '@/shared/ui/Icon';
 import { Dropdown } from '@/shared/ui/Dropdown';
+import { Modal } from '@/shared/ui/Modal';
+import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
 
 const HomeEditPage = () => {
     const { t } = useTranslation('');
     const { id } = useParams<{ id: string }>();
     const [state, setState] = useState(id || '');
+    const [openModal, setOpenModal] = useState(false);
 
     return (
         <VStack max gap="32" style={{ padding: '0 3rem' }}>
@@ -44,7 +47,7 @@ const HomeEditPage = () => {
                     header={(
                         <HStack max justify='between'>
                             <Typography text={t('Библиотека чата')} bold />
-                            <Button>{t('Добавить')}</Button>
+                            <Button onClick={() => setOpenModal(true)}>{t('Добавить')}</Button>
                         </HStack>
                     )}
                     max
@@ -116,6 +119,9 @@ const HomeEditPage = () => {
                     </VStack>
                 </Card>
             </VStack>
+            <Modal isOpen={openModal} onClose={() => setOpenModal(false)} lazy>
+                <InputDrop />
+            </Modal>
         </VStack>
     );
 };

@@ -11,6 +11,7 @@ import { Typography } from '@/shared/ui/Text';
 import cls from './HomeIdPage.module.scss';
 import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
+import { Typewriter } from '@/shared/ui/Typewriter';
 
 const EXAMPLE = [
     {
@@ -66,7 +67,7 @@ const EXAMPLE = [
     {
         id: 11,
         text: '2344 wfweffew  ewf ewf ewf ewf ewf ewf   wefewf wefwefwe wefwefew ewf ewfewfwefew ewfwefwef wefwefweee',
-        type: 'to',
+        type: 'from',
     },
 ]
 
@@ -114,10 +115,12 @@ const HomeIdPage = () => {
                 </div>
                 <VStack justify="between" gap="8" className={cls.chatWrapper}>
                     <div className={cls.chat}>
-                        {EXAMPLE.map((sms) => (
+                        {EXAMPLE.map((sms, index) => (
                             <HStack key={sms.id} max justify={sms.type === 'to' ? "end" : "start"}>
                                 <Card className={cls.smsCard} variant={sms.type === 'to' ? "green" : "greyOne"}>
-                                    {sms.text}
+                                    {(index === EXAMPLE.length - 1) && sms.type === "from" ? (
+                                        <Typewriter text={sms.text} delay={100} />
+                                    ) : sms.text}
                                 </Card>
                             </HStack>
                         ))}
