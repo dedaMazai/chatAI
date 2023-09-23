@@ -6,7 +6,7 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import Logo from '@/shared/assets/icons/Logo.svg';
 import Upload from '@/shared/assets/icons/Upload.svg';
 import SmsSingle from '@/shared/assets/icons/SmsSingle.svg';
-import Edit from '@/shared/assets/icons/Edit.svg';
+import Edit from '@/shared/assets/icons/EditNew.svg';
 import Suport from '@/shared/assets/icons/Suport.svg';
 import ArrowDown from '@/shared/assets/icons/ArrowDown.svg';
 import Cart from '@/shared/assets/icons/Cart.svg';
