@@ -1,7 +1,7 @@
 export interface User {
-    id: string;
-    username: string;
-    avatar?: string;
+    access_token: string;
+    // username: string;
+    // avatar?: string;
 }
 
 export interface UserSchema {

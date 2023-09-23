@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { getUserAuthData } from '@/entities/User';
+import { getUserAuthData, userActions } from '@/entities/User';
 import { HStack } from '@/shared/ui/Stack';
 import { Button } from '@/shared/ui/Button';
 import Logo from '@/shared/assets/icons/Logo.svg';
@@ -17,6 +17,7 @@ import { SearchOnSite } from '@/features/SearchOnSite';
 import { Dropdown } from '@/shared/ui/Dropdown';
 
 import cls from './Navbar.module.scss';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface NavbarProps {
     className?: string;
@@ -26,9 +27,10 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const authData = useSelector(getUserAuthData);
+    const dispatch = useAppDispatch();
 
-    const logout = () => {
-        navigate(RoutePath.MAIN())
+    const handleLogout = () => {
+        dispatch(userActions.logout());
     }
 
     if (authData) {
@@ -39,7 +41,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     <HStack gap="16">
                         <Button
                             color="grey"
-                            onClick={() => navigate(RoutePath.MAIN())}
+                            onClick={() => navigate(RoutePath.CHATS())}
                         >
                             <HStack gap="8">
                                 <Icon Svg={Sms} className={cls.iconSms} />
@@ -48,7 +50,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         </Button>
                         <Button
                             color="grey"
-                            onClick={() => navigate(RoutePath.MAIN())}
+                            onClick={() => navigate(RoutePath.FILES())}
                         >
                             <HStack gap="8">
                                 <Icon Svg={Folder} className={cls.iconBtn} />
@@ -65,11 +67,11 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                             items={[
                                 {
                                     content: t('Настройки'),
-                                    onClick: () => {},
+                                    onClick: () => navigate(RoutePath.SETTINGS()),
                                 },
                                 {
                                     content: t('Выйти'),
-                                    onClick: () => {},
+                                    onClick: handleLogout,
                                 }
                             ]}
                             direction="bottom left"

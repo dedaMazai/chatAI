@@ -8,9 +8,11 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { VStack } from '@/shared/ui/Stack';
 import { Navbar } from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
+import { RequireNotAuth } from './RequireNotAuth';
 
 const AppRouter = () => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
+
         const element = (
             <>
                 {route.withSidebar && <Sidebar />}
@@ -34,7 +36,7 @@ const AppRouter = () => {
                     route.authOnly ? (
                         <RequireAuth>{element}</RequireAuth>
                     ) : (
-                        element
+                        <RequireNotAuth notAuthOnly={route.notAuthOnly}>{element}</RequireNotAuth>
                     )
                 }
             />

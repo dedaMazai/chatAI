@@ -3,6 +3,7 @@ import {
     USER_LOCALSTORAGE_KEY,
 } from '@/shared/const/localstorage';
 import { UserSchema, User } from '../types/user';
+import { removeCookie } from 'typescript-cookie';
 
 const initialState: UserSchema = {
     _inited: false,
@@ -18,6 +19,7 @@ export const userSlice = createSlice({
         },
         initAuthData: (state) => {
             const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+
             if (user) {
                 state.authData = JSON.parse(user);
             }
@@ -27,9 +29,8 @@ export const userSlice = createSlice({
         logout: (state) => {
             state.authData = undefined;
             localStorage.removeItem(USER_LOCALSTORAGE_KEY);
-            // removeCookie('access_token');
-            // removeCookie('refresh_token');
-            // removeCookie('finger_key');
+            removeCookie('access_token');
+            removeCookie('refresh_token');
             // выход
         },
     },

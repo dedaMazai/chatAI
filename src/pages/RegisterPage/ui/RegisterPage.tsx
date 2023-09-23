@@ -4,7 +4,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { Input } from '@/shared/ui/Input';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Eye from '@/shared/assets/icons/Eye.svg';
 import EyeClosed from '@/shared/assets/icons/EyeClosed.svg';
@@ -26,9 +26,20 @@ const RegisterPage = () => {
 
     const [register, registerResult] = useRegisterMutation();
 
+    useEffect(() => {
+        if (registerResult.isSuccess) {
+            setEmail('')
+            setName('')
+            setSurname('')
+            setPassword('')
+            setVisible(false)
+        }
+    }, [])
+
     useNotification({
-        isLoading: {
-            active: registerResult.isLoading,
+        isSuccess: {
+            active: registerResult.isSuccess,
+            text: t('Успешная регистрации'),
         },
         isError: {
             active: registerResult.isError,
