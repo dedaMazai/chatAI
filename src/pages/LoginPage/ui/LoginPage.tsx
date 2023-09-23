@@ -12,13 +12,16 @@ import EyeClosed from '@/shared/assets/icons/EyeClosed.svg';
 import cls from './LoginPage.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
+import { useLoginMutation } from '../api/loginPageApi';
 
 const LoginPage = () => {
     const { t } = useTranslation('');
     const navigate = useNavigate();
-    const [login, setLogin] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [visible, setVisible] = useState(false);
+
+    const [loginGo, loginRes] = useLoginMutation();
 
     return (
         <HStack max justify="center">
@@ -45,8 +48,8 @@ const LoginPage = () => {
                         </Button>
                     </HStack>
                     <Input
-                        value={login}
-                        onChange={(e) => setLogin(e)}
+                        value={email}
+                        onChange={(e) => setEmail(e)}
                         label={t('Ваш адрес электронной почты')}
                     />
                     <Input
@@ -63,7 +66,8 @@ const LoginPage = () => {
                     <Button
                         fullWidth
                         style={{ marginTop: '2rem' }}
-                        onClick={() => navigate(RoutePath.HOME())}
+                        onClick={() => loginGo({ password, email })}
+                        disabled={!email || !password}
                     >
                         {t('Войти')}
                     </Button>

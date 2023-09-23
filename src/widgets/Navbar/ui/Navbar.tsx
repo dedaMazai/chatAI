@@ -13,10 +13,10 @@ import { Typography } from '@/shared/ui/Text';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
 import { LangSwitcher } from '@/features/LangSwitcher';
-
-import cls from './Navbar.module.scss';
 import { SearchOnSite } from '@/features/SearchOnSite';
 import { Dropdown } from '@/shared/ui/Dropdown';
+
+import cls from './Navbar.module.scss';
 
 interface NavbarProps {
     className?: string;
@@ -31,7 +31,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         navigate(RoutePath.MAIN())
     }
 
-    if (true) {
+    if (authData) {
         return (
             <header className={classNames(cls.Navbar, {}, [className])}>
                 <HStack justify='between' max gap="16">
@@ -93,7 +93,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     </Button>
                     <LangSwitcher short />
                 </HStack>
-                <HStack gap="32" className={cls.buttonBlock}>
+                <HStack max justify="end" gap="32">
                     <Button
                         variant="clearActive"
                         onClick={() => navigate(RoutePath.PRODUCT())}

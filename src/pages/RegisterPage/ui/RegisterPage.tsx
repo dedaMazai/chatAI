@@ -8,17 +8,33 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Eye from '@/shared/assets/icons/Eye.svg';
 import EyeClosed from '@/shared/assets/icons/EyeClosed.svg';
-
-import cls from './RegisterPage.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
+import { useRegisterMutation } from '../api/registerPageApi';
+import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
+
+import cls from './RegisterPage.module.scss';
 
 const RegisterPage = () => {
     const { t } = useTranslation('');
     const navigate = useNavigate();
-    const [login, setLogin] = useState('');
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
     const [password, setPassword] = useState('');
     const [visible, setVisible] = useState(false);
+
+    const [register, registerResult] = useRegisterMutation();
+
+    useNotification({
+        isLoading: {
+            active: registerResult.isLoading,
+        },
+        isError: {
+            active: registerResult.isError,
+            text: t('Ошибка регистрации'),
+        },
+    });
 
     return (
         <HStack max justify="center">
@@ -45,9 +61,19 @@ const RegisterPage = () => {
                         </Button>
                     </HStack>
                     <Input
-                        value={login}
-                        onChange={(e) => setLogin(e)}
+                        value={email}
+                        onChange={(e) => setEmail(e)}
                         label={t('Ваш адрес электронной почты')}
+                    />
+                    <Input
+                        value={name}
+                        onChange={(e) => setName(e)}
+                        label={t('Имя')}
+                    />
+                    <Input
+                        value={surname}
+                        onChange={(e) => setSurname(e)}
+                        label={t('Фамилия')}
                     />
                     <Input
                         value={password}
@@ -60,7 +86,17 @@ const RegisterPage = () => {
                             </Button>
                         )}
                     />
-                    <Button fullWidth style={{ marginTop: '2rem' }}>
+                    <Button
+                        fullWidth
+                        style={{ marginTop: '2rem' }}
+                        disabled={!email || !name || !surname || !password}
+                        onClick={() => register({
+                            email,
+                            name,
+                            surname,
+                            password,
+                        })}
+                    >
                         {t('Зарегистрироваться')}
                     </Button>
                 </VStack>
