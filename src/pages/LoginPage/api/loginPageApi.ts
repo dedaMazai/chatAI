@@ -2,18 +2,18 @@ import { rtkApi } from "@/shared/api/rtkApi";
 
 interface Login {
   password: string;
-  email : string;
+  username : string;
 }
 
 export const loginPageApi = rtkApi.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation<any[], Login>({
-      query: ({ email, password }) => ({
+      query: ({ username, password }) => ({
         url: '/authorization/login',
         method: 'POST',
         body: {
           password,
-          email,
+          username,
         }
       }),
     }),

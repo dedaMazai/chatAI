@@ -66,7 +66,7 @@ const LoginPage = () => {
                     <Button
                         fullWidth
                         style={{ marginTop: '2rem' }}
-                        onClick={() => loginGo({ password, email })}
+                        onClick={() => loginGo({ password, username: email })}
                         disabled={!email || !password}
                     >
                         {t('Войти')}
