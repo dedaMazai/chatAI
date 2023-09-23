@@ -59,13 +59,14 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 </HStack>
                 <Button
                     color='green'
+                    style={{ height: '40px' }}
                     fullWidth
                     bold
                     onClick={() => navigate(RoutePath.HOME())}
                 >
                     <HStack max gap="8" justify="center">
                         <Icon Svg={Upload} className={cls.upload} />
-                        {t('Новый чат')}
+                        {!collapsed && t('Новый чат')}
                     </HStack>
                 </Button>
                 <VStack gap="8" max>
@@ -75,7 +76,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                             <HStack gap="2" max>
                                 <Button
                                     variant="clearGrey"
-                                    fullWidth
+                                    fullWidth={!collapsed}
                                     onClick={() => navigate(RoutePath.HOME_ID(chat))}
                                 >
                                     <HStack gap="8">
