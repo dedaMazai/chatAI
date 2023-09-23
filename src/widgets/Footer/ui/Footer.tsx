@@ -22,6 +22,13 @@ export const Footer = (props: FooterProps) => {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
+    const redirectToWebsite = (url: string) => {
+        window.open(
+            url,
+            '_blank',
+        );
+    };
+
     return (
         <footer className={classNames(cls.Footer, {}, [className])}>
             <VStack align='center' gap="16" max style={{ width: '1100px' }}>
@@ -42,7 +49,7 @@ export const Footer = (props: FooterProps) => {
                         <Button
                             color='green'
                             jump
-                            onClick={() => {}}
+                            onClick={() => redirectToWebsite('https://t.me')}
                         >
                             {t('Telegram')}
                         </Button>
@@ -74,13 +81,13 @@ export const Footer = (props: FooterProps) => {
                         <HStack gap="16" max justify='center'>
                             <Button
                                 circle
-                                onClick={() => {}}
+                                onClick={() => redirectToWebsite('https://t.me')}
                             >
                                 <Icon Svg={Telegram} className={cls.icons} />
                             </Button>
                             <Button
                                 circle
-                                onClick={() => {}}
+                                onClick={() => redirectToWebsite('https://web.whatsapp.com')}
                             >
                                 <Icon Svg={Email} className={cls.icons} />
                             </Button>

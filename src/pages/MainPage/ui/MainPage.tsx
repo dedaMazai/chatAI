@@ -34,10 +34,13 @@ import Meta from '@/shared/assets/icons/Meta.svg';
 import Oxford from '@/shared/assets/icons/Oxford.svg';
 import { AppCard } from '@/entities/AppCard/AppCard';
 import { Footer } from '@/widgets/Footer';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from '@/shared/const/router';
 
 const MainPage = () => {
     const { t } = useTranslation();
     const [activeButton, setActiveButton] = useState('Образование');
+    const navigate = useNavigate();
 
     return (
         <VStack align='center' gap="64" max>
@@ -55,7 +58,7 @@ const MainPage = () => {
                             circle
                             size="l"
                             jump
-                            onClick={() => {}}
+                            onClick={() => navigate(RoutePath.REGISTER())}
                         >
                             {t('Попробовать')}
                         </Button>
@@ -103,11 +106,12 @@ const MainPage = () => {
                 />
                 <VStack max gap="16" align='center'>
                     <Card variant='greyOne' border="round" max>
-                        <HStack gap="16" max justify='center'>
+                        <HStack gap="8" max justify='center'>
                             <Button
                                 variant={activeButton === 'Образование' ? 'filled' : 'clearActive'}
                                 onClick={() => setActiveButton('Образование')}
                                 circle
+                                fullHeight
                             >
                                 {t('Образование')}
                             </Button>
@@ -115,6 +119,7 @@ const MainPage = () => {
                                 variant={activeButton === 'Ресурсы' ? 'filled' : 'clearActive'}
                                 onClick={() => setActiveButton('Ресурсы')}
                                 circle
+                                fullHeight
                             >
                                 {t('Ресурсы')}
                             </Button>
@@ -122,6 +127,7 @@ const MainPage = () => {
                                 variant={activeButton === 'Бизнес' ? 'filled' : 'clearActive'}
                                 onClick={() => setActiveButton('Бизнес')}
                                 circle
+                                fullHeight
                             >
                                 {t('Бизнес')}
                             </Button>
@@ -129,6 +135,7 @@ const MainPage = () => {
                                 variant={activeButton === 'Коммерция' ? 'filled' : 'clearActive'}
                                 onClick={() => setActiveButton('Коммерция')}
                                 circle
+                                fullHeight
                             >
                                 {t('Коммерция')}
                             </Button>
@@ -136,6 +143,7 @@ const MainPage = () => {
                                 variant={activeButton === 'Финансы' ? 'filled' : 'clearActive'}
                                 onClick={() => setActiveButton('Финансы')}
                                 circle
+                                fullHeight
                             >
                                 {t('Финансы')}
                             </Button>
@@ -143,6 +151,7 @@ const MainPage = () => {
                                 variant={activeButton === 'Здравоохранение' ? 'filled' : 'clearActive'}
                                 onClick={() => setActiveButton('Здравоохранение')}
                                 circle
+                                fullHeight
                             >
                                 {t('Здравоохранение')}
                             </Button>
@@ -150,6 +159,7 @@ const MainPage = () => {
                                 variant={activeButton === 'Туризм' ? 'filled' : 'clearActive'}
                                 onClick={() => setActiveButton('Туризм')}
                                 circle
+                                fullHeight
                             >
                                 {t('Туризм')}
                             </Button>
@@ -157,6 +167,7 @@ const MainPage = () => {
                                 variant={activeButton === 'Страхование' ? 'filled' : 'clearActive'}
                                 onClick={() => setActiveButton('Страхование')}
                                 circle
+                                fullHeight
                             >
                                 {t('Страхование')}
                             </Button>
@@ -366,7 +377,7 @@ const MainPage = () => {
                                     color='green'
                                     circle
                                     jump
-                                    onClick={() => {}}
+                                    onClick={() => navigate(RoutePath.REGISTER())}
                                 >
                                     {t('Посетить сайт')}
                                 </Button>

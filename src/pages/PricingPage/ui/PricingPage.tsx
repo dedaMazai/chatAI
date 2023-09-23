@@ -17,6 +17,8 @@ import Oxford from '@/shared/assets/icons/Oxford.svg';
 import { Button } from '@/shared/ui/Button';
 
 import cls from './PricingPage.module.scss';
+import { RoutePath } from '@/shared/const/router';
+import { useNavigate } from 'react-router-dom';
 
 const FREE = [
     '10 кредитов в месяц',
@@ -49,6 +51,7 @@ const PRO = [
 const PricingPage = () => {
     const { t } = useTranslation('');
     const [state, setState] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <VStack align='center' gap="64" style={{ width: '1100px' }}>
@@ -59,7 +62,7 @@ const PricingPage = () => {
                 align='center'
                 wrap
             />
-            <HStack max justify='center' align='end' gap="4">
+            <HStack max justify='center' align='end' gap="16">
                 <Typography
                     text={t('Ежемесяно')}
                     align='center'
@@ -120,7 +123,7 @@ const PricingPage = () => {
                     <Button
                         color='green'
                         fullWidth
-                        onClick={() => {}}
+                        onClick={() => navigate(RoutePath.REGISTER())}
                     >
                         {t('Попробовать бесплатно')}
                     </Button>
@@ -171,7 +174,7 @@ const PricingPage = () => {
                     <Button
                         color='grey'
                         fullWidth
-                        onClick={() => {}}
+                        onClick={() => navigate(RoutePath.REGISTER())}
                     >
                         {t('Выберете базовый')}
                     </Button>
@@ -217,7 +220,7 @@ const PricingPage = () => {
                     <Button
                         color='green'
                         fullWidth
-                        onClick={() => {}}
+                        onClick={() => navigate(RoutePath.REGISTER())}
                     >
                         {t('Выберете PRO')}
                     </Button>

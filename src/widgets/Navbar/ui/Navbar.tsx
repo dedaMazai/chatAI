@@ -93,7 +93,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     </Button>
                     <LangSwitcher short />
                 </HStack>
-                <HStack max justify="end" gap="32">
+                <HStack max justify="end">
                     <Button
                         variant="clearActive"
                         onClick={() => navigate(RoutePath.PRODUCT())}
@@ -124,22 +124,24 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     >
                         {t('Цены')}
                     </Button>
-                    <Button
-                        color='grey'
-                        circle
-                        jump
-                        onClick={() => navigate(RoutePath.LOGIN())}
-                    >
-                        {t('Войти')}
-                    </Button>
-                    <Button
-                        color='green'
-                        circle
-                        jump
-                        onClick={() => navigate(RoutePath.REGISTER())}
-                    >
-                        {t('Зарегистрироваться')}
-                    </Button>
+                    <HStack gap="8">
+                        <Button
+                            color='grey'
+                            circle
+                            jump
+                            onClick={() => navigate(RoutePath.LOGIN())}
+                        >
+                            {t('Войти')}
+                        </Button>
+                        <Button
+                            color='green'
+                            circle
+                            jump
+                            onClick={() => navigate(RoutePath.REGISTER())}
+                        >
+                            {t('Зарегистрироваться')}
+                        </Button>
+                    </HStack>
                 </HStack>
             </HStack>
         </header>

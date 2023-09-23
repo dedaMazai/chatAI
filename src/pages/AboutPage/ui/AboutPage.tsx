@@ -7,7 +7,9 @@ import OkFill from '@/shared/assets/icons/OkFill.svg';
 import cls from './AboutPage.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 import { Button } from '@/shared/ui/Button';
-import { useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from '@/shared/const/router';
 
 const LEFT = [
     'Интеграция чат-ботов – встраивайте чат-ботов на свой сайт',
@@ -20,6 +22,7 @@ const LEFT = [
 
 const AboutPage = () => {
     const { t } = useTranslation('');
+    const navigate = useNavigate();
 
     return (
         <VStack align='center' gap="64" max>
@@ -262,7 +265,7 @@ const AboutPage = () => {
                     <Button
                         size='l'
                         color='green'
-                        onClick={() => {}}
+                        onClick={() => navigate(RoutePath.REGISTER())}
                         circle
                     >
                         {t('Начни уже сегодня')}
