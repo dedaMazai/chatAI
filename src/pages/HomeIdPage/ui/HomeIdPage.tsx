@@ -4,6 +4,7 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import ShareIcon from '@/shared/assets/icons/ShareIcon.svg';
+import File from '@/shared/assets/icons/File.svg';
 import Settings from '@/shared/assets/icons/Settings.svg';
 import Send from '@/shared/assets/icons/Send.svg';
 import { Typography } from '@/shared/ui/Text';
@@ -82,10 +83,10 @@ const HomeIdPage = () => {
     }, [])
 
     return (
-        <VStack max fullHeight>
+        <VStack max fullHeight gap="8">
             <HStack max justify="between" className={cls.header}>
                 <HStack gap="8">
-                    <Icon Svg={ShareIcon} />
+                    <Icon Svg={File} height={20} width={20} />
                     <Typography text={id} size="l" bold />
                 </HStack>
                 <HStack gap="16">

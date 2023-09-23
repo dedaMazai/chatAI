@@ -3,7 +3,7 @@ import { Card } from '@/shared/ui/Card';
 import { Input } from '@/shared/ui/Input';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import pdf from '@/shared/assets/icons/pdf-icon.svg';
@@ -16,8 +16,12 @@ import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
 const HomeEditPage = () => {
     const { t } = useTranslation('');
     const { id } = useParams<{ id: string }>();
-    const [state, setState] = useState(id || '');
+    const [state, setState] = useState('');
     const [openModal, setOpenModal] = useState(false);
+
+    useEffect(() => {
+        if (id) setState(id)
+    }, [id])
 
     return (
         <VStack max gap="32" style={{ padding: '0 3rem' }}>
@@ -71,7 +75,7 @@ const HomeEditPage = () => {
                                         trigger={(
                                             <Card variant="greyOne" padding="8">
                                                 <HStack gap="8">
-                                                    <Typography text={t('Более')} />
+                                                    <Typography text={t('Действия')} />
                                                     <Icon Svg={ArrowDown} height={8} />
                                                 </HStack>
                                             </Card>

@@ -1,13 +1,39 @@
-import { HStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { useTranslation } from 'react-i18next';
+import File from '@/shared/assets/icons/File.svg';
+
+import cls from './FileViewPage.module.scss';
+import { Icon } from '@/shared/ui/Icon';
+import { Typography } from '@/shared/ui/Text';
+import { Button } from '@/shared/ui/Button';
+import { useParams } from 'react-router-dom';
 
 const FileViewPage = () => {
     const { t } = useTranslation('');
+    const { id } = useParams<{ id: string }>();
 
     return (
-        <HStack max justify="center">
-            {t('У вас нет доступа к этой странице')}
-        </HStack>
+        <VStack max fullHeight gap="8">
+            <HStack max justify="between" className={cls.header}>
+                <HStack gap="8">
+                    <Icon Svg={File} height={20} width={20} />
+                    <Typography text={id} size="l" bold />
+                </HStack>
+                <HStack gap="16">
+                    <Button
+                        color="greenLight"
+                        onClick={() => {}}
+                    >
+                        {t('Скачать')}
+                    </Button>
+                </HStack>
+            </HStack>
+            <HStack max fullHeight>
+                <div className={cls.pdfViewer}>
+                    123
+                </div>
+            </HStack>
+        </VStack>
     );
 };
 
