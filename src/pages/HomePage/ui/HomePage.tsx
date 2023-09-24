@@ -18,6 +18,7 @@ const HomePage = () => {
     const [isOpenYouTube, setIsOpenYouTube] = useState(false);
     const [site, setSite] = useState('');
     const [youTube, setYouTube] = useState('');
+    const [name, setName] = useState('');
 
     const handleCloseSite = () => {
         setIsOpenWorld(false);

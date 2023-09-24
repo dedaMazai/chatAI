@@ -1,13 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { getUserAuthData, userActions } from '@/entities/User';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { Button } from '@/shared/ui/Button';
 import Logo from '@/shared/assets/icons/Logo.svg';
 import Folder from '@/shared/assets/icons/Folder.svg';
 import Sms from '@/shared/assets/icons/Sms.svg';
+import Menu from '@/shared/assets/icons/Menu.svg';
 import { Icon } from '@/shared/ui/Icon';
 import { Typography } from '@/shared/ui/Text';
 import { useNavigate } from 'react-router-dom';
@@ -15,9 +16,11 @@ import { RoutePath } from '@/shared/const/router';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { SearchOnSite } from '@/features/SearchOnSite';
 import { Dropdown } from '@/shared/ui/Dropdown';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { BrowserView, MobileView } from 'react-device-detect';
 
 import cls from './Navbar.module.scss';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Drawer } from '@/shared/ui/Drawer';
 
 interface NavbarProps {
     className?: string;
@@ -28,10 +31,69 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const navigate = useNavigate();
     const authData = useSelector(getUserAuthData);
     const dispatch = useAppDispatch();
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleLogout = () => {
         dispatch(userActions.logout());
     }
+
+    const onOpenDrawer = useCallback(() => {
+        setIsOpen(true);
+    }, []);
+
+    const onCloseDrawer = useCallback(() => {
+        setIsOpen(false);
+    }, []);
+
+    const MenuList = (
+        <>
+            <Button
+                variant="clearActive"
+                onClick={() => {
+                    navigate(RoutePath.PRODUCT());
+                    onCloseDrawer();
+                }}
+            >
+                {t('Продукт')}
+            </Button>
+            <Button
+                variant="clearActive"
+                onClick={() => {
+                    navigate(RoutePath.FEATURES());
+                    onCloseDrawer();
+                }}
+            >
+                {t('Особенности')}
+            </Button>
+            <Button
+                variant="clearActive"
+                onClick={() => {
+                    navigate(RoutePath.BLOG());
+                    onCloseDrawer();
+                }}
+            >
+                {t('Новости')}
+            </Button>
+            <Button
+                variant="clearActive"
+                onClick={() => {
+                    navigate(RoutePath.ABOUT());
+                    onCloseDrawer();
+                }}
+            >
+                {t('О нас')}
+            </Button>
+            <Button
+                variant="clearActive"
+                onClick={() => {
+                    navigate(RoutePath.PRICING());
+                    onCloseDrawer();
+                }}
+            >
+                {t('Цены')}
+            </Button>
+        </>
+    )
 
     if (authData) {
         return (
@@ -95,56 +157,61 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     </Button>
                     <LangSwitcher short />
                 </HStack>
-                <HStack max justify="end">
-                    <Button
-                        variant="clearActive"
-                        onClick={() => navigate(RoutePath.PRODUCT())}
-                    >
-                        {t('Продукт')}
-                    </Button>
-                    <Button
-                        variant="clearActive"
-                        onClick={() => navigate(RoutePath.FEATURES())}
-                    >
-                        {t('Особенности')}
-                    </Button>
-                    <Button
-                        variant="clearActive"
-                        onClick={() => navigate(RoutePath.BLOG())}
-                    >
-                        {t('Новости')}
-                    </Button>
-                    <Button
-                        variant="clearActive"
-                        onClick={() => navigate(RoutePath.ABOUT())}
-                    >
-                        {t('О нас')}
-                    </Button>
-                    <Button
-                        variant="clearActive"
-                        onClick={() => navigate(RoutePath.PRICING())}
-                    >
-                        {t('Цены')}
-                    </Button>
-                    <HStack gap="8">
-                        <Button
-                            color='grey'
-                            circle
-                            jump
-                            onClick={() => navigate(RoutePath.LOGIN())}
-                        >
-                            {t('Войти')}
-                        </Button>
-                        <Button
-                            color='green'
-                            circle
-                            jump
-                            onClick={() => navigate(RoutePath.REGISTER())}
-                        >
-                            {t('Зарегистрироваться')}
-                        </Button>
+                <BrowserView>
+                    <HStack max justify="end">
+                        {MenuList}
+                        <HStack gap="8">
+                            <Button
+                                color='grey'
+                                circle
+                                jump
+                                onClick={() => navigate(RoutePath.LOGIN())}
+                            >
+                                {t('Войти')}
+                            </Button>
+                            <Button
+                                color='green'
+                                circle
+                                jump
+                                onClick={() => navigate(RoutePath.REGISTER())}
+                            >
+                                {t('Зарегистрироваться')}
+                            </Button>
+                        </HStack>
                     </HStack>
-                </HStack>
+                </BrowserView>
+                <MobileView>
+                    <Button onClick={onOpenDrawer} variant="clear" className={cls.trigger}>
+                        <Icon Svg={Menu} height={25} width={25} />
+                    </Button>
+                    <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+                        <VStack max gap="8">
+                            {MenuList}
+                            <Button
+                                color='grey'
+                                circle
+                                jump
+                                onClick={() => {
+                                    navigate(RoutePath.LOGIN());
+                                    onCloseDrawer();
+                                }}
+                            >
+                                {t('Войти')}
+                            </Button>
+                            <Button
+                                color='green'
+                                circle
+                                jump
+                                onClick={() => {
+                                    navigate(RoutePath.REGISTER());
+                                    onCloseDrawer();
+                                }}
+                            >
+                                {t('Зарегистрироваться')}
+                            </Button>
+                        </VStack>
+                    </Drawer>
+                </MobileView>
             </HStack>
         </header>
     );
