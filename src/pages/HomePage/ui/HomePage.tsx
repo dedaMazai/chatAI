@@ -16,6 +16,18 @@ const HomePage = () => {
     const { t } = useTranslation('');
     const [isOpenWorld, setIsOpenWorld] = useState(false);
     const [isOpenYouTube, setIsOpenYouTube] = useState(false);
+    const [site, setSite] = useState('');
+    const [youTube, setYouTube] = useState('');
+
+    const handleCloseSite = () => {
+        setIsOpenWorld(false);
+        setSite('');
+    };
+
+    const handleCloseTube = () => {
+        setIsOpenYouTube(false);
+        setYouTube('');
+    };
 
     return (
         <VStack style={{ paddingTop: '1rem' }} max align="center" gap="32">
@@ -48,7 +60,7 @@ const HomePage = () => {
                     </HStack>
                 </Button>
             </HStack>
-            <Modal isOpen={isOpenWorld} onClose={() => setIsOpenWorld(false)} lazy>
+            <Modal isOpen={isOpenWorld} onClose={handleCloseSite} lazy>
                 <VStack max gap="24" align='center' className={cls.modalInput}>
                     <Typography
                         bold
@@ -56,10 +68,13 @@ const HomePage = () => {
                         align='center'
                         wrap
                     />
-                    <Input addonLeft={<Icon Svg={World} />} />
+                    <Input value={site} onChange={(value) => {setSite(value)}} addonLeft={<Icon Svg={World} />} />
+                    <Button disabled={!site} onClick={() => {}}>
+                        {t('Старт')}
+                    </Button>
                 </VStack>
             </Modal>
-            <Modal isOpen={isOpenYouTube} onClose={() => setIsOpenYouTube(false)} lazy>
+            <Modal isOpen={isOpenYouTube} onClose={handleCloseTube} lazy>
                 <VStack max gap="24" align='center' className={cls.modalInput}>
                     <Typography
                         bold
@@ -67,7 +82,10 @@ const HomePage = () => {
                         align='center'
                         wrap
                     />
-                    <Input addonLeft={<Icon Svg={YoutubeIcon} />} />
+                    <Input value={youTube} onChange={(value) => {setYouTube(value)}} addonLeft={<Icon Svg={YoutubeIcon} />} />
+                    <Button disabled={!youTube} onClick={() => {}}>
+                        {t('Старт')}
+                    </Button>
                 </VStack>
             </Modal>
         </VStack>

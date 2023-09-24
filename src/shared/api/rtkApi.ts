@@ -21,7 +21,7 @@ const baseQueryWithReAuth: BaseQueryFn<
         prepareHeaders: (headers) => {
             const token = getCookie('access_token');
             if (token) {
-                headers.set('AccessToken', token);
+                headers.set('Authorization', token);
             }
             return headers;
         },
@@ -57,7 +57,7 @@ const baseQueryWithReAuth: BaseQueryFn<
     return result;
 };
 
-export const rtqApi = createApi({
+export const rtkApi = createApi({
     reducerPath: 'api',
     baseQuery: baseQueryWithReAuth,
     tagTypes: [
