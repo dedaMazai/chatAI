@@ -15,11 +15,13 @@ import cls from './InputDrop.module.scss';
 
 interface InputDropProps {
     className?: string;
-    onChange?: (value: string | FileList) => void;
+    onChange?: (value: FileList) => void;
     height?: string;
     width?: string;
     countFiles?: number;
     fullWidth?: boolean;
+    disabled?: boolean;
+    isLoading?: boolean;
 }
 
 export const InputDrop = (props: InputDropProps) => {
@@ -28,6 +30,8 @@ export const InputDrop = (props: InputDropProps) => {
         onChange,
         countFiles,
         fullWidth,
+        disabled,
+        isLoading,
     } = props;
     const { t } = useTranslation();
     const [drag, setDrag] = useState(false);
@@ -67,6 +71,7 @@ export const InputDrop = (props: InputDropProps) => {
             onDrop={(e) => onDropHandler(e)}
         >
             <input
+                disabled={disabled || isLoading}
                 type="file"
                 id="input-field"
                 className={cls.fileInput}

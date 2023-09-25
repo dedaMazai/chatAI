@@ -12,16 +12,21 @@ import { Icon } from '@/shared/ui/Icon';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { Modal } from '@/shared/ui/Modal';
 import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
+import { useChatQuery } from '@/entities/Chats';
 
 const HomeEditPage = () => {
     const { t } = useTranslation('');
     const { id } = useParams<{ id: string }>();
-    const [state, setState] = useState('');
     const [openModal, setOpenModal] = useState(false);
 
+    const { data: chat, isLoading: chatLoading } = useChatQuery(+id!, {
+        skip: !id,
+    });
+    const [state, setState] = useState('');
+
     useEffect(() => {
-        if (id) setState(id)
-    }, [id])
+        if (chat?.chat_name) setState(chat?.chat_name)
+    }, [chat])
 
     return (
         <VStack max gap="32" style={{ padding: '0 3rem' }}>

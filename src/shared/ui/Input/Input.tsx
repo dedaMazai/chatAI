@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
-import { HStack, VStack } from '../Stack';
+import { VStack } from '../Stack';
 import { Typography } from '../Text';
 
 type HTMLInputProps = Omit<
@@ -81,7 +81,6 @@ export const Input = memo((props: InputProps) => {
     const input = (
         <div
             className={classNames(cls.InputWrapper, mods, [
-                className,
                 cls[size],
             ])}
         >
@@ -104,7 +103,7 @@ export const Input = memo((props: InputProps) => {
 
     if (label) {
         return (
-            <VStack max gap="2">
+            <VStack max gap="2" className={className}>
                 <Typography text={label} />
                 {input}
                 <Typography size="s" variant="gray" text={validationText} />

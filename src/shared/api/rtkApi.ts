@@ -21,7 +21,7 @@ const baseQueryWithReAuth: BaseQueryFn<
         prepareHeaders: (headers) => {
             const token = getCookie('access_token');
             if (token) {
-                headers.set('Authorization', token);
+                headers.set('Authorization', `Bearer ${token}`);
             }
             return headers;
         },
@@ -61,7 +61,8 @@ export const rtkApi = createApi({
     reducerPath: 'api',
     baseQuery: baseQueryWithReAuth,
     tagTypes: [
-        'User',
+        'AllChats',
+        'Chat',
     ],
     endpoints: (builder) => ({}),
 });

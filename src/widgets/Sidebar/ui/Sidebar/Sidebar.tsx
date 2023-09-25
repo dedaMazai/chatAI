@@ -17,6 +17,7 @@ import { Button } from '@/shared/ui/Button';
 import { RoutePath } from '@/shared/const/router';
 import { useNavigate } from 'react-router-dom';
 import { Progress } from '@/shared/ui/Progress/Progress';
+import { useAllChatsQuery } from '@/entities/Chats';
 
 import cls from './Sidebar.module.scss';
 
@@ -30,6 +31,8 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     const { t } = useTranslation();
     const [collapsed, setCollapsed] = useState(false);
     const navigate = useNavigate();
+
+    const { data: chats, isLoading: chatsLoading } = useAllChatsQuery();
 
     const onToggle = () => {
         console.log(collapsed);
@@ -72,22 +75,22 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 <VStack gap="8" max>
                     {!collapsed && (<Typography text={t('Чаты')} />)}
                     <div className={cls.list}>
-                        {CHATS.map((chat) => (
+                        {chats?.map(({ id, name }) => (
                             <HStack gap="2" max>
                                 <Button
                                     variant="clearGrey"
                                     fullWidth={!collapsed}
-                                    onClick={() => navigate(RoutePath.HOME_ID(chat))}
+                                    onClick={() => navigate(RoutePath.HOME_ID(`${id}`))}
                                 >
                                     <HStack gap="8">
                                         <Icon Svg={SmsSingle} className={cls.smsSingle} />
-                                        {!collapsed && <Typography text={chat} />}
+                                        {!collapsed && <Typography text={name} />}
                                     </HStack>
                                 </Button>
                                 <Button
                                     fullHeight
                                     variant="clearGreen"
-                                    onClick={() => navigate(RoutePath.HOME_EDIT(chat))}
+                                    onClick={() => navigate(RoutePath.HOME_EDIT(`${id}`))}
                                 >
                                     <Icon Svg={Edit} className={cls.editIcon} />
                                 </Button>

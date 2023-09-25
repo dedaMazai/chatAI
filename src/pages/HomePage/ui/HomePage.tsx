@@ -6,9 +6,14 @@ import { Typography } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import World from '@/shared/assets/icons/World.svg';
 import YoutubeIcon from '@/shared/assets/icons/YoutubeIcon.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Modal } from '@/shared/ui/Modal';
 import { Input } from '@/shared/ui/Input/Input';
+import { useStartNewChatMutation } from '@/entities/Chats';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from '@/shared/const/router';
+import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
 
 import cls from './HomePage.module.scss';
 
@@ -19,6 +24,10 @@ const HomePage = () => {
     const [site, setSite] = useState('');
     const [youTube, setYouTube] = useState('');
     const [name, setName] = useState('');
+    const [files, setFiles] = useState<FileList>();
+    const navigate = useNavigate();
+
+    const [createChat, createChatResult] = useStartNewChatMutation();
 
     const handleCloseSite = () => {
         setIsOpenWorld(false);
@@ -30,6 +39,36 @@ const HomePage = () => {
         setYouTube('');
     };
 
+    useNotification({
+        isLoading: {
+            active: createChatResult.isLoading,
+        },
+    });
+
+    useEffect(() => {
+        if (files?.[0] && name) {
+            console.log(1, files[0])
+            const formData = new FormData();
+            formData.append('file', files[0]);
+
+            createChat({
+                name,
+                file: formData,
+            })
+        } else if (files?.[0] && !name) {
+            toast.error(t('Введите название файла'));
+            setFiles(undefined);
+        }
+    }, [files])
+
+    useEffect(() => {
+        setFiles(undefined)
+        setName('')
+        if (createChatResult.isSuccess) {
+            navigate(RoutePath.HOME_ID(`${createChatResult.data.id}`))
+        }
+    }, [createChatResult])
+
     return (
         <VStack style={{ paddingTop: '1rem' }} max align="center" gap="32">
             <Typography
@@ -39,7 +78,18 @@ const HomePage = () => {
                 align='center'
                 wrap
             />
-            <InputDrop />
+            <Input
+                value={name}
+                onChange={(value) => {setName(value)}}
+                label={t('Название чата')}
+                className={cls.nameInput}
+            />
+            <InputDrop
+                onChange={(files) => {
+                    setFiles(files)
+                }}
+                isLoading={createChatResult.isLoading}
+            />
             <Typography
                 size='l'
                 bold

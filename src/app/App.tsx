@@ -35,7 +35,7 @@ const App = memo(() => {
                     <AppRouter />
                 </div>
             </Suspense>
-            <Toaster position="bottom-left" />
+            <Toaster position="bottom-right" />
         </div>
     );
 });
