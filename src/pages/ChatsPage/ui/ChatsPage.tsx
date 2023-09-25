@@ -7,12 +7,13 @@ import { useTranslation } from 'react-i18next';
 import ArrowDown from '@/shared/assets/icons/ArrowDown.svg';
 import { RoutePath } from '@/shared/const/router';
 import { useNavigate } from 'react-router-dom';
-
-const CHATS = ['Chat-1', 'Chat-2', 'Chat-3']
+import { useAllChatsQuery } from '@/entities/Chats';
 
 const ChatsPage = () => {
     const { t } = useTranslation('');
     const navigate = useNavigate();
+
+    const { data: chats, isLoading: chatsLoading } = useAllChatsQuery();
 
     return (
         <VStack max gap="8" style={{ padding: '0 3rem' }}>
@@ -23,15 +24,16 @@ const ChatsPage = () => {
                 max
             >
                 <VStack gap="8">
-                    {CHATS.map((chat) => (
+                    {chats?.map(({ id, name }) => (
                         <Card
                             padding="16"
                             variant="outlineLight"
                             max
+                            key={id}
                         >
                             <HStack max justify='between'>
                                 <VStack>
-                                    <Typography text={chat} bold />
+                                    <Typography text={name} bold />
                                     <Typography text={t('07 Sep 2023 20:55')} size="s" variant="gray" />
                                 </VStack>
                                 <Dropdown
@@ -46,11 +48,11 @@ const ChatsPage = () => {
                                     items={[
                                         {
                                             content: t('Открыть'),
-                                            onClick: () => navigate(RoutePath.HOME_ID(chat)),
+                                            onClick: () => navigate(RoutePath.HOME_ID(`${id}`)),
                                         },
                                         {
                                             content: t('Редактировать'),
-                                            onClick: () => navigate(RoutePath.HOME_EDIT(chat)),
+                                            onClick: () => navigate(RoutePath.HOME_EDIT(`${id}`)),
                                         },
                                         {
                                             content: t('Удалить'),

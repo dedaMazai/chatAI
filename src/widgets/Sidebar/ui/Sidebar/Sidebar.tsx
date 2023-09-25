@@ -76,7 +76,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     {!collapsed && (<Typography text={t('Чаты')} />)}
                     <div className={cls.list}>
                         {chats?.map(({ id, name }) => (
-                            <HStack gap="2" max>
+                            <HStack gap="2" max key={id}>
                                 <Button
                                     variant="clearGrey"
                                     fullWidth={!collapsed}
