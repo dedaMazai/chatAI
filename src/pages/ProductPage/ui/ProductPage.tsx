@@ -12,6 +12,8 @@ import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Accordion } from '@/shared/ui/Accordion';
 
+import cls from './ProductPage.module.scss';
+
 const ProductPage = () => {
     const { t } = useTranslation('');
     const LIST = [
@@ -69,8 +71,8 @@ const ProductPage = () => {
     ]
 
     return (
-        <VStack align='center' gap="64" style={{ width: '1100px' }}>
-            <VStack gap="24" max align='center' style={{ width: '800px' }}>
+        <VStack align='center' gap="64" className={cls.ProductPage}>
+            <VStack gap="24" max align='center' style={{ maxWidth: '800px' }}>
                 <Typography
                     size='xl'
                     bold
@@ -85,9 +87,8 @@ const ProductPage = () => {
                     align='center'
                 />
             </VStack>
-            <img src={embededCover} width={1100} />
-            <HStack gap="64" max justify='between'>
-                <img src={exampleCover} width={500} />
+            <img src={embededCover} className={cls.largeImg} />
+            <HStack gap="64" max justify='between' className={cls.changeFlex}>
                 <VStack gap="32" align='end'>
                     <VStack gap="8">
                         <Typography
@@ -114,6 +115,7 @@ const ProductPage = () => {
                         {t('Попробовать')}
                     </Button>
                 </VStack>
+                <img src={exampleCover} className={cls.smallImg} />
             </HStack>
             <VStack gap="24" max align='center'>
                 <Card variant='blackTwo' padding="8">
@@ -134,40 +136,40 @@ const ProductPage = () => {
                 />
             </VStack>
             <VStack gap="24" max align='center'>
-                <HStack gap="24" justify='between'>
-                    <Card jump padding='24' variant='greyOne' style={{ width: 500, height: 300 }}>
+                <HStack gap="24" justify='between' className={cls.changeFlex}>
+                    <Card jump padding='24' variant='greyOne' className={cls.card}>
                         <VStack gap="16" align='start'>
                             <img src={headIcon} height={50} />
-                            <Typography size="l" bold text={t('Создание')} />
+                            <Typography size="l" bold text={t('Создание')} ellipsis />
                             <Typography text={t('Используя данные с вашего веб-сайта, такие как часто задаваемые вопросы, информация о продукте / услуге и соответствующий контент, вы можете создать базу знаний, на которую чат-бот будет опираться при взаимодействии с посетителями.')} />
                         </VStack>
                     </Card>
-                    <Card jump padding='24' variant='greyOne' style={{ width: 500, height: 300 }}>
+                    <Card jump padding='24' variant='greyOne' className={cls.card}>
                         <VStack gap="16" align='start'>
                             <img src={editIcon} height={50} />
-                            <Typography size="l" bold text={t('Изменение')} />
+                            <Typography size="l" bold text={t('Изменение')} ellipsis />
                             <Typography text={t('Это включает в себя разработку визуальных элементов, таких как цвет и элементы фирменного стиля, чтобы обеспечить плавную интеграцию с общим оформлением вашего веб-сайта. Настройте тон голоса чат-ботов в соответствии со стилем общения вашего бренда.')} />
                         </VStack>
                     </Card>
                 </HStack>
-                <HStack gap="24" justify='between'>
-                    <Card jump padding='24' variant='greyOne' style={{ width: 500, height: 300 }}>
+                <HStack gap="24" justify='between' className={cls.changeFlex}>
+                    <Card jump padding='24' variant='greyOne' className={cls.card}>
                         <VStack gap="16" align='start'>
                             <img src={robotIcon} height={50} />
-                            <Typography size="l" bold text={t('Внедрние')} />
+                            <Typography size="l" bold text={t('Внедрние')} ellipsis />
                             <Typography text={t('После настройки чат-бота пришло время встроить его на ваш веб-сайт. Это включает в себя добавление фрагмента кода, указанного в настройках. Разместите код на нужной веб-странице и включите чат-бота, чтобы он начал взаимодействовать с вашими посетителями.')} />
                         </VStack>
                     </Card>
-                    <Card jump padding='24' variant='greyOne' style={{ width: 500, height: 300 }}>
+                    <Card jump padding='24' variant='greyOne' className={cls.card}>
                         <VStack gap="16" align='start'>
                             <img src={smsIcon} height={50} />
-                            <Typography size="l" bold text={t('Чат')} />
+                            <Typography size="l" bold text={t('Чат')} ellipsis />
                             <Typography text={t('Как только чат-бот встроен на ваш сайт, он готов к интерактивным беседам с посетителями. Чат-бот выступает в качестве партнера по интерактивному чату с посетителями веб-сайта, предоставляя полезные ответы на их запросы.')} />
                         </VStack>
                     </Card>
                 </HStack>
             </VStack>
-            <HStack gap="64" max justify='between'>
+            <HStack gap="64" max justify='between' className={cls.changeFlex}>
                 <VStack gap="32" align='start'>
                     <VStack gap="8">
                         <Typography
@@ -194,10 +196,10 @@ const ProductPage = () => {
                         {t('Попробовать')}
                     </Button>
                 </VStack>
-                <img src={exampleCover2} width={500} />
+                <img src={exampleCover2} className={cls.smallImg} />
             </HStack>
             <HStack max justify='center'>
-                <iframe width="960" height="515" src="https://www.youtube.com/embed/RlwFqc7gS7Q" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                <iframe className={cls.iframe} src="https://www.youtube.com/embed/RlwFqc7gS7Q" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
             </HStack>
             <VStack gap="24" max align='center'>
                 <Typography

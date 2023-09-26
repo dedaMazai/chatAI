@@ -18,12 +18,14 @@ import multiple from '@/shared/assets/img/chat-with-multiple-sources.webp';
 import chat2 from '@/shared/assets/img/chat-with-friends.webp';
 import share from '@/shared/assets/img/share-chat.webp';
 
-const ForbiddenPage = () => {
+import cls from './FeaturesPage.module.scss';
+
+const FeaturesPage = () => {
     const { t } = useTranslation('');
 
     return (
-        <VStack align='center' gap="64" style={{ width: '1100px' }}>
-            <VStack gap="24" max align='center' style={{ width: '800px' }}>
+        <VStack align='center' gap="64" className={cls.FeaturesPage}>
+            <VStack gap="24" max align='center' style={{ maxWidth: '800px' }}>
                 <Typography
                     size='xl'
                     bold
@@ -33,7 +35,7 @@ const ForbiddenPage = () => {
                 />
             </VStack>
             <Card variant="black" padding="54">
-                <HStack gap="64" align='start'>
+                <HStack gap="64" align='start' className={cls.changeFlex}>
                     <VStack gap="16">
                         <Card variant='greyTwo'>
                             <Typography
@@ -54,11 +56,11 @@ const ForbiddenPage = () => {
                             wrap
                         />
                     </VStack>
-                    <img height={300} width={300} src={media} />
+                    <img className={cls.smallImgMedia} src={media} />
                 </HStack>
             </Card>
             <Card variant="greyOne" padding="54">
-                <HStack gap="64" align='start'>
+                <HStack gap="64" align='start' className={cls.changeFlex}>
                     <VStack gap="16">
                         <Card variant='greyTwo'>
                             <Typography
@@ -77,7 +79,7 @@ const ForbiddenPage = () => {
                             wrap
                         />
                     </VStack>
-                    <img height={300} width={300} src={crawling} />
+                    <img className={cls.smallImgMedia} src={crawling} />
                 </HStack>
             </Card>
             <Typography
@@ -87,9 +89,9 @@ const ForbiddenPage = () => {
                 align='center'
                 wrap
             />
-            <HStack max justify="between" gap="16">
+            <HStack max justify="between" gap="16" className={cls.changeFlex}>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -103,11 +105,11 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={embeded} />
+                        <img className={cls.smallImgMedia250} src={embeded} />
                     </HStack>
                 </Card>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -121,13 +123,13 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={analyze} />
+                        <img className={cls.smallImgMedia250} src={analyze} />
                     </HStack>
                 </Card>
             </HStack>
-            <HStack max justify="between" gap="16">
+            <HStack max justify="between" gap="16" className={cls.changeFlex}>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -141,11 +143,11 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={chat} />
+                        <img className={cls.smallImgMedia250} src={chat} />
                     </HStack>
                 </Card>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -159,20 +161,21 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={scan} />
+                        <img className={cls.smallImgMedia250} src={scan} />
                     </HStack>
                 </Card>
             </HStack>
             <Typography
                 size='xl'
                 bold
-                title={t('Преимущества профессионального плана')}
+                title={t('Преимущества PRO - плана')}
                 align='center'
                 wrap
+                ellipsis
             />
-            <HStack max justify="between" gap="16">
+            <HStack max justify="between" gap="16" className={cls.changeFlex}>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -186,11 +189,11 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={summarize} />
+                        <img className={cls.smallImgMedia250} src={summarize} />
                     </HStack>
                 </Card>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -204,7 +207,7 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={extract} />
+                        <img className={cls.smallImgMedia250} src={extract} />
                     </HStack>
                 </Card>
             </HStack>
@@ -215,9 +218,9 @@ const ForbiddenPage = () => {
                 align='center'
                 wrap
             />
-            <HStack max justify="between" gap="16">
+            <HStack max justify="between" gap="16" className={cls.changeFlex}>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -231,11 +234,11 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={stop} />
+                        <img className={cls.smallImgMedia250} src={stop} />
                     </HStack>
                 </Card>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -249,13 +252,13 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={speech} />
+                        <img className={cls.smallImgMedia250} src={speech} />
                     </HStack>
                 </Card>
             </HStack>
-            <HStack max justify="between" gap="16">
+            <HStack max justify="between" gap="16" className={cls.changeFlex}>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -269,11 +272,11 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={questions} />
+                        <img className={cls.smallImgMedia250} src={questions} />
                     </HStack>
                 </Card>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -287,7 +290,7 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={multiple} />
+                        <img className={cls.smallImgMedia250} src={multiple} />
                     </HStack>
                 </Card>
             </HStack>
@@ -298,9 +301,9 @@ const ForbiddenPage = () => {
                 align='center'
                 wrap
             />
-            <HStack max justify="between" gap="16">
+            <HStack max justify="between" gap="16" className={cls.changeFlex}>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -314,11 +317,11 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={chat2} />
+                        <img className={cls.smallImgMedia250} src={chat2} />
                     </HStack>
                 </Card>
                 <Card variant="greyOne" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyTwo'>
                                 <Typography
@@ -332,7 +335,7 @@ const ForbiddenPage = () => {
                                 wrap
                             />
                         </VStack>
-                        <img height={250} width={250} src={share} />
+                        <img className={cls.smallImgMedia250} src={share} />
                     </HStack>
                 </Card>
             </HStack>
@@ -340,4 +343,4 @@ const ForbiddenPage = () => {
     );
 };
 
-export default ForbiddenPage;
+export default FeaturesPage;

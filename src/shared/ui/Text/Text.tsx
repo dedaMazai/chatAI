@@ -17,6 +17,7 @@ interface TextProps {
     size?: TextSize;
     bold?: boolean;
     wrap?: boolean;
+    ellipsis?: boolean;
     style?: CSSProperties;
 }
 
@@ -46,6 +47,7 @@ export const Typography = memo((props: TextProps) => {
         size = 'm',
         bold,
         wrap,
+        ellipsis,
         style,
     } = props;
 
@@ -68,13 +70,15 @@ export const Typography = memo((props: TextProps) => {
         >
             {title && (
                 <HeaderTag
-                    className={cls.title}
+                    className={classNames(cls.title, { [cls.ellipsis]: ellipsis })}
                 >
                     {title}
                 </HeaderTag>
             )}
             {text && (
-                <p className={cls.text}>
+                <p
+                    className={classNames(cls.text, { [cls.ellipsis]: ellipsis })}
+                >
                     {text}
                 </p>
             )}

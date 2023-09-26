@@ -54,7 +54,7 @@ const PricingPage = () => {
     const navigate = useNavigate();
 
     return (
-        <VStack align='center' gap="64" style={{ width: '1100px' }}>
+        <VStack align='center' gap="64" className={cls.PricingPage}>
             <Typography
                 size='xl'
                 bold
@@ -87,7 +87,7 @@ const PricingPage = () => {
                     />
                 </VStack>
             </HStack>
-            <HStack max gap="24" justify='center'>
+            <HStack max gap="24" justify='center' className={cls.changeFlex}>
                 <Card className={cls.card} variant="outline" padding="32" fullHeight>
                     <VStack max gap="16" align='center'>
                         <VStack max gap="8" align='center'>
@@ -234,7 +234,7 @@ const PricingPage = () => {
                     align='center'
                     wrap
                 />
-                <HStack gap="32">
+                <HStack gap="32" className={cls.changeFlex}>
                     <Icon height={70} width={120} Svg={Caltech} />
                     <Icon height={70} width={150} Svg={Cambridge} />
                     <Icon height={70} width={150} Svg={Harvard} />

@@ -1,8 +1,13 @@
 .Footer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 100px 0 40px;
+    justify-content: space-around;
+    padding: 100px 50px 40px;
+    width: 100%;
+
+    @media (max-width: 500px) {
+        padding: 30px 15px 10px;
+    }
 }
 
 .iconArrow {

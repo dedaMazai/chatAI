@@ -31,8 +31,8 @@ export const Footer = (props: FooterProps) => {
 
     return (
         <footer className={classNames(cls.Footer, {}, [className])}>
-            <VStack align='center' gap="16" max style={{ width: '1100px' }}>
-                <HStack max gap="16" justify='between'>
+            <VStack gap="16" max>
+                <HStack max gap="16" wrap="wrap" justify='between'>
                     <VStack gap="8">
                         <Typography
                             bold
@@ -93,7 +93,7 @@ export const Footer = (props: FooterProps) => {
                             </Button>
                         </HStack>
                     </VStack>
-                    <HStack gap="64" align='start'>
+                    <HStack wrap="wrap" gap="64" align='start'>
                         <VStack align='start'>
                             <Button
                                 bold
@@ -109,13 +109,13 @@ export const Footer = (props: FooterProps) => {
                             >
                                 {t('Особенности')}
                             </Button>
-                            <Button
+                            {/* <Button
                                 bold
                                 variant="clearActive"
                                 onClick={() => navigate(RoutePath.BLOG())}
                             >
                                 {t('Новости')}
-                            </Button>
+                            </Button> */}
                             <Button
                                 bold
                                 variant="clearActive"
@@ -158,11 +158,11 @@ export const Footer = (props: FooterProps) => {
                 </HStack>
                 <hr />
             </VStack>
-                <Typography
-                    align='center'
-                    variant="gray"
-                    text={t('Copyrights © 2023 AIChat')}
-                />
+            <Typography
+                align='center'
+                variant="gray"
+                text={t('Copyrights © 2023 AIChat')}
+            />
         </footer>
     );
 };

@@ -65,7 +65,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             >
                 {t('Особенности')}
             </Button>
-            <Button
+            {/* <Button
                 variant="clearActive"
                 onClick={() => {
                     navigate(RoutePath.BLOG());
@@ -73,7 +73,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 }}
             >
                 {t('Новости')}
-            </Button>
+            </Button> */}
             <Button
                 variant="clearActive"
                 onClick={() => {

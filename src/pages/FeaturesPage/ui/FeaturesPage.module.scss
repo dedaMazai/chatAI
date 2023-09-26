@@ -1,0 +1,57 @@
+.FeaturesPage {
+    max-width: 1100px;
+    padding: 0 10px;
+}
+
+.smallImgMedia250 {
+    width: 250px;
+    height: 250px;
+
+    // @media (max-width: 500px) {
+    //     width: 100px;
+    //     height: 100px;
+    // }
+}
+
+.smallImgMedia {
+    width: 300px;
+    height: 300px;
+
+    @media (max-width: 500px) {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+.largeImg {
+    width: 1100px;
+
+    @media (max-width: 500px) {
+        width: 350px;
+    }
+}
+
+.smallImg {
+    width: 350px;
+}
+
+.iframe {
+    width: 960px;
+    height: 515px;
+
+    @media (max-width: 500px) {
+        width: 350px;
+        height: 190px;
+    }
+}
+
+.changeFlex {
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
+}
+
+.card {
+    max-width: 500px;
+    min-height: 300px;
+}

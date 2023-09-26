@@ -1,21 +1,4 @@
-.team {
-    border-bottom: 1px solid var(--border);
-}
-
-.photoWrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background-color: var(--card-bd-black);
-    padding-top: 60px;
-    margin-bottom: 200px;
-}
-
-.photoInner {
-    margin-bottom: -200px;
-}
-
-.AboutPage {
+.ProductPage {
     max-width: 1100px;
     padding: 0 10px;
 }
@@ -29,11 +12,7 @@
 }
 
 .smallImg {
-    width: 500px;
-
-    @media (max-width: 500px) {
-        width: 300px;
-    }
+    width: 350px;
 }
 
 .iframe {

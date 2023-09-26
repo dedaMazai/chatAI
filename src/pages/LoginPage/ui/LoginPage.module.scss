@@ -6,4 +6,8 @@
 
 .card {
     min-width: 415px;
+
+    @media (max-width: 500px) {
+        min-width: 300px;
+    }
 }

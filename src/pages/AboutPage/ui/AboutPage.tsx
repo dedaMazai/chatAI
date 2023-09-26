@@ -10,6 +10,7 @@ import { Button } from '@/shared/ui/Button';
 import { useEffect, useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 const LEFT = [
     'Интеграция чат-ботов – встраивайте чат-ботов на свой сайт',
@@ -26,8 +27,8 @@ const AboutPage = () => {
 
     return (
         <VStack align='center' gap="64" max>
-            <VStack align='center' gap="64" style={{ width: '1100px' }}>
-                <HStack max align='end' gap="64" className={cls.team}>
+            <VStack align='center' gap="64" className={cls.AboutPage}>
+                <HStack max align='end' gap="64" className={classNames(cls.changeFlex, cls.team)}>
                     <VStack gap="16" style={{ paddingBottom: '1rem' }}>
                         <Typography
                             size='l'
@@ -54,7 +55,7 @@ const AboutPage = () => {
                             wrap
                         />
                     </VStack>
-                    <img src={team} width={500} />
+                    <img src={team} className={cls.smallImg} />
                 </HStack>
                 <VStack max align='center' gap="16">
                     <Typography
@@ -72,7 +73,7 @@ const AboutPage = () => {
                 </VStack>
             </VStack>
             <div className={cls.photoWrapper}>
-                <HStack className={cls.photoInner} max justify='between'gap="8" style={{ width: '1100px' }}>
+                <HStack className={classNames(cls.photoInner, cls.AboutPage, cls.changeFlex)} max justify='between'gap="8">
                     <VStack max align='center' gap="8">
                         <img src={Primoz} width={250} />
                         <Typography
@@ -135,7 +136,7 @@ const AboutPage = () => {
                     </VStack>
                 </HStack>
             </div>
-            <VStack align='center' gap="64" style={{ width: '1100px' }}>
+            <VStack align='center' gap="64" className={cls.AboutPage}>
                 <VStack gap="8" max align='center'>
                     <Typography
                         size='l'
@@ -158,7 +159,7 @@ const AboutPage = () => {
                     />
                 </VStack>
                 <VStack gap="32" max>
-                    <HStack max justify='between'>
+                    <HStack max justify='between' gap="16" className={cls.changeFlex}>
                         <VStack max align='center' gap="8">
                             <Typography
                                 size='xl'
@@ -202,7 +203,7 @@ const AboutPage = () => {
                             />
                         </VStack>
                     </HStack>
-                    <HStack max justify="between">
+                    <HStack max justify="between" gap="16" className={cls.changeFlex}>
                         <VStack max align='center' gap="8">
                             <Typography
                                 size='xl'
