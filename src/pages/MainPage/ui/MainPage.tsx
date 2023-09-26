@@ -37,6 +37,9 @@ import { Footer } from '@/widgets/Footer';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
 
+import cls from './MainPage.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
+
 const MainPage = () => {
     const { t } = useTranslation();
     const [activeButton, setActiveButton] = useState('Образование');
@@ -44,8 +47,8 @@ const MainPage = () => {
 
     return (
         <VStack align='center' gap="64" max>
-            <VStack align='center' gap="64" max style={{ width: '1100px' }}>
-                <HStack max gap="16" justify='center'>
+            <VStack align='center' gap="64" max className={cls.MainPage}>
+                <HStack max gap="16" justify='center' className={cls.changeFlex}>
                     <VStack gap="16">
                         <Typography
                             size='xl'
@@ -63,7 +66,7 @@ const MainPage = () => {
                             {t('Попробовать')}
                         </Button>
                     </VStack>
-                    <img src={CoverLaptop} />
+                    <img src={CoverLaptop} className={cls.smallImg} />
                 </HStack>
                 <VStack gap="24" max>
                     <Typography
@@ -81,9 +84,9 @@ const MainPage = () => {
                     />
                 </VStack>
                 <HStack max justify='center'>
-                    <iframe width="960" height="515" src="https://www.youtube.com/embed/RlwFqc7gS7Q" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                    <iframe className={cls.iframe} src="https://www.youtube.com/embed/RlwFqc7gS7Q" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                 </HStack>
-                <HStack max gap="32" justify='center'>
+                <HStack max gap="32" justify='center' className={cls.changeFlex}>
                     <Card jump padding='24' variant='greyOne'>
                         <VStack gap="16">
                             <Typography size="l" bold text={t('Загружайте любые данные за секунды')} />
@@ -106,7 +109,7 @@ const MainPage = () => {
                 />
                 <VStack max gap="16" align='center'>
                     <Card variant='greyOne' border="round" max>
-                        <HStack gap="8" max justify='center'>
+                        <HStack gap="8" max justify='center' className={cls.changeFlex}>
                             <Button
                                 variant={activeButton === 'Образование' ? 'filled' : 'clearActive'}
                                 onClick={() => setActiveButton('Образование')}
@@ -173,17 +176,17 @@ const MainPage = () => {
                             </Button>
                         </HStack>
                     </Card>
-                    {activeButton === 'Образование' && <img height={650} width={1000} src={education} />}
-                    {activeButton === 'Ресурсы' && <img height={650} width={1000} src={resources} />}
-                    {activeButton === 'Бизнес' && <img height={650} width={1000} src={business} />}
-                    {activeButton === 'Коммерция' && <img height={650} width={1000} src={commerce} />}
-                    {activeButton === 'Финансы' && <img height={650} width={1000} src={banking} />}
-                    {activeButton === 'Здравоохранение' && <img height={650} width={1000} src={healthcare} />}
-                    {activeButton === 'Туризм' && <img height={650} width={1000} src={tourism} />}
-                    {activeButton === 'Страхование' && <img height={650} width={1000} src={insurance} />}
+                    {activeButton === 'Образование' && <img className={cls.largeImg} src={education} />}
+                    {activeButton === 'Ресурсы' && <img className={cls.largeImg} src={resources} />}
+                    {activeButton === 'Бизнес' && <img className={cls.largeImg} src={business} />}
+                    {activeButton === 'Коммерция' && <img className={cls.largeImg} src={commerce} />}
+                    {activeButton === 'Финансы' && <img className={cls.largeImg} src={banking} />}
+                    {activeButton === 'Здравоохранение' && <img className={cls.largeImg} src={healthcare} />}
+                    {activeButton === 'Туризм' && <img className={cls.largeImg} src={tourism} />}
+                    {activeButton === 'Страхование' && <img className={cls.largeImg} src={insurance} />}
                 </VStack>
                 <Card variant="black" padding="54">
-                    <HStack gap="16" align='start'>
+                    <HStack gap="16" align='start' className={cls.changeFlex}>
                         <VStack gap="16">
                             <Card variant='greyOne'>
                                 <Typography
@@ -223,7 +226,7 @@ const MainPage = () => {
                     wrap
                 />
                 <VStack gap="16">
-                    <HStack gap="16">
+                    <HStack gap="16" className={cls.changeFlex}>
                         <AppCard
                             Svg={YouTube}
                             active
@@ -240,7 +243,7 @@ const MainPage = () => {
                             text={t('MP3')}
                         />
                     </HStack>
-                    <HStack gap="16">
+                    <HStack gap="16" className={cls.changeFlex}>
                         <AppCard
                             Svg={Webpage}
                             active
@@ -256,7 +259,7 @@ const MainPage = () => {
                             text={t('Github')}
                         />
                     </HStack>
-                    <HStack gap="16">
+                    <HStack gap="16" className={cls.changeFlex}>
                         <AppCard
                             Svg={Google}
                             text={t('Google')}
@@ -286,28 +289,28 @@ const MainPage = () => {
                         wrap
                     />
                 </VStack>
-                <HStack max gap="32" justify='center'>
-                    <Card jump padding='24' variant='greyOne' width='50%'>
+                <HStack max gap="32" justify='center' className={cls.changeFlex}>
+                    <Card jump padding='24' variant='greyOne' width='100%'>
                         <VStack gap="16">
                             <Typography size="l" bold text={t('Целевые результаты поиска')} />
                             <Typography text={t('Благодаря сложным методам поиска платформа генерирует точные результаты поиска, гарантируя, что пользователи смогут легко и быстро найти нужную им информацию. Это особенно полезно при поиске в длинных документах или попытке найти конкретные детали.')} />
                         </VStack>
                     </Card>
-                    <Card jump padding='24' variant='greyOne' width='50%'>
+                    <Card jump padding='24' variant='greyOne' width='100%'>
                         <VStack gap="16">
                             <Typography size="l" bold text={t('Обработка естественного языка')} />
                             <Typography text={t('Наша платформа использует алгоритмы, основанные на NLP, позволяя пользователям задавать вопросы на естественном языке, точно так же, как они задавали бы их другому человеку. Система распознает тонкости языка, контекста и намерений, предоставляя быстрые и точные ответы.')} />
                         </VStack>
                     </Card>
                 </HStack>
-                <HStack max gap="32" justify='center'>
-                    <Card jump padding='24' variant='greyOne' width='50%'>
+                <HStack max gap="32" justify='center' className={cls.changeFlex}>
+                    <Card jump padding='24' variant='greyOne' width='100%'>
                         <VStack gap="16">
                             <Typography size="l" bold text={t('Синтаксический анализ документа')} />
                             <Typography text={t('Наша платформа использует искусственный интеллект для интеллектуальной обработки любого загруженного документа, извлечения важной информации и понимания контекста, что облегчает пользователям поиск и задавание вопросов.')} />
                         </VStack>
                     </Card>
-                    <Card jump padding='24' variant='greyOne' width='50%'>
+                    <Card jump padding='24' variant='greyOne' width='100%'>
                         <VStack gap="16">
                             <Typography size="l" bold text={t('Multi-Format Compatibility')} />
                             <Typography text={t('Our platform provides comprehensive support for various file formats, including PDFs, Word documents, and images, enabling users to upload any document or image and receive relevant information based on the content.')} />
@@ -316,7 +319,7 @@ const MainPage = () => {
                 </HStack>
             </VStack>
             <HorizontalCarousel />
-            <VStack align='center' gap="64" max style={{ width: '1100px', paddingBottom: '2rem' }}>
+            <VStack align='center' gap="64" max className={classNames(cls.MainPage, cls.changeFlex)} style={{ paddingBottom: '2rem' }}>
                 <VStack max gap="16" align='center'>
                     <Typography
                         size='xl'
@@ -331,7 +334,7 @@ const MainPage = () => {
                         text={t('Новаторы и студенты из ведущих университетов и организаций мира используют Ai Chat')}
                         wrap
                     />
-                    <HStack gap="32">
+                    <HStack gap="32" className={cls.changeFlex}>
                         <Icon height={70} width={120} Svg={Caltech} />
                         <Icon height={70} width={150} Svg={Cambridge} />
                         <Icon height={70} width={150} Svg={Harvard} />
@@ -342,9 +345,9 @@ const MainPage = () => {
                 </VStack>
             </VStack>
             <VStack max align='center' style={{ background: 'black', padding: '4rem 0' }}>
-                <VStack gap="64" style={{ width: '1100px' }}>
+                <VStack gap="64" className={classNames(cls.MainPage, cls.changeFlex)}>
                     <Card jump variant="blackTwo" padding="54">
-                        <HStack gap="64" align='start'>
+                        <HStack gap="64" align='start'className={cls.changeFlex} >
                             <VStack gap="16">
                                 <HStack gap="16">
                                     <Typography
@@ -382,7 +385,7 @@ const MainPage = () => {
                                     {t('Посетить сайт')}
                                 </Button>
                             </VStack>
-                            <img height={400} width={400} src={businessCover} />
+                            <img className={cls.smallImg} src={businessCover} />
                         </HStack>
                     </Card>
                 </VStack>

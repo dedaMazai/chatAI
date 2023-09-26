@@ -24,7 +24,7 @@ export const registerPageApi = rtkApi.injectEndpoints({
         method: 'POST',
         params: {
           email ,
-          hashed_password: password ,
+          password,
           name ,
           surname,
         }
