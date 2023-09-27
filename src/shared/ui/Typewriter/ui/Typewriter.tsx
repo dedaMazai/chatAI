@@ -29,5 +29,5 @@ export const Typewriter = ({ text, delay, infinite }: TypewriterProps) => {
         return () => clearTimeout(timeout);
     }, [currentIndex, delay, infinite, text]);
 
-    return <Typography text={currentText || text} style={{ opacity: !currentText ? 0 : 1 }} />;
+    return <Typography text={currentText || text} variant="black" style={{ opacity: !currentText ? 0 : 1 }} />;
 };

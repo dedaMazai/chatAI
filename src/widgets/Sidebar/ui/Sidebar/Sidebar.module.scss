@@ -12,6 +12,10 @@
     padding: 10px 20px;
     gap: 12px;
 
+    @media (max-width: 1000px) {
+        display: none;
+    }
+
     .list {
         width: 100%;
         max-height: calc(100vh - 350px);

@@ -26,6 +26,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode;
     fullWidth?: boolean;
     fullHeight?: boolean;
+    nowrap?: boolean;
 }
 
 export const Button = forwardRef(
@@ -43,6 +44,7 @@ export const Button = forwardRef(
             bold,
             jump,
             fullHeight,
+            nowrap,
             ...otherProps
         } = props;
 
@@ -54,6 +56,7 @@ export const Button = forwardRef(
             [cls.disabled]: disabled,
             [cls.fullWidth]: fullWidth,
             [cls.fullHeight]: fullHeight,
+            [cls.nowrap]: nowrap,
         };
 
         return (

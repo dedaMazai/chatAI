@@ -17,10 +17,14 @@ import { LangSwitcher } from '@/features/LangSwitcher';
 import { SearchOnSite } from '@/features/SearchOnSite';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { BrowserView, MobileView } from 'react-device-detect';
+import { BrowserView, MobileView, isBrowser } from 'react-device-detect';
+import Suport from '@/shared/assets/icons/Suport.svg';
+import Cart from '@/shared/assets/icons/Cart.svg';
 
 import cls from './Navbar.module.scss';
 import { Drawer } from '@/shared/ui/Drawer';
+import { Progress } from '@/shared/ui/Progress/Progress';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
 interface NavbarProps {
     className?: string;
@@ -32,6 +36,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     const authData = useSelector(getUserAuthData);
     const dispatch = useAppDispatch();
     const [isOpen, setIsOpen] = useState(false);
+    const [isOpenPerson, setIsOpenPerson] = useState(false);
 
     const handleLogout = () => {
         dispatch(userActions.logout());
@@ -43,6 +48,14 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     const onCloseDrawer = useCallback(() => {
         setIsOpen(false);
+    }, []);
+
+    const onOpenDrawerPerson = useCallback(() => {
+        setIsOpenPerson(true);
+    }, []);
+
+    const onCloseDrawerPerson = useCallback(() => {
+        setIsOpenPerson(false);
     }, []);
 
     const MenuList = (
@@ -98,48 +111,150 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     if (authData) {
         return (
             <header className={classNames(cls.Navbar, {}, [className])}>
-                <HStack justify='between' max gap="16">
-                    <SearchOnSite />
-                    <HStack gap="16">
-                        <Button
-                            color="grey"
-                            onClick={() => navigate(RoutePath.CHATS())}
-                        >
-                            <HStack gap="8">
-                                <Icon Svg={Sms} className={cls.iconSms} />
-                                <Typography text={t('Все чаты')} />
+                <HStack justify={isBrowser ? 'between' : 'end'} max gap="16">
+                    {isBrowser && (
+                        <>
+                            <SearchOnSite />
+                            <HStack gap="16">
+                                <Button
+                                    color="grey"
+                                    onClick={() => navigate(RoutePath.CHATS())}
+                                >
+                                    <HStack gap="8">
+                                        <Icon Svg={Sms} className={cls.iconSms} />
+                                        <Typography text={t('Все чаты')} />
+                                    </HStack>
+                                </Button>
+                                <Button
+                                    color="grey"
+                                    onClick={() => navigate(RoutePath.FILES())}
+                                >
+                                    <HStack gap="8">
+                                        <Icon Svg={Folder} className={cls.iconBtn} />
+                                        <Typography text={t('Библиотека')} />
+                                    </HStack>
+                                </Button>
+                                <Dropdown
+                                    gap
+                                    trigger={(
+                                        <div className={cls.circle}>
+                                            <Typography title="A" variant="white" bold />
+                                        </div>
+                                    )}
+                                    items={[
+                                        {
+                                            content: t('Настройки'),
+                                            onClick: () => navigate(RoutePath.SETTINGS()),
+                                        },
+                                        {
+                                            content: t('Выйти'),
+                                            onClick: handleLogout,
+                                        }
+                                    ]}
+                                    direction="bottom left"
+                                />
                             </HStack>
-                        </Button>
-                        <Button
-                            color="grey"
-                            onClick={() => navigate(RoutePath.FILES())}
-                        >
-                            <HStack gap="8">
-                                <Icon Svg={Folder} className={cls.iconBtn} />
-                                <Typography text={t('Библиотека')} />
-                            </HStack>
-                        </Button>
-                        <Dropdown
-                            gap
-                            trigger={(
-                                <div className={cls.circle}>
-                                    <Typography title="A" variant="white" bold />
-                                </div>
-                            )}
-                            items={[
-                                {
-                                    content: t('Настройки'),
-                                    onClick: () => navigate(RoutePath.SETTINGS()),
-                                },
-                                {
-                                    content: t('Выйти'),
-                                    onClick: handleLogout,
-                                }
-                            ]}
-                            direction="bottom left"
-                        />
-                    </HStack>
+                        </>
+                    )}
                 </HStack>
+                <MobileView>
+                    <Button onClick={onOpenDrawerPerson} variant="clear" className={cls.trigger}>
+                        <div className={cls.circle}>
+                            <Typography title="A" variant="white" bold />
+                        </div>
+                    </Button>
+                    <Drawer isOpen={isOpenPerson} onClose={onCloseDrawerPerson}>
+                        <VStack max gap="8" align='center'>
+                            <Button
+                                color="grey"
+                                fullWidth
+                                onClick={() => {
+                                    navigate(RoutePath.CHATS());
+                                    onCloseDrawerPerson();
+                                }}
+                            >
+                                <HStack gap="8" max justify='center'>
+                                    <Icon Svg={Sms} className={cls.iconSms} />
+                                    <Typography text={t('Все чаты')} />
+                                </HStack>
+                            </Button>
+                            <Button
+                                color="grey"
+                                fullWidth
+                                onClick={() => {
+                                    navigate(RoutePath.FILES());
+                                    onCloseDrawerPerson();
+                                }}
+                            >
+                                <HStack gap="8" max justify='center'>
+                                    <Icon Svg={Folder} className={cls.iconBtn} />
+                                    <Typography text={t('Библиотека')} />
+                                </HStack>
+                            </Button>
+                            <Button
+                                color="grey"
+                                fullWidth
+                                onClick={() => {
+                                    navigate(RoutePath.SETTINGS());
+                                    onCloseDrawerPerson();
+                                }}
+                            >
+                                <HStack max justify='center'>
+                                    <Typography text={t('Настройки')} />
+                                </HStack>
+                            </Button>
+                            <Button
+                                color="grey"
+                                fullWidth
+                                onClick={() => {
+                                    handleLogout();
+                                    onCloseDrawerPerson();
+                                }}
+                            >
+                                <HStack max justify='center'>
+                                    <Typography text={t('Выйти')} />
+                                </HStack>
+                            </Button>
+                            <Button
+                                circle
+                                color='black'
+                                fullWidth
+                                style={{ marginTop: '3rem' }}
+                                onClick={() => {
+                                    navigate(RoutePath.UPGRADE_PLAN());
+                                    onCloseDrawerPerson();
+                                }}
+
+                            >
+                                <HStack gap="8">
+                                    <Icon Svg={Cart} height={20} width={20} />
+                                    {t('Обновить план')}
+                                </HStack>
+                            </Button>
+                            <VStack gap="8" max align='center'>
+                                <HStack gap="24">
+                                    <Typography text={`${t('Кредиты')}:`} />
+                                    <Typography text="8 / 10" bold />
+                                </HStack>
+                                <Progress percent={50} />
+                            </VStack>
+                            <HStack>
+                                <Button
+                                    fullHeight
+                                    variant="clearGrey"
+                                    onClick={() => {
+                                        navigate(RoutePath.SUPPORT())
+                                        onCloseDrawerPerson();
+                                    }}
+                                >
+                                    <Icon Svg={Suport} height={20} width={20} />
+                                </Button>
+                                <ThemeSwitcher />
+                                <LangSwitcher className={cls.lang} />
+                            </HStack>
+                        </VStack>
+                    </Drawer>
+                </MobileView>
             </header>
         );
     }

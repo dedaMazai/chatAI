@@ -9,6 +9,8 @@ import { RoutePath } from '@/shared/const/router';
 import { useNavigate } from 'react-router-dom';
 import { useAllChatsQuery } from '@/entities/Chats';
 
+import cls from './ChatsPage.module.scss';
+
 const ChatsPage = () => {
     const { t } = useTranslation('');
     const navigate = useNavigate();
@@ -31,7 +33,7 @@ const ChatsPage = () => {
                             max
                             key={id}
                         >
-                            <HStack max justify='between'>
+                            <HStack max justify='between' gap="8">
                                 <VStack>
                                     <Typography text={name} bold />
                                     <Typography text={t('07 Sep 2023 20:55')} size="s" variant="gray" />

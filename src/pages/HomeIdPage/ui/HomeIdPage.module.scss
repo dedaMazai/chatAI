@@ -1,17 +1,44 @@
 .header {
     padding: 0 1rem;
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
 }
 
 .pdfViewer {
     width: 50%;
     height: 100%;
     background-color: var(--border);
+
+    @media (max-width: 800px) {
+        display: none;
+    }
+}
+
+.pdf {
+    width: 100%;
+    height: 100%;
+}
+
+.changeFlex {
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
 }
 
 .chatWrapper {
     width: 50%;
     padding: 1rem;
     height: calc(100vh - 140px - var(--navbar-height));
+
+    @media (max-width: 800px) {
+        width: 100%;
+    }
+
+    @media (max-width: 500px) {
+        height: calc(100vh - 230px - var(--navbar-height));
+    }
 }
 
 .chat {

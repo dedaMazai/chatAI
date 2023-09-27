@@ -70,7 +70,7 @@ const UpgradePlanPage = () => {
                     />
                 </VStack>
             </HStack>
-            <HStack max gap="24" justify='center'>
+            <HStack max gap="24" justify='center' className={cls.changeFlex}>
                 <Card className={cls.card} variant="green" padding="32" fullHeight>
                     <VStack max gap="16" align='center'>
                         <VStack max gap="8" align='center'>
@@ -119,7 +119,10 @@ const UpgradePlanPage = () => {
                         fullWidth
                         onClick={() => {}}
                     >
-                        {t('Выберете базовый')}
+                        <Typography
+                            variant='main'
+                            text={t('Выберете базовый')}
+                        />
                     </Button>
                 </Card>
                 <Card className={cls.card} variant="outline" padding="32" fullHeight>

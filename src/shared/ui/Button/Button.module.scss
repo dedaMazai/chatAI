@@ -3,6 +3,7 @@
     color: var(--text-white);
     display: flex;
     align-items: center;
+    justify-content: center;
     transition: all 0.2s ease-in-out;
 
     &:hover {
@@ -220,4 +221,8 @@
 
 .bold {
     font-weight: 700;
+}
+
+.nowrap {
+    text-wrap: nowrap;
 }

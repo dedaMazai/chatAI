@@ -61,37 +61,46 @@ const HomeIdPage = () => {
 
     return (
         <VStack max fullHeight gap="8">
-            <HStack max justify="between" className={cls.header}>
+            <HStack max justify="between" align='start' className={cls.header}>
                 <HStack gap="8">
                     <Icon Svg={File} height={20} width={20} />
                     <Typography text={chat?.chat_name} size="l" bold />
                 </HStack>
-                <HStack gap="16">
-                    <Button
-                        color="grey"
-                        onClick={() => {}}
-                    >
-                        {t('Краткое содержание')}
-                    </Button>
-                    <Button
-                        color="grey"
-                        disabled={!id}
-                        onClick={() => clearChat(+id!)}
-                    >
-                        {t('Очистить')}
-                    </Button>
-                    <Button
-                        color="grey"
-                        onClick={() => {}}
-                    >
-                        <Icon Svg={ShareIcon} />
-                    </Button>
-                    <Button
-                        color="grey"
-                        onClick={() => {}}
-                    >
-                        <Icon Svg={Settings} />
-                    </Button>
+                <HStack gap="16" className={cls.changeFlex}>
+                    <HStack gap="16" max>
+                        <Button
+                            color="grey"
+                            onClick={() => {}}
+                            nowrap
+                            fullWidth
+                        >
+                            {t('Краткое содержание')}
+                        </Button>
+                        <Button
+                            color="grey"
+                            disabled={!id}
+                            onClick={() => clearChat(+id!)}
+                            fullWidth
+                        >
+                            {t('Очистить')}
+                        </Button>
+                    </HStack>
+                    <HStack gap="16" max>
+                        <Button
+                            color="grey"
+                            onClick={() => {}}
+                            fullWidth
+                        >
+                            <Icon Svg={ShareIcon} />
+                        </Button>
+                        <Button
+                            color="grey"
+                            onClick={() => {}}
+                            fullWidth
+                        >
+                            <Icon Svg={Settings} />
+                        </Button>
+                    </HStack>
                 </HStack>
             </HStack>
             <HStack max fullHeight>
@@ -113,8 +122,8 @@ const HomeIdPage = () => {
                                     className={cls.smsCard} variant={from === 'human' ? "green" : "greyOne"}
                                 >
                                     {(index === chat?.message_history.chat.length - 1) && from === "ai" ? (
-                                        <Typewriter text={sms} delay={50}  />
-                                    ) : sms}
+                                        <Typewriter text={sms} delay={30}  />
+                                    ) : <Typography text={sms} variant={from === 'human' ? "white" : "black"} />}
                                 </Card>
                             </HStack>
                         ))}
