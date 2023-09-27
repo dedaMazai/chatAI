@@ -76,6 +76,9 @@ export const InputDrop = (props: InputDropProps) => {
                 id="input-field"
                 className={cls.fileInput}
                 onChange={onChangeHandler}
+                onClick={(event: any)=> {
+                    event.target.value = null
+                }}
                 accept="image/png, image/jpeg, application/pdf"
             />
             <VStack gap="32" align='center' style={{ pointerEvents: 'none' }}>
