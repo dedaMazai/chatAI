@@ -1,5 +1,7 @@
 .modalInput {
-    width: 350px;
+    @media (min-width: 500px) {
+        width: 350px;
+    }
 }
 
 .nameInput {
