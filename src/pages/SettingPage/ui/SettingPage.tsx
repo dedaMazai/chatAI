@@ -4,12 +4,18 @@ import { Input } from '@/shared/ui/Input';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDeleteUserMutation } from '@/entities/User/api/userApi';
 
 import cls from './SettingPage.module.scss';
+import { Modal } from '@/shared/ui/Modal';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { userActions } from '@/entities/User';
 
 const SettingPage = () => {
     const { t } = useTranslation('');
+    const dispatch = useAppDispatch();
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [organization, setOrganization] = useState('');
@@ -19,6 +25,24 @@ const SettingPage = () => {
     const [nowPassword, setNowPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [newAccessPassword, setNewAccessPassword] = useState('');
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [deleteUser, deleteUserResult] = useDeleteUserMutation();
+
+    const handleLogout = () => {
+        dispatch(userActions.logout());
+    };
+
+    const handleClose = () => {
+        setIsOpen(false);
+    };
+
+    useEffect(() => {
+        if (deleteUserResult.isSuccess) {
+            handleLogout();
+            handleClose();
+        }
+    }, [deleteUserResult])
 
     return (
         <VStack max gap="8" style={{ padding: '0 3rem' }}>
@@ -144,11 +168,29 @@ const SettingPage = () => {
                     <VStack gap="24" max>
                         <Typography variant="gray" text={t('Когда вы удаляете свою учетную запись, вы теряете доступ к услугам учетной записи PandaChat, и мы навсегда удаляем ваши личные данные. Активные подписки будут отменены.')} bold />
                         <HStack max justify='end'>
-                            <Button color="red">{t('Удалить аккаунт')}</Button>
+                            <Button onClick={() => setIsOpen(true)} color="red">{t('Удалить аккаунт')}</Button>
                         </HStack>
                     </VStack>
                 </Card>
             </VStack>
+            <Modal isOpen={isOpen} onClose={handleClose} lazy>
+                <VStack max gap="24" align='center' className={cls.modalInput}>
+                    <Typography
+                        bold
+                        text={t('Вы действительно хотите удалить аккаунт?')}
+                        align='center'
+                        wrap
+                    />
+                    <HStack max justify="between" gap="8">
+                        <Button fullWidth color="red" onClick={() => deleteUser()}>
+                            {t('Удалить')}
+                        </Button>
+                        <Button fullWidth onClick={handleClose}>
+                            {t('Отмена')}
+                        </Button>
+                    </HStack>
+                </VStack>
+            </Modal>
         </VStack>
     );
 };

@@ -17,7 +17,7 @@ import { LangSwitcher } from '@/features/LangSwitcher';
 import { SearchOnSite } from '@/features/SearchOnSite';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { BrowserView, MobileView, isBrowser } from 'react-device-detect';
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 import Suport from '@/shared/assets/icons/Suport.svg';
 import Cart from '@/shared/assets/icons/Cart.svg';
 import Upload from '@/shared/assets/icons/Upload.svg';
@@ -112,58 +112,63 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     if (authData) {
         return (
             <header className={classNames(cls.Navbar, {}, [className])}>
-                <HStack justify={isBrowser ? 'between' : 'end'} max gap="16">
-                    {isBrowser && (
-                        <>
-                            <SearchOnSite />
-                            <HStack gap="16">
-                                <Button
-                                    color="grey"
-                                    onClick={() => navigate(RoutePath.CHATS())}
-                                >
-                                    <HStack gap="8">
-                                        <Icon Svg={Sms} className={cls.iconSms} />
-                                        <Typography text={t('Все чаты')} />
-                                    </HStack>
-                                </Button>
-                                <Button
-                                    color="grey"
-                                    onClick={() => navigate(RoutePath.FILES())}
-                                >
-                                    <HStack gap="8">
-                                        <Icon Svg={Folder} className={cls.iconBtn} />
-                                        <Typography text={t('Библиотека')} />
-                                    </HStack>
-                                </Button>
-                                <Dropdown
-                                    gap
-                                    trigger={(
-                                        <div className={cls.circle}>
-                                            <Typography title="A" variant="white" bold />
-                                        </div>
-                                    )}
-                                    items={[
-                                        {
-                                            content: t('Настройки'),
-                                            onClick: () => navigate(RoutePath.SETTINGS()),
-                                        },
-                                        {
-                                            content: t('Выйти'),
-                                            onClick: handleLogout,
-                                        }
-                                    ]}
-                                    direction="bottom left"
-                                />
-                            </HStack>
-                        </>
-                    )}
-                </HStack>
-                <MobileView>
-                    <Button onClick={onOpenDrawerPerson} variant="clear" className={cls.trigger}>
-                        <div className={cls.circle}>
-                            <Typography title="A" variant="white" bold />
-                        </div>
-                    </Button>
+                {isBrowser && (
+                    <HStack justify={isBrowser ? 'between' : 'end'} max gap="16">
+                        <SearchOnSite />
+                        <HStack gap="16">
+                            <Button
+                                color="grey"
+                                onClick={() => navigate(RoutePath.CHATS())}
+                            >
+                                <HStack gap="8">
+                                    <Icon Svg={Sms} className={cls.iconSms} />
+                                    <Typography text={t('Все чаты')} />
+                                </HStack>
+                            </Button>
+                            <Button
+                                color="grey"
+                                onClick={() => navigate(RoutePath.FILES())}
+                            >
+                                <HStack gap="8">
+                                    <Icon Svg={Folder} className={cls.iconBtn} />
+                                    <Typography text={t('Библиотека')} />
+                                </HStack>
+                            </Button>
+                            <Dropdown
+                                gap
+                                trigger={(
+                                    <div className={cls.circle}>
+                                        <Typography title="A" variant="white" bold />
+                                    </div>
+                                )}
+                                items={[
+                                    {
+                                        content: t('Настройки'),
+                                        onClick: () => navigate(RoutePath.SETTINGS()),
+                                    },
+                                    {
+                                        content: t('Выйти'),
+                                        onClick: handleLogout,
+                                    }
+                                ]}
+                                direction="bottom left"
+                            />
+                        </HStack>
+                    </HStack>
+                )}
+                {isMobile && (
+                    <>
+                    <HStack max justify='between'>
+                        <HStack>
+                            <Icon Svg={Logo} className={cls.iconLogo} />
+                            <Typography text={t('Chat')} variant="green" bold size='l' />
+                        </HStack>
+                        <Button onClick={onOpenDrawerPerson} variant="clear" className={cls.trigger}>
+                            <div className={cls.circle}>
+                                <Typography title="A" variant="white" bold />
+                            </div>
+                        </Button>
+                    </HStack>
                     <Drawer isOpen={isOpenPerson} onClose={onCloseDrawerPerson}>
                         <VStack max gap="8" align='center'>
                             <Button
@@ -270,7 +275,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                             </HStack>
                         </VStack>
                     </Drawer>
-                </MobileView>
+                    </>
+                )}
             </header>
         );
     }

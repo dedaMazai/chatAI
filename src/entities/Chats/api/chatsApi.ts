@@ -6,8 +6,9 @@ interface Chat {
 }
 
 interface ChatInfo {
-  pdf_url: string;
+  url: string;
   chat_name: string;
+  context_type: 'pdf' | 'video' | 'site';
   message_history: {
     chat: [from: string, sms: string][]
   };
@@ -42,6 +43,26 @@ export const chatsApi = rtkApi.injectEndpoints({
         }
       }),
       invalidatesTags: ['Chat'],
+    }),
+    deleteChat: builder.mutation<void, number>({
+      query: (id) => ({
+        url: `/chats/delete_chat/${id}`,
+        method: 'DELETE',
+        params: {
+          chat_id: id,
+        }
+      }),
+      invalidatesTags: ['AllChats'],
+    }),
+    renameChat: builder.mutation<void, { id: number, name: string }>({
+      query: ({ id, name }) => ({
+        url: `/chats/change_chat_name/${id}`,
+        method: 'POST',
+        params: {
+          new_name: name,
+        }
+      }),
+      invalidatesTags: ['Chat', 'AllChats'],
     }),
     startNewChat: builder.mutation<{ id: number }, { name: string, file: FormData }>({
       query: ({ name, file }) => ({
@@ -97,7 +118,9 @@ export const chatsApi = rtkApi.injectEndpoints({
 export const {
   useAllChatsQuery,
   useChatQuery,
+  useRenameChatMutation,
   useClearChatMutation,
+  useDeleteChatMutation,
   useStartNewChatMutation,
   useSendQuestionMutation,
 } = chatsApi;

@@ -114,12 +114,17 @@ const HomeIdPage = () => {
             </HStack>
             <HStack max fullHeight>
                 <div className={cls.pdfViewer}>
-                    {chat?.pdf_url && (
+                    {chat?.context_type === "pdf" && chat?.url && (
                         <embed
                             className={cls.pdf}
                             type="application/pdf"
-                            src={chat?.pdf_url}
+                            src={chat?.url}
                         />
+                    )}
+                    {chat?.context_type === "video" && chat?.url && (
+                        <HStack max justify="center">
+                            <iframe className={cls.iframe} src={chat?.url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                        </HStack>
                     )}
                 </div>
                 <VStack justify="between" gap="8" className={cls.chatWrapper}>

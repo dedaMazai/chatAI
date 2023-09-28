@@ -9,7 +9,17 @@ const userApi = rtkApi.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        deleteUser: build.mutation<void, void>({
+            query: (userId) => ({
+                url: '/delete_account/',
+                method: 'DELETE',
+            }),
+        }),
     }),
 });
 
 export const getUserDataByIdQuery = userApi.endpoints.getUserDataById.initiate;
+
+export const {
+    useDeleteUserMutation,
+} = userApi;

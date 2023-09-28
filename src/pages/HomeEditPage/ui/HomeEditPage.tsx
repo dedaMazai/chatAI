@@ -5,28 +5,60 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import pdf from '@/shared/assets/icons/pdf-icon.svg';
 import ArrowDown from '@/shared/assets/icons/ArrowDown.svg';
 import { Icon } from '@/shared/ui/Icon';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { Modal } from '@/shared/ui/Modal';
 import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
-import { useChatQuery } from '@/entities/Chats';
+import { useChatQuery, useDeleteChatMutation, useRenameChatMutation } from '@/entities/Chats';
+import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
+import { RoutePath } from '@/shared/const/router';
 
 const HomeEditPage = () => {
     const { t } = useTranslation('');
     const { id } = useParams<{ id: string }>();
     const [openModal, setOpenModal] = useState(false);
+    const navigate = useNavigate();
 
     const { data: chat, isLoading: chatLoading } = useChatQuery(+id!, {
         skip: !id,
     });
     const [state, setState] = useState('');
 
+    const [renameChat, renameChatResult] = useRenameChatMutation();
+    const [deleteChat, deleteChatResult] = useDeleteChatMutation();
+
     useEffect(() => {
         if (chat?.chat_name) setState(chat?.chat_name)
     }, [chat])
+
+    useEffect(() => {
+        if (deleteChatResult.isSuccess) {
+            navigate(RoutePath.HOME())
+        }
+    }, [deleteChatResult])
+
+    useNotification({
+        isSuccess: {
+            active: deleteChatResult.isSuccess,
+        },
+        isError: {
+            active: deleteChatResult.isError,
+            text: t('Ошибка удаления чата'),
+        },
+    });
+
+    useNotification({
+        isSuccess: {
+            active: renameChatResult.isSuccess,
+        },
+        isError: {
+            active: renameChatResult.isError,
+            text: t('Ошибка изменения чата'),
+        },
+    });
 
     return (
         <VStack max gap="32" style={{ padding: '0 3rem' }}>
@@ -47,7 +79,17 @@ const HomeEditPage = () => {
                         validationText={t('Макс 50 символов')}
                     />
                     <HStack max justify='end'>
-                        <Button>{t('Сохранить')}</Button>
+                        <Button
+                            disabled={!state || !id || state === chat?.chat_name}
+                            onClick={() => {
+                                renameChat({
+                                    id: +id!,
+                                    name: state,
+                                })
+                            }}
+                        >
+                            {t('Сохранить')}
+                        </Button>
                     </HStack>
                 </Card>
                 <Card
@@ -123,7 +165,7 @@ const HomeEditPage = () => {
                             <Typography text={t('4. Если этим чатом поделятся другие люди, они потеряют к нему доступ.')} />
                         </VStack>
                         <HStack max justify='end'>
-                            <Button color="red">{t('Удалить')}</Button>
+                            <Button color="red" onClick={() => {deleteChat(+id!)}}>{t('Удалить')}</Button>
                         </HStack>
                     </VStack>
                 </Card>

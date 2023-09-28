@@ -82,7 +82,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                                     fullWidth={!collapsed}
                                     onClick={() => navigate(RoutePath.HOME_ID(`${id}`))}
                                 >
-                                    <HStack gap="8">
+                                    <HStack gap="8" max>
                                         <Icon Svg={SmsSingle} className={cls.smsSingle} />
                                         {!collapsed && <Typography text={name} />}
                                     </HStack>
