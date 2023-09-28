@@ -59,6 +59,15 @@ const HomeIdPage = () => {
         },
     });
 
+    const handleEnterDown = (e: any) => {
+        if (e.keyCode === 13 && id && question) {
+            sendQuestion({
+                chat_id: +id,
+                question,
+            })
+        }
+    };
+
     return (
         <VStack max fullHeight gap="8">
             <HStack max justify="between" align='start' className={cls.header}>
@@ -122,7 +131,7 @@ const HomeIdPage = () => {
                                     className={cls.smsCard} variant={from === 'human' ? "green" : "greyOne"}
                                 >
                                     {(index === chat?.message_history.chat.length - 1) && from === "ai" ? (
-                                        <Typewriter text={sms} delay={30}  />
+                                        <Typewriter text={sms} delay={7}  />
                                     ) : <Typography text={sms} variant={from === 'human' ? "white" : "black"} />}
                                 </Card>
                             </HStack>
@@ -131,7 +140,8 @@ const HomeIdPage = () => {
                     <HStack gap="16" max className={cls.inputWrapper}>
                         <Input
                             placeholder={t('Задай мне вопрос о документе...')}
-                            value={question}
+                            value={sendQuestionResult.isLoading ? '' : question}
+                            onKeyDown={handleEnterDown}
                             onChange={(value) => setQuestion(value)}
                         />
                         <HStack gap="8">
@@ -145,7 +155,7 @@ const HomeIdPage = () => {
                             <Button
                                 fullHeight
                                 color="green"
-                                disabled={!question || !id}
+                                disabled={!question || !id || sendQuestionResult.isLoading}
                                 onClick={() => sendQuestion({
                                     chat_id: +id!,
                                     question,

@@ -13,6 +13,11 @@ export const Typewriter = ({ text, delay, infinite }: TypewriterProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
+        setCurrentText('');
+        setCurrentIndex(0);
+    }, [text])
+
+    useEffect(() => {
         let timeout: ReturnType<typeof setTimeout>;
 
         if (currentIndex < text.length) {

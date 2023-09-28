@@ -20,6 +20,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { BrowserView, MobileView, isBrowser } from 'react-device-detect';
 import Suport from '@/shared/assets/icons/Suport.svg';
 import Cart from '@/shared/assets/icons/Cart.svg';
+import Upload from '@/shared/assets/icons/Upload.svg';
 
 import cls from './Navbar.module.scss';
 import { Drawer } from '@/shared/ui/Drawer';
@@ -166,8 +167,23 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     <Drawer isOpen={isOpenPerson} onClose={onCloseDrawerPerson}>
                         <VStack max gap="8" align='center'>
                             <Button
+                                color='green'
+                                fullWidth
+                                bold
+                                onClick={() => {
+                                    navigate(RoutePath.HOME());
+                                    onCloseDrawerPerson();
+                                }}
+                            >
+                                <HStack max gap="8" justify="center">
+                                    <Icon Svg={Upload} className={cls.upload} />
+                                    {t('Новый чат')}
+                                </HStack>
+                            </Button>
+                            <Button
                                 color="grey"
                                 fullWidth
+                                style={{ marginTop: '1rem' }}
                                 onClick={() => {
                                     navigate(RoutePath.CHATS());
                                     onCloseDrawerPerson();

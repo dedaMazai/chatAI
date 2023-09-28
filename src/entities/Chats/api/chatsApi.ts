@@ -63,6 +63,32 @@ export const chatsApi = rtkApi.injectEndpoints({
           question,
         },
       }),
+      async onQueryStarted({ question }, { dispatch, queryFulfilled, getState }) {
+          const key = Object.keys(getState().api.queries)
+              .reverse()
+              .find((el) => el.includes('chat('));
+          const args = getState().api.queries[key || '']?.originalArgs as number;
+
+          const patchCollection = dispatch(
+            chatsApi.util.updateQueryData(
+                  'chat',
+                  args,
+                  (draftPosts) => {
+                      draftPosts.message_history.chat.push(
+                        [
+                            "human",
+                            question,
+                        ]
+                      )
+                  },
+              ),
+          );
+          try {
+              await queryFulfilled;
+          } catch {
+              patchCollection.undo();
+          }
+      },
       invalidatesTags: ['Chat'],
     }),
   })
