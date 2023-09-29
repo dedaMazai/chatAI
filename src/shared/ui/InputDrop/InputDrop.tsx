@@ -12,6 +12,7 @@ import { Typography } from '../Text';
 import Logo from '@/shared/assets/icons/Logo.svg';
 
 import cls from './InputDrop.module.scss';
+import { Loader } from '../Loader';
 
 interface InputDropProps {
     className?: string;
@@ -86,18 +87,24 @@ export const InputDrop = (props: InputDropProps) => {
                     <Icon Svg={Logo} className={cls.iconLogo} />
                     <Typography title={t('Chat')} variant="green" bold size='xl' />
                 </HStack>
-                <HStack gap="8">
-                    {!drag && <Icon Svg={Upload} className={cls.icon} />}
-                    <Typography
-                        text={
-                            countFiles
-                                ? t('Файл добавлен')
-                                : t('Перетащите сюда свой файл')
-                        }
-                        variant="green"
-                        bold
-                    />
-                </HStack>
+                {
+                    isLoading ? (
+                        <Loader />
+                    ) : (
+                        <HStack gap="8">
+                            {!drag && <Icon Svg={Upload} className={cls.icon} />}
+                            <Typography
+                                text={
+                                    countFiles
+                                        ? t('Файл добавлен')
+                                        : t('Перетащите сюда свой файл')
+                                }
+                                variant="green"
+                                bold
+                            />
+                        </HStack>
+                    )
+                }
             </VStack>
         </label>
     );

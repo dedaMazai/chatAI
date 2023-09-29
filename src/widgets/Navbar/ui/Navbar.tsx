@@ -159,10 +159,15 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 {isMobile && (
                     <>
                     <HStack max justify='between'>
-                        <HStack>
-                            <Icon Svg={Logo} className={cls.iconLogo} />
-                            <Typography text={t('Chat')} variant="green" bold size='l' />
-                        </HStack>
+                        <Button
+                            variant="clear"
+                            onClick={() => navigate(RoutePath.HOME())}
+                        >
+                            <HStack>
+                                <Icon Svg={Logo} className={cls.iconLogo} />
+                                <Typography text={t('Chat')} variant="green" bold size='l' />
+                            </HStack>
+                        </Button>
                         <Button onClick={onOpenDrawerPerson} variant="clear" className={cls.trigger}>
                             <div className={cls.circle}>
                                 <Typography title="A" variant="white" bold />

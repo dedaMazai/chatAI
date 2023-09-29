@@ -56,10 +56,15 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 >
                     <Icon Svg={ArrowDown} height={20} width={20} />
                 </Button>
-                <HStack>
-                    <Icon Svg={Logo} className={cls.iconLogo} />
-                    {!collapsed && (<Typography text={t('Chat')} variant="green" bold size='l' />)}
-                </HStack>
+                <Button
+                    variant="clear"
+                    onClick={() => navigate(RoutePath.HOME())}
+                >
+                    <HStack>
+                        <Icon Svg={Logo} className={cls.iconLogo} />
+                        {!collapsed && (<Typography text={t('Chat')} variant="green" bold size='l' />)}
+                    </HStack>
+                </Button>
                 <Button
                     color='green'
                     style={{ height: '40px' }}
