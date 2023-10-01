@@ -27,6 +27,11 @@
     --font-line-xxl: 48px;
     --font-xxl: var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-header);
 
+    // max
+    --font-size-max: 100px;
+    --font-line-max: 108px;
+    --font-max: var(--font-size-max) / var(--font-line-max) var(--font-family-header);
+
     // Размеры
     --navbar-height: 60px;
     --sidebar-width: 300px;

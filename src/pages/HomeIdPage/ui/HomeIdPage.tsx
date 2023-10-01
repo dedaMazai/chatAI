@@ -76,29 +76,32 @@ const HomeIdPage = () => {
                     <Typography text={chat?.chat_name} size="l" bold />
                 </HStack>
                 <HStack gap="16" className={cls.changeFlex}>
-                    <HStack gap="16" max>
+                    <HStack gap="16" max fullHeight>
                         <Button
                             color="grey"
                             onClick={() => {}}
                             nowrap
                             fullWidth
+                            fullHeight
                         >
-                            {t('Краткое содержание')}
+                            <Typography text={t('Краткое содержание')} />
                         </Button>
                         <Button
                             color="grey"
                             disabled={!id}
                             onClick={() => clearChat(+id!)}
                             fullWidth
+                            fullHeight
                         >
-                            {t('Очистить')}
+                            <Typography text={t('Очистить')} />
                         </Button>
                     </HStack>
-                    <HStack gap="16" max>
+                    <HStack gap="16" max fullHeight>
                         <Button
                             color="grey"
                             onClick={() => {}}
                             fullWidth
+                            fullHeight
                         >
                             <Icon Svg={ShareIcon} />
                         </Button>
@@ -106,6 +109,7 @@ const HomeIdPage = () => {
                             color="grey"
                             onClick={() => {}}
                             fullWidth
+                            fullHeight
                         >
                             <Icon Svg={Settings} />
                         </Button>

@@ -6,7 +6,7 @@ export type TextVariant = 'main' | 'gray' | 'second' | 'red' | 'white' | 'black'
 
 export type TextAlign = 'right' | 'left' | 'center';
 
-export type TextSize = 's' | 'm' | 'l' | 'xl';
+export type TextSize = 's' | 'm' | 'l' | 'xl' | 'max';
 
 interface TextProps {
     className?: string;
@@ -28,6 +28,7 @@ const mapSizeToClass: Record<TextSize, string> = {
     m: cls.size_m,
     l: cls.size_l,
     xl: cls.size_xl,
+    max: cls.size_max,
 };
 
 const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
@@ -35,6 +36,7 @@ const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
     m: 'h3',
     l: 'h2',
     xl: 'h1',
+    max: 'h1',
 };
 
 export const Typography = memo((props: TextProps) => {

@@ -64,7 +64,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <Button
                 variant="clearActive"
                 onClick={() => {
-                    navigate(RoutePath.PRODUCT());
+                    navigate(RoutePath.MAIN());
                     onCloseDrawer();
                 }}
             >
@@ -73,12 +73,21 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <Button
                 variant="clearActive"
                 onClick={() => {
+                    navigate(RoutePath.PRODUCT());
+                    onCloseDrawer();
+                }}
+            >
+                {t('Бизнес')}
+            </Button>
+            {/* <Button
+                variant="clearActive"
+                onClick={() => {
                     navigate(RoutePath.FEATURES());
                     onCloseDrawer();
                 }}
             >
                 {t('Особенности')}
-            </Button>
+            </Button> */}
             {/* <Button
                 variant="clearActive"
                 onClick={() => {
@@ -88,7 +97,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             >
                 {t('Новости')}
             </Button> */}
-            <Button
+            {/* <Button
                 variant="clearActive"
                 onClick={() => {
                     navigate(RoutePath.ABOUT());
@@ -96,7 +105,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 }}
             >
                 {t('О нас')}
-            </Button>
+            </Button> */}
             <Button
                 variant="clearActive"
                 onClick={() => {
@@ -169,9 +178,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                             </HStack>
                         </Button>
                         <Button onClick={onOpenDrawerPerson} variant="clear" className={cls.trigger}>
-                            <div className={cls.circle}>
-                                <Typography title="A" variant="white" bold />
-                            </div>
+                            <Icon Svg={Menu} height={25} width={25} />
                         </Button>
                     </HStack>
                     <Drawer isOpen={isOpenPerson} onClose={onCloseDrawerPerson}>

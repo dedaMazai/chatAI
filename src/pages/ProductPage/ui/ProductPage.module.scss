@@ -11,10 +11,6 @@
     }
 }
 
-.smallImg {
-    width: 350px;
-}
-
 .iframe {
     width: 960px;
     height: 515px;
@@ -34,4 +30,12 @@
 .card {
     max-width: 500px;
     min-height: 300px;
+}
+
+.smallImg {
+    width: 400px;
+
+    @media (max-width: 500px) {
+        width: 300px;
+    }
 }

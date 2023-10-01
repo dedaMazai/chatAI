@@ -49,7 +49,7 @@ export const Footer = (props: FooterProps) => {
                         <Button
                             color='green'
                             jump
-                            onClick={() => redirectToWebsite('https://t.me')}
+                            onClick={() => redirectToWebsite('https://t.me/sl0max')}
                         >
                             {t('Telegram')}
                         </Button>
@@ -81,7 +81,7 @@ export const Footer = (props: FooterProps) => {
                         <HStack gap="16" max justify='center'>
                             <Button
                                 circle
-                                onClick={() => redirectToWebsite('https://t.me')}
+                                onClick={() => redirectToWebsite('https://t.me/sl0max')}
                             >
                                 <Icon Svg={Telegram} className={cls.icons} />
                             </Button>
@@ -98,17 +98,24 @@ export const Footer = (props: FooterProps) => {
                             <Button
                                 bold
                                 variant="clearActive"
-                                onClick={() => navigate(RoutePath.PRODUCT())}
+                                onClick={() => navigate(RoutePath.MAIN())}
                             >
                                 {t('Продукт')}
                             </Button>
                             <Button
                                 bold
                                 variant="clearActive"
+                                onClick={() => navigate(RoutePath.PRODUCT())}
+                            >
+                                {t('Бизнес')}
+                            </Button>
+                            {/* <Button
+                                bold
+                                variant="clearActive"
                                 onClick={() => navigate(RoutePath.FEATURES())}
                             >
                                 {t('Особенности')}
-                            </Button>
+                            </Button> */}
                             {/* <Button
                                 bold
                                 variant="clearActive"
@@ -116,19 +123,26 @@ export const Footer = (props: FooterProps) => {
                             >
                                 {t('Новости')}
                             </Button> */}
-                            <Button
+                            {/* <Button
                                 bold
                                 variant="clearActive"
                                 onClick={() => navigate(RoutePath.ABOUT())}
                             >
                                 {t('О нас')}
-                            </Button>
+                            </Button> */}
                             <Button
                                 bold
                                 variant="clearActive"
                                 onClick={() => navigate(RoutePath.PRICING())}
                             >
                                 {t('Цены')}
+                            </Button>
+                            <Button
+                                bold
+                                variant="clearActive"
+                                onClick={() => navigate(RoutePath.FAQ())}
+                            >
+                                {t('FAQ')}
                             </Button>
                         </VStack>
                         <VStack align='start'>
@@ -145,13 +159,6 @@ export const Footer = (props: FooterProps) => {
                                 onClick={() => navigate(RoutePath.REGISTER())}
                             >
                                 {t('Зарегистрироваться')}
-                            </Button>
-                            <Button
-                                bold
-                                variant="clearActive"
-                                onClick={() => navigate(RoutePath.FAQ())}
-                            >
-                                {t('FAQ')}
                             </Button>
                         </VStack>
                     </HStack>

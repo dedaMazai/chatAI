@@ -226,7 +226,7 @@ const PricingPage = () => {
                     </Button>
                 </Card>
             </HStack>
-            <VStack max gap="24" align='center'>
+            {/* <VStack max gap="24" align='center'>
                 <Typography
                     size='xl'
                     bold
@@ -242,7 +242,7 @@ const PricingPage = () => {
                     <Icon height={70} width={120} Svg={Meta} />
                     <Icon height={70} width={150} Svg={Oxford} />
                 </HStack>
-            </VStack>
+            </VStack> */}
         </VStack>
     );
 };
