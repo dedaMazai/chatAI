@@ -11,6 +11,10 @@ services:
     ports:
       - 3000:3000
 
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./public:/usr/src/app/public
+
   chatwizweb_nginx:
     image: chatwiz_web_nginx
     ports:
