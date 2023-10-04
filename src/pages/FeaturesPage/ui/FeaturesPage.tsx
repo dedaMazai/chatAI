@@ -29,7 +29,7 @@ const FeaturesPage = () => {
                 <Typography
                     size='xl'
                     bold
-                    title={t('Демонстрация возможностей нового уровня AiChat')}
+                    title={t('Демонстрация возможностей нового уровня chatwiz')}
                     align='center'
                     wrap
                 />
@@ -39,7 +39,7 @@ const FeaturesPage = () => {
                     <VStack gap="16">
                         <Card variant='greyTwo'>
                             <Typography
-                                text={t('ВЫДЕЛЕННАЯ ФУНКЦИЯ AI CHAT')}
+                                text={t('ВЫДЕЛЕННАЯ ФУНКЦИЯ CHATWIZ')}
                             />
                         </Card>
                         <Typography
@@ -52,7 +52,7 @@ const FeaturesPage = () => {
                         <Typography
                             variant="white"
                             size='m'
-                            text={t('AiChat может анализировать изображения, аудио- или видеоконтент для извлечения ценной информации, обнаружения объектов или закономерностей, идентификации эмоций или настроений или предоставления метаданных о медиафайлах.')}
+                            text={t('chatwiz может анализировать изображения, аудио- или видеоконтент для извлечения ценной информации, обнаружения объектов или закономерностей, идентификации эмоций или настроений или предоставления метаданных о медиафайлах.')}
                             wrap
                         />
                     </VStack>
@@ -64,7 +64,7 @@ const FeaturesPage = () => {
                     <VStack gap="16">
                         <Card variant='greyTwo'>
                             <Typography
-                                text={t('ВЫДЕЛЕННАЯ ФУНКЦИЯ AI CHAT')}
+                                text={t('ВЫДЕЛЕННАЯ ФУНКЦИЯ CHATWIZ')}
                             />
                         </Card>
                         <Typography

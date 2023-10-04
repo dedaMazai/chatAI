@@ -168,7 +168,7 @@ export const Footer = (props: FooterProps) => {
             <Typography
                 align='center'
                 variant="gray"
-                text={t('Copyrights © 2023 AIChat')}
+                text={t('Copyrights © 2023 chatwiz')}
             />
         </footer>
     );

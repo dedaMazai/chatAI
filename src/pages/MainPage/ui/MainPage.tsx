@@ -450,7 +450,7 @@ const MainPage = () => {
                     <Typography
                         size='l'
                         align="center"
-                        text={t('Новаторы и студенты из ведущих университетов и организаций мира используют Ai Chat')}
+                        text={t('Новаторы и студенты из ведущих университетов и организаций мира используют chatwiz')}
                         wrap
                     />
                     <HStack gap="32" className={cls.changeFlex}>
