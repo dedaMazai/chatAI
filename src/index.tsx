@@ -1,11 +1,12 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, useLocation } from 'react-router-dom';
 import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import { StoreProvider } from '@/app/providers/StoreProvider';
 import App from './app/App';
 import '@/app/styles/index.scss';
 import './shared/config/i18n/i18n';
 import { ErrorBoundary } from './app/providers/ErrorBoundary';
+import { useEffect } from 'react';
 
 const container = document.getElementById('root');
 
@@ -17,8 +18,14 @@ if (!container) {
 
 const root = createRoot(container);
 
-root.render(
-    <BrowserRouter>
+const RootRouter = () => {
+    const {pathname} = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname])
+
+    return (
         <StoreProvider>
             <ErrorBoundary>
                 <ThemeProvider>
@@ -26,7 +33,15 @@ root.render(
                 </ThemeProvider>
             </ErrorBoundary>
         </StoreProvider>
-    </BrowserRouter>,
+    )
+}
+
+const router = createBrowserRouter([
+    { path: "*", Component: RootRouter },
+]);
+
+root.render(
+    <RouterProvider router={router} />,
 );
 
 export { Theme } from '@/shared/const/theme';

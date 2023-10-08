@@ -76,7 +76,7 @@ export const Footer = (props: FooterProps) => {
                             onClick={() => navigate(RoutePath.MAIN())}
                         >
                             <Icon Svg={Logo} className={cls.iconLogo} />
-                            <Typography text={t('Chat')} variant="green" bold size='l' />
+                            <Typography text={t('Chatwiz')} variant="green" bold size='l' />
                         </Button>
                         <HStack gap="16" max justify='center'>
                             <Button
@@ -168,7 +168,7 @@ export const Footer = (props: FooterProps) => {
             <Typography
                 align='center'
                 variant="gray"
-                text={t('Copyrights © 2023 AIChat')}
+                text={t('Copyrights © 2023 Chatwiz')}
             />
         </footer>
     );
