@@ -6,11 +6,11 @@ import { Typography } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { useDeleteUserMutation } from '@/entities/User/api/userApi';
-
-import cls from './SettingPage.module.scss';
 import { Modal } from '@/shared/ui/Modal';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { userActions } from '@/entities/User';
+
+import cls from './SettingPage.module.scss';
 
 const SettingPage = () => {
     const { t } = useTranslation('');

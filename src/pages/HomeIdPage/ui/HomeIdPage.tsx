@@ -154,13 +154,6 @@ const HomeIdPage = () => {
                             onChange={(value) => setQuestion(value)}
                         />
                         <HStack gap="8">
-                            {/* <Button
-                                fullHeight
-                                color="grey"
-                                onClick={() => {}}
-                            >
-                                <Icon Svg={ShareIcon} />
-                            </Button> */}
                             <Button
                                 fullHeight
                                 color="green"

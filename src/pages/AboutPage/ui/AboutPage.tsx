@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 import team from '@/shared/assets/img/photo/team-image.webp';
 import Primoz from '@/shared/assets/img/photo/team-Primoz.webp';
 import OkFill from '@/shared/assets/icons/OkFill.svg';
-import cls from './AboutPage.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 import { Button } from '@/shared/ui/Button';
-import { useEffect, useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
+
+import cls from './AboutPage.module.scss';
 
 const LEFT = [
     'Интеграция чат-ботов – встраивайте чат-ботов на свой сайт',

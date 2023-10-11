@@ -1,17 +1,9 @@
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
-import embededCover from '@/shared/assets/img/embeded-chat-cover.webp';
-import exampleCover from '@/shared/assets/img/embeded-chat-example-1.webp';
-import exampleCover2 from '@/shared/assets/img/embeded-chat-example-1.webp';
-import robotIcon from '@/shared/assets/img/robotIcon.webp';
-import editIcon from '@/shared/assets/img/editIcon.webp';
-import smsIcon from '@/shared/assets/img/smsIcon.webp';
-import headIcon from '@/shared/assets/img/headIcon.webp';
 import businessCover from '@/shared/assets/img/pandachat-business-cover.webp';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
-import { Accordion } from '@/shared/ui/Accordion';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';

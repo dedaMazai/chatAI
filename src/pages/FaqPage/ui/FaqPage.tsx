@@ -1,5 +1,5 @@
 import { Accordion } from '@/shared/ui/Accordion';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 

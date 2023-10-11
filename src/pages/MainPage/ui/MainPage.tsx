@@ -1,45 +1,20 @@
 import { HorizontalCarousel } from '@/entities/HorizontalCarousel';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
-import { Icon } from '@/shared/ui/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CoverLaptop from '@/shared/assets/img/cover-laptop.webp';
-import banking from '@/shared/assets/img/banking.webp';
-import business from '@/shared/assets/img/business.webp';
-import commerce from '@/shared/assets/img/e-commerce.webp';
-import education from '@/shared/assets/img/education.webp';
-import healthcare from '@/shared/assets/img/healthcare.webp';
-import resources from '@/shared/assets/img/human-resources.webp';
-import insurance from '@/shared/assets/img/insurance.webp';
-import tourism from '@/shared/assets/img/tourism.webp';
-import graph from '@/shared/assets/img/graph-section.webp';
 import YouTube from '@/shared/assets/icons/YouTube.svg';
 import Jira from '@/shared/assets/icons/Jira.svg';
 import Mp3 from '@/shared/assets/icons/Mp3.svg';
 import Webpage from '@/shared/assets/icons/Webpage.svg';
-import Wikipedia from '@/shared/assets/icons/Wikipedia.svg';
 import Github from '@/shared/assets/icons/Github.svg';
 import Google from '@/shared/assets/icons/Google.svg';
-import Slack from '@/shared/assets/icons/Slack.svg';
-import Discord from '@/shared/assets/icons/Discord.svg';
-import Caltech from '@/shared/assets/icons/Caltech.svg';
-import Cambridge from '@/shared/assets/icons/Cambridge.svg';
-import Harvard from '@/shared/assets/icons/Harvard.svg';
-import Insta from '@/shared/assets/icons/Insta.svg';
-import Meta from '@/shared/assets/icons/Meta.svg';
-import Oxford from '@/shared/assets/icons/Oxford.svg';
-import robotIcon from '@/shared/assets/img/robotIcon.webp';
-import editIcon from '@/shared/assets/img/editIcon.webp';
-import smsIcon from '@/shared/assets/img/smsIcon.webp';
-import headIcon from '@/shared/assets/img/headIcon.webp';
 import { AppCard } from '@/entities/AppCard/AppCard';
-import { Footer } from '@/widgets/Footer';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { isBrowser } from 'react-device-detect';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
@@ -173,14 +148,12 @@ const MainPage = () => {
                     <HStack gap="24" justify='between' className={cls.changeFlex}>
                         <Card jump padding='24' variant='greyOne' className={cls.card}>
                             <VStack gap="16" align='start'>
-                                {/* <img src={headIcon} height={50} /> */}
                                 <Typography size="l" bold text={t('Работает на базе ИИ')} ellipsis />
                                 <Typography text={t('Chatwiz основан на передовой технологии искусственного интеллекта, которая позволяет ему понимать контекст вашего файла и предоставлять точные и актуальные ответы. В отличие от других инструментов, которые просто извлекают текст, chatwiz понимает содержимое вашего источника, гарантируя, что полученные вами ответы будут содержательными и ценными.')} />
                             </VStack>
                         </Card>
                         <Card jump padding='24' variant='greyOne' className={cls.card}>
                             <VStack gap="16" align='start'>
-                                {/* <img src={editIcon} height={50} /> */}
                                 <Typography size="l" bold text={t('Выделение источника для ответа')} ellipsis />
                                 <Typography text={t('Каждый ответ подкреплен источниками, извлеченными из загруженного документа, чтобы вам было наглядно видно, откуда был взят текст для ответа.')} />
                             </VStack>
@@ -189,14 +162,12 @@ const MainPage = () => {
                     <HStack gap="24" justify='between' className={cls.changeFlex}>
                         <Card jump padding='24' variant='greyOne' className={cls.card}>
                             <VStack gap="16" align='start'>
-                                {/* <img src={robotIcon} height={50} /> */}
                                 <Typography size="l" bold text={t('Интерактивность')} ellipsis />
                                 <Typography text={t('Chatwiz обеспечивает двустороннюю связь с вашим источником вместо простого извлечения текста. Вы можете задавать вопросы, получать ответы и даже следить за этими ответами. Это похоже на разговор с автором контента.')} />
                             </VStack>
                         </Card>
                         <Card jump padding='24' variant='greyOne' className={cls.card}>
                             <VStack gap="16" align='start'>
-                                {/* <img src={smsIcon} height={50} /> */}
                                 <Typography size="l" bold text={t('Запоминание контекста')} ellipsis />
                                 <Typography text={t('Вам не нужно повторять одно и тоже, ведь ИИ запоминает ваши предыдущие сообщения и выдает ответы учитывая их контекст.')} />
                             </VStack>
@@ -217,23 +188,6 @@ const MainPage = () => {
                         </Card>
                     </HStack>
                 </VStack>
-                {/* <HStack max justify='center'>
-                    <iframe className={cls.iframe} src="https://www.youtube.com/embed/RlwFqc7gS7Q" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                </HStack> */}
-                {/* <HStack max gap="32" justify='center' className={cls.changeFlex}>
-                    <Card jump padding='24' variant='greyOne'>
-                        <VStack gap="16">
-                            <Typography size="l" bold text={t('Загружайте любые данные за секунды')} />
-                            <Typography text={t('Безопасно загружайте все, что угодно, из PowerPoints, документов Word, Excel, изображений, веб-сайтов в PDF-файлы или просматривайте весь веб-сайт целиком. Panda, которая будет искать ваши данные и использовать их для выработки разумных ответов.')} />
-                        </VStack>
-                    </Card>
-                    <Card jump padding='24' variant='greyOne'>
-                        <VStack gap="16">
-                            <Typography size="l" bold text={t('Мгновенные ответы на ваши вопросы')} />
-                            <Typography text={t('Нет необходимости искать руководства или просматривать бесконечные документы. Pandashan анализирует все накопленные документы и выступает в качестве эксперта по всем вашим процессам, чтобы за считанные секунды предоставить необходимый вам ответ.')} />
-                        </VStack>
-                    </Card>
-                </HStack> */}
                 <Typography
                     size='xl'
                     bold
@@ -241,117 +195,6 @@ const MainPage = () => {
                     title={t('Трансформация всех отраслей промышленности с использованием возможностей искусственного интеллекта')}
                     wrap
                 />
-                {/* <VStack max gap="16" align='center'>
-                    <Card variant='greyOne' border="round" max>
-                        <HStack gap="8" max justify='center' className={cls.changeFlex}>
-                            <Button
-                                variant={activeButton === 'Образование' ? 'filled' : 'clearActive'}
-                                onClick={() => setActiveButton('Образование')}
-                                circle
-                                fullHeight
-                            >
-                                {t('Образование')}
-                            </Button>
-                            <Button
-                                variant={activeButton === 'Ресурсы' ? 'filled' : 'clearActive'}
-                                onClick={() => setActiveButton('Ресурсы')}
-                                circle
-                                fullHeight
-                            >
-                                {t('Ресурсы')}
-                            </Button>
-                            <Button
-                                variant={activeButton === 'Бизнес' ? 'filled' : 'clearActive'}
-                                onClick={() => setActiveButton('Бизнес')}
-                                circle
-                                fullHeight
-                            >
-                                {t('Бизнес')}
-                            </Button>
-                            <Button
-                                variant={activeButton === 'Коммерция' ? 'filled' : 'clearActive'}
-                                onClick={() => setActiveButton('Коммерция')}
-                                circle
-                                fullHeight
-                            >
-                                {t('Коммерция')}
-                            </Button>
-                            <Button
-                                variant={activeButton === 'Финансы' ? 'filled' : 'clearActive'}
-                                onClick={() => setActiveButton('Финансы')}
-                                circle
-                                fullHeight
-                            >
-                                {t('Финансы')}
-                            </Button>
-                            <Button
-                                variant={activeButton === 'Здравоохранение' ? 'filled' : 'clearActive'}
-                                onClick={() => setActiveButton('Здравоохранение')}
-                                circle
-                                fullHeight
-                            >
-                                {t('Здравоохранение')}
-                            </Button>
-                            <Button
-                                variant={activeButton === 'Туризм' ? 'filled' : 'clearActive'}
-                                onClick={() => setActiveButton('Туризм')}
-                                circle
-                                fullHeight
-                            >
-                                {t('Туризм')}
-                            </Button>
-                            <Button
-                                variant={activeButton === 'Страхование' ? 'filled' : 'clearActive'}
-                                onClick={() => setActiveButton('Страхование')}
-                                circle
-                                fullHeight
-                            >
-                                {t('Страхование')}
-                            </Button>
-                        </HStack>
-                    </Card>
-                    {activeButton === 'Образование' && <img className={cls.largeImg} src={education} />}
-                    {activeButton === 'Ресурсы' && <img className={cls.largeImg} src={resources} />}
-                    {activeButton === 'Бизнес' && <img className={cls.largeImg} src={business} />}
-                    {activeButton === 'Коммерция' && <img className={cls.largeImg} src={commerce} />}
-                    {activeButton === 'Финансы' && <img className={cls.largeImg} src={banking} />}
-                    {activeButton === 'Здравоохранение' && <img className={cls.largeImg} src={healthcare} />}
-                    {activeButton === 'Туризм' && <img className={cls.largeImg} src={tourism} />}
-                    {activeButton === 'Страхование' && <img className={cls.largeImg} src={insurance} />}
-                </VStack> */}
-                {/* <Card variant="black" padding="54">
-                    <HStack gap="16" align='start' className={cls.changeFlex}>
-                        <VStack gap="16">
-                            <Card variant='greyOne'>
-                                <Typography
-                                    text={t('ИСТОЧНИК: JUNIPER RESEARCH')}
-                                />
-                            </Card>
-                            <Typography
-                                size='xl'
-                                bold
-                                variant="white"
-                                title={t('$11 миллиардов в год')}
-                                wrap
-                            />
-                            <Typography
-                                variant="white"
-                                size='m'
-                                text={t('Внедрение чат-ботов в сфере розничной торговли, банковского дела и здравоохранения позволит снизить затраты бизнеса на 11 миллиардов долларов в год.')}
-                                wrap
-                            />
-                            <Button
-                                color='green'
-                                circle
-                                jump
-                                onClick={() => {}}
-                            >
-                                {t('Узнать больше')}
-                            </Button>
-                        </VStack>
-                        <img height={300} width={300} src={graph} />
-                    </HStack>
-                </Card> */}
                 <Typography
                     size='xl'
                     bold
@@ -438,31 +281,6 @@ const MainPage = () => {
                 </HStack>
             </VStack>
             {isBrowser && <HorizontalCarousel />}
-            {/* <VStack align='center' gap="64" max className={classNames(cls.MainPage, cls.changeFlex)} style={{ paddingBottom: '2rem' }}>
-                <VStack max gap="16" align='center'>
-                    <Typography
-                        size='xl'
-                        bold
-                        align="center"
-                        title={t('Пользуются доверием исследователей, академических кругов и ведущих отраслей промышленности')}
-                        wrap
-                    />
-                    <Typography
-                        size='l'
-                        align="center"
-                        text={t('Новаторы и студенты из ведущих университетов и организаций мира используют Ai Chat')}
-                        wrap
-                    />
-                    <HStack gap="32" className={cls.changeFlex}>
-                        <Icon height={70} width={120} Svg={Caltech} />
-                        <Icon height={70} width={150} Svg={Cambridge} />
-                        <Icon height={70} width={150} Svg={Harvard} />
-                        <Icon height={70} width={150} Svg={Insta} />
-                        <Icon height={70} width={120} Svg={Meta} />
-                        <Icon height={70} width={150} Svg={Oxford} />
-                    </HStack>
-                </VStack>
-            </VStack> */}
         </VStack>
     );
 };
