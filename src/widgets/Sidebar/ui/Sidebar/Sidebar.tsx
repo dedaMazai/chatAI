@@ -25,8 +25,6 @@ interface SidebarProps {
     className?: string;
 }
 
-const CHATS = ['Chat-1', 'Chat-2', 'Chat-3']
-
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const { t } = useTranslation();
     const [collapsed, setCollapsed] = useState(false);
