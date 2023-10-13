@@ -62,7 +62,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 >
                     <HStack>
                         <Icon Svg={Logo} className={cls.iconLogo} />
-                        {!collapsed && (<Typography text={t('Chat')} variant="green" bold size='l' />)}
+                        {!collapsed && (<Typography text={t('chatwiz')} variant="green" bold size='l' />)}
                     </HStack>
                 </Button>
                 <Button

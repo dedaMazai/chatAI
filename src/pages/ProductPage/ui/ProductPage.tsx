@@ -8,7 +8,7 @@ import robotIcon from '@/shared/assets/img/robotIcon.webp';
 import editIcon from '@/shared/assets/img/editIcon.webp';
 import smsIcon from '@/shared/assets/img/smsIcon.webp';
 import headIcon from '@/shared/assets/img/headIcon.webp';
-import businessCover from '@/shared/assets/img/pandachat-business-cover.webp';
+import businessCover from '@/shared/assets/img/business_chatwiz.webp';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Accordion } from '@/shared/ui/Accordion';
@@ -26,13 +26,13 @@ const ProductPage = () => {
         <VStack gap="64" className={classNames(cls.ProductPage, cls.changeFlex)}>
             <Card jump variant="blackTwo" padding="54">
                 <HStack gap="64" align='start'className={cls.changeFlex} >
-                    <VStack gap="16">
+                    <VStack gap="32">
                         <HStack gap="16">
                             <Typography
                                 size='xl'
                                 bold
                                 variant="white"
-                                title={t('Chatwiz')}
+                                title={t('chatwiz')}
                                 wrap
                             />
                             <Card variant='black'>
@@ -60,7 +60,7 @@ const ProductPage = () => {
                             jump
                             onClick={() => navigate(RoutePath.REGISTER())}
                         >
-                            {t('Посетить сайт')}
+                            {t('Связаться с нами')}
                         </Button>
                     </VStack>
                     <img className={cls.smallImg} src={businessCover} />

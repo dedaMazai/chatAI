@@ -11,19 +11,21 @@
 
 .largeImg {
     width: 1000px;
-    height: 650px;
+    height: 559px;
 
     @media (max-width: 500px) {
-        width: 350px;
-        height: 230px;
+        width: 400px;
+        height: 223px;
+        /*width: 320px;
+        height: 230px;*/
     }
 }
 
 .smallImg {
-    width: 400px;
+    width: 500px;
 
     @media (max-width: 500px) {
-        width: 300px;
+        width: 350px;
     }
 }
 
