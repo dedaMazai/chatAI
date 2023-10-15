@@ -43,6 +43,7 @@ const LoginPage = () => {
     useNotification({
         isError: {
             active: loginRes.isError,
+            error: loginRes.error,
             text: t('Ошибка входа'),
         },
     });

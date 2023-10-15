@@ -5,7 +5,7 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import { useDeleteUserMutation } from '@/entities/User/api/userApi';
+import { useChangePasswordMutation, useDeleteUserMutation } from '@/entities/User/api/userApi';
 import { Modal } from '@/shared/ui/Modal';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { userActions } from '@/entities/User';
@@ -28,6 +28,7 @@ const SettingPage = () => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [deleteUser, deleteUserResult] = useDeleteUserMutation();
+    const [changePassword, changePasswordResult] = useChangePasswordMutation();
 
     const handleLogout = () => {
         dispatch(userActions.logout());
@@ -36,6 +37,14 @@ const SettingPage = () => {
     const handleClose = () => {
         setIsOpen(false);
     };
+
+    const handleChangePassword = () => {
+        changePassword({
+            old_password: nowPassword,
+            new_password: newPassword,
+            new_password_repeat: newAccessPassword,
+        })
+    }
 
     useEffect(() => {
         if (deleteUserResult.isSuccess) {
@@ -48,7 +57,7 @@ const SettingPage = () => {
         <VStack max gap="8" style={{ padding: '0 3rem' }}>
             <Typography text={t('Настройки')} size='l' bold align='left' />
             <VStack max align="center" gap="32">
-                <Card
+                {/* <Card
                     padding="24"
                     variant="outlineLight"
                     header={(
@@ -115,7 +124,7 @@ const SettingPage = () => {
                             <Button>{t('Сохранить изменения')}</Button>
                         </HStack>
                     </VStack>
-                </Card>
+                </Card> */}
                 <Card
                     padding="24"
                     variant="outlineLight"
@@ -153,7 +162,12 @@ const SettingPage = () => {
                             />
                         </HStack>
                         <HStack max justify='end'>
-                            <Button>{t('Сохранить изменения')}</Button>
+                            <Button
+                                disabled={!nowPassword.length || !newPassword.length || !newAccessPassword.length}
+                                onClick={handleChangePassword}
+                            >
+                                {t('Сохранить изменения')}
+                            </Button>
                         </HStack>
                     </VStack>
                 </Card>

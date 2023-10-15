@@ -22,6 +22,7 @@ import Suport from '@/shared/assets/icons/Suport.svg';
 import Cart from '@/shared/assets/icons/Cart.svg';
 import Upload from '@/shared/assets/icons/Upload.svg';
 import { Drawer } from '@/shared/ui/Drawer';
+import Settings from '@/shared/assets/icons/Settings.svg';
 import { Progress } from '@/shared/ui/Progress/Progress';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
@@ -149,7 +150,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                                 gap
                                 trigger={(
                                     <div className={cls.circle}>
-                                        <Typography title="A" variant="white" bold />
+                                        <Icon Svg={Settings} className={cls.circleSettings} />
+                                        {/* <Typography title="A" variant="white" bold /> */}
                                     </div>
                                 )}
                                 items={[

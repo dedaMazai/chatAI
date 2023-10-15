@@ -64,7 +64,7 @@ export const chatsApi = rtkApi.injectEndpoints({
       }),
       invalidatesTags: ['Chat', 'AllChats'],
     }),
-    startNewChat: builder.mutation<{ id: number }, { name: string, file: FormData }>({
+    startNewChat: builder.mutation<{ id: number }, { name: string, file?: FormData }>({
       query: ({ name, file }) => ({
         url: '/chats/start_new_chat',
         method: 'POST',

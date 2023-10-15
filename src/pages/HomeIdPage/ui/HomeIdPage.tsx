@@ -60,7 +60,7 @@ const HomeIdPage = () => {
     });
 
     const handleEnterDown = (e: any) => {
-        if (e.keyCode === 13 && id && question) {
+        if (e.keyCode === 13 && id && question && !sendQuestionResult.isLoading) {
             sendQuestion({
                 chat_id: +id,
                 question,
@@ -97,14 +97,14 @@ const HomeIdPage = () => {
                         </Button>
                     </HStack>
                     <HStack gap="16" max fullHeight>
-                        <Button
+                        {/* <Button
                             color="grey"
                             onClick={() => {}}
                             fullWidth
                             fullHeight
                         >
                             <Icon Svg={ShareIcon} />
-                        </Button>
+                        </Button> */}
                         <Button
                             color="grey"
                             onClick={() => {}}

@@ -47,7 +47,6 @@ const HomePage = () => {
 
     useEffect(() => {
         if (files?.[0] && name) {
-            console.log(1, files[0])
             const formData = new FormData();
             formData.append('file', files[0]);
 
@@ -78,12 +77,25 @@ const HomePage = () => {
                 align='center'
                 wrap
             />
-            <Input
-                value={name}
-                onChange={(value) => {setName(value)}}
-                label={t('Название чата')}
-                className={cls.nameInput}
-            />
+            <HStack gap="16" max align='end' className={cls.nameInput}>
+                <Input
+                    value={name}
+                    onChange={(value) => {setName(value)}}
+                    label={t('Название чата')}
+                />
+                <Button
+                    color='green'
+                    disabled={!name.length}
+                    bold
+                    onClick={() => {
+                        createChat({
+                            name,
+                        })
+                    }}
+                >
+                    {t('Создать')}
+                </Button>
+            </HStack>
             <InputDrop
                 onChange={(files) => {
                     setFiles(files)
