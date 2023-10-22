@@ -18,8 +18,8 @@ export const AppCard = (props: AppCardProps) => {
         <Card jump variant={active ? 'greenLight' : 'greyOne'} style={{ width: '300px' }}>
             <VStack gap="16" style={{ padding: '24px 24px 0 24px' }}>
                 <HStack gap="16">
-                    <Icon height={50} width={50} Svg={Svg} />
-                    <Typography title={text} bold />
+                    <Icon height={50} width={50} Svg={Svg}/>
+                    <Typography title={text} bold/>
                 </HStack>
                 <Typography text={active ? t('Поддерживаем') : t('Скоро')} variant={active ? 'green' : 'gray'} />
             </VStack>

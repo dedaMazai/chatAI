@@ -178,7 +178,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         >
                             <HStack>
                                 <Icon Svg={Logo} className={cls.iconLogo} />
-                                <Typography text={t('Chatwiz')} variant="green" bold size='l' />
+                                <Typography text={t('chatwiz')} variant="green" bold size='l' />
                             </HStack>
                         </Button>
                         <Button onClick={onOpenDrawerPerson} variant="clear" className={cls.trigger}>
@@ -306,7 +306,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         onClick={() => navigate(RoutePath.MAIN())}
                     >
                         <Icon Svg={Logo} className={cls.iconLogo} />
-                        <Typography text={t('Chatwiz')} variant="green" bold size='l' />
+                        <Typography text={t('chatwiz')} variant="green" bold size='l' />
                     </Button>
                     <LangSwitcher short />
                 </HStack>
