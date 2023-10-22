@@ -82,6 +82,7 @@ export const Input = memo((props: InputProps) => {
         <div
             className={classNames(cls.InputWrapper, mods, [
                 cls[size],
+                className,
             ])}
         >
             <div className={cls.addonLeft}>{addonLeft}</div>

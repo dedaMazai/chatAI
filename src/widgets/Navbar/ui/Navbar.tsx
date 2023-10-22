@@ -21,11 +21,12 @@ import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detec
 import Suport from '@/shared/assets/icons/Suport.svg';
 import Cart from '@/shared/assets/icons/Cart.svg';
 import Upload from '@/shared/assets/icons/Upload.svg';
-
-import cls from './Navbar.module.scss';
 import { Drawer } from '@/shared/ui/Drawer';
+import Settings from '@/shared/assets/icons/Settings.svg';
 import { Progress } from '@/shared/ui/Progress/Progress';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+
+import cls from './Navbar.module.scss';
 
 interface NavbarProps {
     className?: string;
@@ -33,9 +34,11 @@ interface NavbarProps {
 
 export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
+
     const navigate = useNavigate();
     const authData = useSelector(getUserAuthData);
     const dispatch = useAppDispatch();
+
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenPerson, setIsOpenPerson] = useState(false);
 
@@ -147,7 +150,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                                 gap
                                 trigger={(
                                     <div className={cls.circle}>
-                                        <Typography title="A" variant="white" bold />
+                                        <Icon Svg={Settings} className={cls.circleSettings} />
+                                        {/* <Typography title="A" variant="white" bold /> */}
                                     </div>
                                 )}
                                 items={[

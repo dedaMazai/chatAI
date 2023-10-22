@@ -38,6 +38,12 @@
     align-items: center;
 }
 
+.circleSettings {
+    height: 23px;
+    width: 23px;
+    fill: white;
+}
+
 .mediaMainWrap {
     @media (max-width: 1050px) {
         flex-direction: column;

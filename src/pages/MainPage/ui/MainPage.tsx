@@ -1,10 +1,9 @@
 import { HorizontalCarousel } from '@/entities/HorizontalCarousel';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
-import { Icon } from '@/shared/ui/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CoverLaptop from '@/shared/assets/img/cover-laptop.webp';
 import banking from '@/shared/assets/img/Финансы.webp';
@@ -45,10 +44,8 @@ import language from '@/shared/assets/img/language.webp';
 import chatgpt from '@/shared/assets/img/chatgpt.webp';
 import headIcon from '@/shared/assets/img/headIcon.webp';
 import { AppCard } from '@/entities/AppCard/AppCard';
-import { Footer } from '@/widgets/Footer';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { isBrowser } from 'react-device-detect';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
@@ -264,23 +261,6 @@ const MainPage = () => {
                         </Card>
                     </HStack>
                 </VStack>
-                {/* <HStack max justify='center'>
-                    <iframe className={cls.iframe} src="https://www.youtube.com/embed/RlwFqc7gS7Q" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                </HStack> */}
-                {/* <HStack max gap="32" justify='center' className={cls.changeFlex}>
-                    <Card jump padding='24' variant='greyOne'>
-                        <VStack gap="16">
-                            <Typography size="l" bold text={t('Загружайте любые данные за секунды')} />
-                            <Typography text={t('Безопасно загружайте все, что угодно, из PowerPoints, документов Word, Excel, изображений, веб-сайтов в PDF-файлы или просматривайте весь веб-сайт целиком. Panda, которая будет искать ваши данные и использовать их для выработки разумных ответов.')} />
-                        </VStack>
-                    </Card>
-                    <Card jump padding='24' variant='greyOne'>
-                        <VStack gap="16">
-                            <Typography size="l" bold text={t('Мгновенные ответы на ваши вопросы')} />
-                            <Typography text={t('Нет необходимости искать руководства или просматривать бесконечные документы. Pandashan анализирует все накопленные документы и выступает в качестве эксперта по всем вашим процессам, чтобы за считанные секунды предоставить необходимый вам ответ.')} />
-                        </VStack>
-                    </Card>
-                </HStack> */}
                 <Typography
                     size='xl'
                     bold

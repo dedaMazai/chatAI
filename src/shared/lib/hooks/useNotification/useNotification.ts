@@ -39,9 +39,9 @@ export const useNotification = ({
             let error: string | undefined;
 
             if (isError.error && 'data' in isError.error) {
-                error = (isError.error as { data?: { description?: string } })?.data?.description;
+                error = (isError.error as { data?: { detail?: string } })?.data?.detail;
             }
-            toast.error(isError.text || error || t('Error'));
+            toast.error(error || isError.text || t('Error'));
         }
 
         return () => {

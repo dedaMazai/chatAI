@@ -6,9 +6,30 @@ import { Typography } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import pdf from '@/shared/assets/icons/pdf-icon.svg';
 import ArrowDown from '@/shared/assets/icons/ArrowDown.svg';
+import { useAllContextsQuery, useClearContextMutation, useDownloadContextMutation } from '../api/filesApi';
+import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
 
 const FilesPage = () => {
     const { t } = useTranslation('');
+    const { data: contexts, isLoading: contextsLoading } = useAllContextsQuery();
+    const [delContext, delContextResult] = useClearContextMutation();
+    const [downloadContext, downloadContextResult] = useDownloadContextMutation();
+
+    const redirectToWebsite = (url: string) => {
+        window.open(
+            url,
+            '_blank',
+        );
+    };
+
+    useNotification({
+        isSuccess: {
+            active: delContextResult.isSuccess,
+        },
+        isError: {
+            active: delContextResult.isError,
+        },
+    });
 
     return (
         <VStack max gap="8" style={{ padding: '0 3rem' }}>
@@ -19,7 +40,7 @@ const FilesPage = () => {
                 max
             >
                 <VStack gap="8">
-                    {['as', 'as'].map((file) => (
+                    {contexts?.map((context) => (
                         <Card
                             padding="16"
                             variant="outlineLight"
@@ -29,8 +50,8 @@ const FilesPage = () => {
                                 <HStack gap="32">
                                     <Icon Svg={pdf} height={70} width={40} />
                                     <VStack>
-                                        <Typography text={t('Образец имя.pdf')} bold />
-                                        <Typography text={t('Загружено 10 часов назад 185,02 КБ')} size="s" variant="gray" />
+                                        <Typography text={context.name} bold />
+                                        <Typography text={`Загружено ${context.creation_date}`} size="s" variant="gray" />
                                     </VStack>
                                 </HStack>
                                 <Dropdown
@@ -45,15 +66,15 @@ const FilesPage = () => {
                                     items={[
                                         {
                                             content: t('Скачать'),
-                                            onClick: () => {},
+                                            onClick: () => downloadContext(context.name),
                                         },
                                         {
                                             content: t('Предпросмотр'),
-                                            onClick: () => {},
+                                            onClick: () => redirectToWebsite(context.path),
                                         },
                                         {
                                             content: t('Удалить'),
-                                            onClick: () => {},
+                                            onClick: () => delContext(context.id),
                                         }
                                     ]}
                                     direction="bottom left"

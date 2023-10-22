@@ -8,12 +8,13 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Eye from '@/shared/assets/icons/Eye.svg';
 import EyeClosed from '@/shared/assets/icons/EyeClosed.svg';
-
-import cls from './LoginPage.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
 import { useLoginMutation } from '../api/loginPageApi';
 import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
+
+
+import cls from './LoginPage.module.scss';
 
 const LoginPage = () => {
     const { t } = useTranslation('');
@@ -42,6 +43,7 @@ const LoginPage = () => {
     useNotification({
         isError: {
             active: loginRes.isError,
+            error: loginRes.error,
             text: t('Ошибка входа'),
         },
     });

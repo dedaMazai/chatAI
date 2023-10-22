@@ -8,12 +8,6 @@ import Arrow from '@/shared/assets/icons/Arrow.svg';
 import Ok from '@/shared/assets/icons/Ok.svg';
 import OkFill from '@/shared/assets/icons/OkFill.svg';
 import { Icon } from '@/shared/ui/Icon';
-import Caltech from '@/shared/assets/icons/Caltech.svg';
-import Cambridge from '@/shared/assets/icons/Cambridge.svg';
-import Harvard from '@/shared/assets/icons/Harvard.svg';
-import Insta from '@/shared/assets/icons/Insta.svg';
-import Meta from '@/shared/assets/icons/Meta.svg';
-import Oxford from '@/shared/assets/icons/Oxford.svg';
 import { Button } from '@/shared/ui/Button';
 
 import cls from './PricingPage.module.scss';
@@ -226,23 +220,6 @@ const PricingPage = () => {
                     </Button>
                 </Card>
             </HStack>
-            {/* <VStack max gap="24" align='center'>
-                <Typography
-                    size='xl'
-                    bold
-                    title={t('Нам доверяют')}
-                    align='center'
-                    wrap
-                />
-                <HStack gap="32" className={cls.changeFlex}>
-                    <Icon height={70} width={120} Svg={Caltech} />
-                    <Icon height={70} width={150} Svg={Cambridge} />
-                    <Icon height={70} width={150} Svg={Harvard} />
-                    <Icon height={70} width={150} Svg={Insta} />
-                    <Icon height={70} width={120} Svg={Meta} />
-                    <Icon height={70} width={150} Svg={Oxford} />
-                </HStack>
-            </VStack> */}
         </VStack>
     );
 };

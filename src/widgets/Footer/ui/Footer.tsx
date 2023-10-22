@@ -1,8 +1,6 @@
-// @ts-nocheck
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import ArrowDown from '@/shared/assets/icons/ArrowDown.svg';
-import cls from './Footer.module.scss';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
 import { Button } from '@/shared/ui/Button';
@@ -12,6 +10,8 @@ import Logo from '@/shared/assets/icons/Logo.svg';
 import Email from '@/shared/assets/icons/Email.svg';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
+
+import cls from './Footer.module.scss';
 
 interface FooterProps {
     className?: string;

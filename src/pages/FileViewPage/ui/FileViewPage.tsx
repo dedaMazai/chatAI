@@ -1,12 +1,12 @@
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { useTranslation } from 'react-i18next';
 import File from '@/shared/assets/icons/File.svg';
-
-import cls from './FileViewPage.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 import { Typography } from '@/shared/ui/Text';
 import { Button } from '@/shared/ui/Button';
 import { useParams } from 'react-router-dom';
+
+import cls from './FileViewPage.module.scss';
 
 const FileViewPage = () => {
     const { t } = useTranslation('');
@@ -30,7 +30,7 @@ const FileViewPage = () => {
             </HStack>
             <HStack max fullHeight>
                 <div className={cls.pdfViewer}>
-                    123
+                    {t('Здесь будет файл')}
                 </div>
             </HStack>
         </VStack>

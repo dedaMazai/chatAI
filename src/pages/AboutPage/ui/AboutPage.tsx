@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 import team from '@/shared/assets/img/photo/team-image.webp';
 import Primoz from '@/shared/assets/img/photo/team-Primoz.webp';
 import OkFill from '@/shared/assets/icons/OkFill.svg';
-import cls from './AboutPage.module.scss';
 import { Icon } from '@/shared/ui/Icon';
 import { Button } from '@/shared/ui/Button';
-import { useEffect, useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
+
+import cls from './AboutPage.module.scss';
 
 const LEFT = [
     'Интеграция чат-ботов – встраивайте чат-ботов на свой сайт',
@@ -50,7 +50,7 @@ const AboutPage = () => {
                             wrap
                         />
                         <Typography
-                            text={t('В сегодняшней быстро меняющейся среде студенты, исследователи и предприятия сталкиваются с многочисленными проблемами, когда дело доходит до оптимизации исследовательских процессов. Вот тут-то и приходит на помощь PandaChat. Наша команда разработала мощный инструмент, который позволяет вам общаться с файлами любого типа и даже взаимодействовать с веб-сайтами и медиа, такими как видео на YouTube.')}
+                            text={t('В сегодняшней быстро меняющейся среде студенты, исследователи и предприятия сталкиваются с многочисленными проблемами, когда дело доходит до оптимизации исследовательских процессов. Вот тут-то и приходит на помощь Chatwiz. Наша команда разработала мощный инструмент, который позволяет вам общаться с файлами любого типа и даже взаимодействовать с веб-сайтами и медиа, такими как видео на YouTube.')}
                             align='left'
                             wrap
                         />

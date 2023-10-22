@@ -63,6 +63,7 @@ export const rtkApi = createApi({
     tagTypes: [
         'AllChats',
         'Chat',
+        'Contexts',
     ],
     endpoints: (builder) => ({}),
 });

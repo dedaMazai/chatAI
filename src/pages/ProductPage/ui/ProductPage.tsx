@@ -11,7 +11,6 @@ import headIcon from '@/shared/assets/img/headIcon.webp';
 import businessCover from '@/shared/assets/img/business_chatwiz.webp';
 import { Button } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
-import { Accordion } from '@/shared/ui/Accordion';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';

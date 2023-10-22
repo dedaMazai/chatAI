@@ -1,54 +1,4 @@
 :root {
-    // --bg-color: #fff;
-    // --inverted-bg-color: #fff;
-    // --primary-color: #01c54f;
-    // --border: #e7eaf3b3;
-    // --border-active: #c9cbd1b3;
-    // --scroll-bard: #bdc5d1;
-    // --scroll-bard-road: #ebecee;
-
-    // // Кнопки
-    // --green-button: #01c54f;
-    // --green-light-button: #e8fff1;
-    // --green-button-hover: #01e75d;
-    // --grey-light-button: #bdc5d133;
-    // --grey-button: #eee;
-    // --grey-button-hover: #e2e2e2;
-    // --black-button: #000;
-    // --black-button-hover: #fff;
-    // --red-button: #ff616d;
-
-    // // Тени
-    // --shadow-card: #8c98a447;
-    // --shadow-card-hover: #8c98a489;
-
-    // // Карточки
-    // --card-bd-main: #fff;
-    // --card-bd-grey-one: #f5f5f5;
-    // --card-bd-grey-two: #e8eaec;
-    // --card-bd-black: #000;
-    // --card-bd-black-two: #19191A;
-    // --card-bd-green: #01c54f;
-    // --card-bg-green-light: #e8fff1;
-
-    // // Текст
-    // --text-main: #000;
-    // --text-main-invert: #fff;
-    // --text-second: #000;
-    // --text-gray: #adbcc0;
-    // --text-red: #ff616d;
-    // --text-white: #fff;
-    // --text-black: #000;
-    // --text-green: #01c54f;
-    // --bg-selection: #377dff1a;
-
-    // // старое
-    // --text: #141C1F;
-    // --hint: #ADBCC0;
-    // --cancel: #FF7777;
-    // --save: #62DE85;
-    // --icon: #5ED3F3;
-    // --accent: #00C8FF;
     --bg-color: #fff;
     --inverted-bg-color: #fff;
     --primary-color: #007bff;
@@ -56,6 +6,8 @@
     --border-active: #c9cbd1b3;
     --scroll-bard: #bdc5d1;
     --scroll-bard-road: #ebecee;
+
+    // Кнопки
     --green-button: #007bff;
     --green-light-button: #1a3955;
     --green-button-hover: #0056b3;
@@ -65,8 +17,12 @@
     --black-button: #000;
     --black-button-hover: #fff;
     --red-button: #ff616d;
+
+    // Тени
     --shadow-card: #8c98a447;
     --shadow-card-hover: #8c98a489;
+
+    // Карточки
     --card-bd-main: #fff;
     --card-bd-grey-one: #f5f5f5;
     --card-bd-grey-two: #e8eaec;
@@ -75,6 +31,7 @@
     --card-bd-green: #007bff;
     --card-bg-green-light: #e8fff1;
 
+    // Текст
     --text-main: #000;
     --text-main-invert: #fff;
     --text-second: #000;
@@ -85,6 +42,7 @@
     --text-green: #007bff;
     --text-darkgreen: #1a3955;
 
+    // старое
     --bg-selection: #377dff1a;
     --text: #141C1F;
     --hint: #ADBCC0;
