@@ -8,6 +8,7 @@ import pdf from '@/shared/assets/icons/pdf-icon.svg';
 import ArrowDown from '@/shared/assets/icons/ArrowDown.svg';
 import { useAllContextsQuery, useClearContextMutation, useDownloadContextMutation } from '../api/filesApi';
 import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
+import { redirectToWebsite } from '@/shared/lib/redirectToWebsite/redirectToWebsite';
 
 import cls from './FilesPage.module.scss';
 
@@ -16,13 +17,6 @@ const FilesPage = () => {
     const { data: contexts, isLoading: contextsLoading } = useAllContextsQuery();
     const [delContext, delContextResult] = useClearContextMutation();
     const [downloadContext, downloadContextResult] = useDownloadContextMutation();
-
-    const redirectToWebsite = (url: string) => {
-        window.open(
-            url,
-            '_blank',
-        );
-    };
 
     useNotification({
         isSuccess: {

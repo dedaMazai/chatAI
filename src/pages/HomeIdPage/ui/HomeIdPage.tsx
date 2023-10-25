@@ -14,10 +14,11 @@ import { Typewriter } from '@/shared/ui/Typewriter';
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { useChatQuery, useClearChatMutation, useSendQuestionMutation } from '@/entities/Chats';
 import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
-
-import cls from './HomeIdPage.module.scss';
 import { Tooltip } from '@/shared/ui/Tooltip/Tooltip';
 import { Dropdown } from '@/shared/ui/Dropdown';
+import { redirectToWebsite } from '@/shared/lib/redirectToWebsite/redirectToWebsite';
+
+import cls from './HomeIdPage.module.scss';
 
 const HomeIdPage = () => {
     const { t } = useTranslation('');
@@ -119,7 +120,7 @@ const HomeIdPage = () => {
                             items={[
                                 {
                                     content: t('Открыть файл'),
-                                    onClick: () => {},
+                                    onClick: () => redirectToWebsite('https://google.com'),
                                 },
                             ]}
                             direction="bottom left"
