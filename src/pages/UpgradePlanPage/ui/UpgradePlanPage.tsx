@@ -45,7 +45,7 @@ const UpgradePlanPage = () => {
                 align='center'
                 wrap
             />
-            <HStack max justify='center' align='end' gap="16">
+            {/* <HStack max justify='center' align='end' gap="16">
                 <Typography
                     text={t('Ежемесяно')}
                     align='center'
@@ -69,7 +69,7 @@ const UpgradePlanPage = () => {
                         wrap
                     />
                 </VStack>
-            </HStack>
+            </HStack> */}
             <HStack max gap="24" justify='center' className={cls.changeFlex}>
                 <Card className={cls.card} variant="green" padding="32" fullHeight>
                     <VStack max gap="16" align='center'>

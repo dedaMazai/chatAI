@@ -16,6 +16,7 @@ import { useChatQuery, useClearChatMutation, useSendQuestionMutation } from '@/e
 import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
 
 import cls from './HomeIdPage.module.scss';
+import { Tooltip } from '@/shared/ui/Tooltip/Tooltip';
 
 const HomeIdPage = () => {
     const { t } = useTranslation('');
@@ -77,15 +78,18 @@ const HomeIdPage = () => {
                 </HStack>
                 <HStack gap="16" className={cls.changeFlex}>
                     <HStack gap="16" max fullHeight>
-                        <Button
-                            color="grey"
-                            onClick={() => {}}
-                            nowrap
-                            fullWidth
-                            fullHeight
-                        >
-                            <Typography text={t('Краткое содержание')} />
-                        </Button>
+                        <Tooltip className={cls.tooltip} text={t('Будет доступно в ближайшее время')}>
+                            <Button
+                                color="grey"
+                                onClick={() => {}}
+                                nowrap
+                                fullWidth
+                                fullHeight
+                                disabled
+                            >
+                                <Typography text={t('Краткое содержание')} />
+                            </Button>
+                            </Tooltip>
                         <Button
                             color="grey"
                             disabled={!id}
