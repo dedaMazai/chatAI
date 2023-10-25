@@ -1,3 +1,15 @@
 .inputBlock {
     width: 75%;
+
+    @media (max-width: 500px) {
+        width: 100%;
+    }
+}
+
+.changeFlex {
+    @media (max-width: 500px) {
+        align-items: start;
+        flex-direction: column;
+        gap: 4px;
+    }
 }

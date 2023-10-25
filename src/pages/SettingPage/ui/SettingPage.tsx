@@ -134,7 +134,7 @@ const SettingPage = () => {
                     max
                 >
                     <VStack gap="24" max>
-                        <HStack max gap="24" justify="between">
+                        <HStack max gap="24" justify="between" className={cls.changeFlex}>
                             <Typography text={t('Текущий пароль')} />
                             <Input
                                 className={cls.inputBlock}
@@ -143,7 +143,7 @@ const SettingPage = () => {
                                 onChange={(value) => {setNowPassword(value)}}
                             />
                         </HStack>
-                        <HStack max gap="24" justify="between">
+                        <HStack max gap="24" justify="between" className={cls.changeFlex}>
                             <Typography text={t('Новый пароль')} />
                             <Input
                                 className={cls.inputBlock}
@@ -152,7 +152,7 @@ const SettingPage = () => {
                                 onChange={(value) => {setNewPassword(value)}}
                             />
                         </HStack>
-                        <HStack max gap="24" justify="between">
+                        <HStack max gap="24" justify="between" className={cls.changeFlex}>
                             <Typography text={t('Подтвердите новый пароль')} />
                             <Input
                                 className={cls.inputBlock}
@@ -180,7 +180,7 @@ const SettingPage = () => {
                     max
                 >
                     <VStack gap="24" max>
-                        <Typography variant="gray" text={t('Когда вы удаляете свою учетную запись, вы теряете доступ к услугам учетной записи PandaChat, и мы навсегда удаляем ваши личные данные. Активные подписки будут отменены.')} bold />
+                        <Typography variant="gray" text={t('Когда вы удаляете свою учетную запись, вы теряете доступ к услугам учетной записи Chatwiz, и мы навсегда удаляем ваши личные данные. Активные подписки будут отменены.')} bold />
                         <HStack max justify='end'>
                             <Button onClick={() => setIsOpen(true)} color="red">{t('Удалить аккаунт')}</Button>
                         </HStack>
