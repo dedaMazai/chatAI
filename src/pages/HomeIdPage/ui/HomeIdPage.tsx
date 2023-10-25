@@ -17,6 +17,7 @@ import { useNotification } from '@/shared/lib/hooks/useNotification/useNotificat
 
 import cls from './HomeIdPage.module.scss';
 import { Tooltip } from '@/shared/ui/Tooltip/Tooltip';
+import { Dropdown } from '@/shared/ui/Dropdown';
 
 const HomeIdPage = () => {
     const { t } = useTranslation('');
@@ -109,14 +110,20 @@ const HomeIdPage = () => {
                         >
                             <Icon Svg={ShareIcon} />
                         </Button> */}
-                        <Button
-                            color="grey"
-                            onClick={() => {}}
-                            fullWidth
-                            fullHeight
-                        >
-                            <Icon Svg={Settings} />
-                        </Button>
+                        <Dropdown
+                            trigger={(
+                                <div className={cls.settings}>
+                                    <Icon Svg={Settings} className={cls.settingsIcon} />
+                                </div>
+                            )}
+                            items={[
+                                {
+                                    content: t('Открыть файл'),
+                                    onClick: () => {},
+                                },
+                            ]}
+                            direction="bottom left"
+                        />
                     </HStack>
                 </HStack>
             </HStack>
