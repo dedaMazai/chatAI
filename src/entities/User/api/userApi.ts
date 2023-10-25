@@ -8,11 +8,23 @@ interface ChangePassword {
     new_password_repeat: string;
 }
 
+interface UserInfo {
+    id: number;
+    email: string;
+    name: string;
+    surname: string;
+    context_ids: number[];
+    chat_ids: number[];
+    num_of_requests_used: number;
+    num_of_contexts: number;
+    subscription_plan_id: number;
+}
+
 const userApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        getUserDataById: build.query<User, string>({
+        getUserInfo: build.query<UserInfo, void>({
             query: (userId) => ({
-                url: `/users/${userId}`,
+                url: '/user_information/',
                 method: 'GET',
             }),
         }),
@@ -40,9 +52,8 @@ const userApi = rtkApi.injectEndpoints({
     }),
 });
 
-export const getUserDataByIdQuery = userApi.endpoints.getUserDataById.initiate;
-
 export const {
     useDeleteUserMutation,
     useChangePasswordMutation,
+    useGetUserInfoQuery,
 } = userApi;

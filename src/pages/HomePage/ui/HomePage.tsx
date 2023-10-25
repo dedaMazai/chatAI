@@ -73,7 +73,7 @@ const HomePage = () => {
             <Typography
                 size='xl'
                 bold
-                text={t('Начните чат с загрузки файлов')}
+                text={t('Начните новый чат')}
                 align='center'
                 wrap
             />
@@ -96,12 +96,12 @@ const HomePage = () => {
                     {t('Создать')}
                 </Button>
             </HStack>
-            <InputDrop
+            {/* <InputDrop
                 onChange={(files) => {
                     setFiles(files)
                 }}
                 isLoading={createChatResult.isLoading}
-            />
+            /> */}
             <Typography
                 size='l'
                 bold

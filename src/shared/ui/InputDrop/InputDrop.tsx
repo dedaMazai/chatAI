@@ -92,7 +92,7 @@ export const InputDrop = (props: InputDropProps) => {
                         <Loader />
                     ) : (
                         <HStack gap="8">
-                            {!drag && <Icon Svg={Upload} className={cls.icon} />}
+                            {!countFiles && <Icon Svg={Upload} className={cls.icon} />}
                             <Typography
                                 text={
                                     countFiles

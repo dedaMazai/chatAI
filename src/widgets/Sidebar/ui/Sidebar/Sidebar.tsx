@@ -20,6 +20,7 @@ import { Progress } from '@/shared/ui/Progress/Progress';
 import { useAllChatsQuery } from '@/entities/Chats';
 
 import cls from './Sidebar.module.scss';
+import { useGetUserInfoQuery } from '@/entities/User/api/userApi';
 
 interface SidebarProps {
     className?: string;
@@ -31,6 +32,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     const navigate = useNavigate();
 
     const { data: chats, isLoading: chatsLoading } = useAllChatsQuery();
+    const { data: userInfo, isLoading: userInfoLoading } = useGetUserInfoQuery();
 
     const onToggle = () => {
         console.log(collapsed);
@@ -117,7 +119,10 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                     <VStack gap="8" max align='center'>
                         <HStack gap="24">
                             <Typography text={`${t('Кредиты')}:`} />
-                            <Typography text="8 / 10" bold />
+                            <Typography
+                                text={`${userInfo?.num_of_requests_used} / ${userInfo?.num_of_contexts}`}
+                                bold
+                            />
                         </HStack>
                         <Progress percent={50} />
                     </VStack>

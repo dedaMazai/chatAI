@@ -17,6 +17,8 @@ import { useNotification } from '@/shared/lib/hooks/useNotification/useNotificat
 import { Tooltip } from '@/shared/ui/Tooltip/Tooltip';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { redirectToWebsite } from '@/shared/lib/redirectToWebsite/redirectToWebsite';
+import { Modal } from '@/shared/ui/Modal';
+import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
 
 import cls from './HomeIdPage.module.scss';
 
@@ -25,6 +27,8 @@ const HomeIdPage = () => {
     const { id } = useParams<{ id: string }>();
     const chatRef:  MutableRefObject<HTMLDivElement | null> = useRef(null);
     const [question, setQuestion] = useState('');
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [files, setFiles] = useState<FileList>();
 
     const { data: chat, isLoading: chatLoading } = useChatQuery(+id!, {
         skip: !id
@@ -71,6 +75,11 @@ const HomeIdPage = () => {
         }
     };
 
+    const handleCloseSite = () => {
+        setIsOpenModal(false);
+        setFiles(undefined);
+    };
+
     return (
         <VStack max fullHeight gap="8">
             <HStack max justify="between" align='start' className={cls.header}>
@@ -91,7 +100,7 @@ const HomeIdPage = () => {
                             >
                                 <Typography text={t('Краткое содержание')} />
                             </Button>
-                            </Tooltip>
+                        </Tooltip>
                         <Button
                             color="grey"
                             disabled={!id}
@@ -121,6 +130,10 @@ const HomeIdPage = () => {
                                 {
                                     content: t('Открыть файл'),
                                     onClick: () => redirectToWebsite('https://google.com'),
+                                },
+                                {
+                                    content: t('Добавить файл'),
+                                    onClick: () => setIsOpenModal(true),
                                 },
                             ]}
                             direction="bottom left"
@@ -181,6 +194,25 @@ const HomeIdPage = () => {
                     </HStack>
                 </VStack>
             </HStack>
+            <Modal isOpen={isOpenModal} onClose={handleCloseSite} lazy>
+                <VStack max gap="24" align='center' className={cls.modalInput}>
+                    <Typography
+                        bold
+                        text={t('Загрузите PDF файл')}
+                        align='center'
+                        wrap
+                    />
+                    <InputDrop
+                        onChange={(files) => {
+                            setFiles(files)
+                        }}
+                        countFiles={files?.length}
+                    />
+                    <Button disabled={!files?.[0]} onClick={() => {}}>
+                        {t('Отправить')}
+                    </Button>
+                </VStack>
+            </Modal>
         </VStack>
     );
 };
