@@ -75,6 +75,17 @@ export const chatsApi = rtkApi.injectEndpoints({
       }),
       invalidatesTags: ['AllChats'],
     }),
+    uploadContext: builder.mutation<{ id: number }, { name: string, file?: FormData }>({
+      query: ({ name, file }) => ({
+        url: '/context/uploadfile/',
+        method: 'POST',
+        params: {
+          chat_name: name,
+        },
+        body: file,
+      }),
+      invalidatesTags: ['Chat'],
+    }),
     sendQuestion: builder.mutation<void, { chat_id: number, question: string }>({
       query: ({ chat_id, question }) => ({
         url: '/chats/send_question',
@@ -116,6 +127,7 @@ export const chatsApi = rtkApi.injectEndpoints({
 });
 
 export const {
+  useUploadContextMutation,
   useAllChatsQuery,
   useChatQuery,
   useRenameChatMutation,

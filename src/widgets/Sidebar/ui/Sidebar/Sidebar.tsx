@@ -124,7 +124,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                                 bold
                             />
                         </HStack>
-                        <Progress percent={50} />
+                        <Progress percent={Math.round(((userInfo?.num_of_requests_used || 0) / (userInfo?.num_of_contexts || 0)) * 100)} />
                     </VStack>
                     <HStack>
                         <Button fullHeight variant="clearGrey" onClick={() => navigate(RoutePath.SUPPORT())}>

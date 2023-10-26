@@ -21,6 +21,7 @@ import { Modal } from '@/shared/ui/Modal';
 import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
 
 import cls from './HomeIdPage.module.scss';
+import { useUploadContextMutation } from '@/entities/Chats/api/chatsApi';
 
 const HomeIdPage = () => {
     const { t } = useTranslation('');
@@ -35,6 +36,7 @@ const HomeIdPage = () => {
     });
     const [clearChat, clearChatResult] = useClearChatMutation();
     const [sendQuestion, sendQuestionResult] = useSendQuestionMutation();
+    const [uploadContext, uploadContextResult] = useUploadContextMutation();
 
     useEffect(() => {
         chatRef.current?.scrollIntoView(false);
@@ -79,6 +81,29 @@ const HomeIdPage = () => {
         setIsOpenModal(false);
         setFiles(undefined);
     };
+
+    const handleUploadFile = () => {
+        const formData = new FormData();
+        formData.append('file', files?.[0]!);
+
+        uploadContext({ name: '123', file: formData})
+    };
+
+    useEffect(() => {
+        if (uploadContextResult.isSuccess) {
+            handleCloseSite();
+        }
+    }, [uploadContextResult])
+
+    useNotification({
+        isLoading: {
+            active: uploadContextResult.isLoading,
+        },
+        isError: {
+            active: uploadContextResult.isError,
+            text: t('Ошибка отправки смс'),
+        },
+    });
 
     return (
         <VStack max fullHeight gap="8">
@@ -208,7 +233,7 @@ const HomeIdPage = () => {
                         }}
                         countFiles={files?.length}
                     />
-                    <Button disabled={!files?.[0]} onClick={() => {}}>
+                    <Button disabled={!files?.[0]} onClick={handleUploadFile}>
                         {t('Отправить')}
                     </Button>
                 </VStack>
