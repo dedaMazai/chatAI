@@ -22,7 +22,7 @@ const BlogPage = () => {
                     <VStack justify='center'>
                         <Typography
                             bold
-                            text={t('От Chatwiz')}
+                            text={t('От chatwiz')}
                         />
                         <Typography
                             variant="gray"

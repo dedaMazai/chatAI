@@ -30,12 +30,7 @@ export const Footer = (props: FooterProps) => {
                     <VStack gap="8">
                         <Typography
                             bold
-                            title={t('Один инструмент для всей вашей команды.')}
-                            wrap
-                        />
-                        <Typography
-                            bold
-                            title={t('Приступайте прямо сейчас!')}
+                            title={t('Один инструмент для всей вашей команды, присоединяйтесь прямо сейчас!')}
                             wrap
                         />
                     </VStack>
@@ -70,7 +65,7 @@ export const Footer = (props: FooterProps) => {
                             onClick={() => navigate(RoutePath.MAIN())}
                         >
                             <Icon Svg={Logo} className={cls.iconLogo} />
-                            <Typography text={t('Chatwiz')} variant="green" bold size='l' />
+                            <Typography text={t('chatwiz')} variant="green" bold size='l'/>
                         </Button>
                         <HStack gap="16" max justify='center'>
                             <Button
@@ -81,7 +76,7 @@ export const Footer = (props: FooterProps) => {
                             </Button>
                             <Button
                                 circle
-                                onClick={() => redirectToWebsite('https://web.whatsapp.com')}
+                                onClick={() => redirectToWebsite('https://wa.me/+79689847645')}
                             >
                                 <Icon Svg={Email} className={cls.icons} />
                             </Button>
@@ -162,7 +157,7 @@ export const Footer = (props: FooterProps) => {
             <Typography
                 align='center'
                 variant="gray"
-                text={t('Copyrights © 2023 Chatwiz')}
+                text={t('Copyrights © 2023 chatwiz')}
             />
         </footer>
     );
