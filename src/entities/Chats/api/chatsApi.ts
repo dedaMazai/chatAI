@@ -21,7 +21,7 @@ export const chatsApi = rtkApi.injectEndpoints({
     allChats: builder.query<Chat[], void>({
       query: () => ({
         url: '/chats/get_chats/',
-        method: 'POST',
+        method: 'GET',
       }),
       providesTags: ['AllChats'],
       transformResponse: (response: { chats: Chat[] }) => response.chats || [],
