@@ -1,6 +1,6 @@
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Icon } from '@/shared/ui/Icon';
 import { Toggle } from '@/shared/ui/Toggle/Toggle';
@@ -9,9 +9,11 @@ import { Button } from '@/shared/ui/Button';
 import Arrow from '@/shared/assets/icons/Arrow.svg';
 import Ok from '@/shared/assets/icons/Ok.svg';
 import OkFill from '@/shared/assets/icons/OkFill.svg';
+import { useCreatepayMutation, useSubscriptionPlansQuery } from '../api/upgradePlanApi';
+import { redirectToWebsite } from '@/shared/lib/redirectToWebsite/redirectToWebsite';
+import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
 
 import cls from './UpgradePlanPage.module.scss';
-import { useCreatepayMutation, useSubscriptionPlansQuery } from '../api/upgradePlanApi';
 
 const UpgradePlanPage = () => {
     const { t } = useTranslation('');
@@ -41,6 +43,18 @@ const UpgradePlanPage = () => {
         'Ранний доступ к бета-функциям',
         'Инструмент обобщения',
     ];
+
+    useEffect(() => {
+        if(createpayResult.isSuccess && createpayResult.data.confirmation_token) {
+            redirectToWebsite(createpayResult.data.confirmation_token)
+        }
+    }, [createpayResult])
+
+    useNotification({
+        isLoading: {
+            active: createpayResult.isLoading,
+        },
+    });
 
     return (
         <VStack max align="center" gap="24">

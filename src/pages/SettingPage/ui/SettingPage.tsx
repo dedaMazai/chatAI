@@ -42,7 +42,6 @@ const SettingPage = () => {
         changePassword({
             old_password: nowPassword,
             new_password: newPassword,
-            new_password_repeat: newAccessPassword,
         })
     }
 
@@ -163,7 +162,12 @@ const SettingPage = () => {
                         </HStack>
                         <HStack max justify='end'>
                             <Button
-                                disabled={!nowPassword.length || !newPassword.length || !newAccessPassword.length}
+                                disabled={(
+                                    !nowPassword.length
+                                    || !newPassword.length
+                                    || !newAccessPassword.length
+                                    || newPassword !== newAccessPassword
+                                )}
                                 onClick={handleChangePassword}
                             >
                                 {t('Сохранить изменения')}

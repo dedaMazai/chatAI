@@ -5,7 +5,6 @@ import { userActions } from '../model/slice/userSlice';
 interface ChangePassword {
     old_password: string;
     new_password: string;
-    new_password_repeat: string;
 }
 
 interface UserInfo {
@@ -15,9 +14,13 @@ interface UserInfo {
     surname: string;
     context_ids: number[];
     chat_ids: number[];
-    num_of_requests_used: number;
     num_of_contexts: number;
     subscription_plan_id: number;
+    action_points_used: number;
+    max_action_points: number;
+    max_number_of_contexts: number;
+    max_context_size: number;
+    max_question_length: number;
 }
 
 const userApi = rtkApi.injectEndpoints({

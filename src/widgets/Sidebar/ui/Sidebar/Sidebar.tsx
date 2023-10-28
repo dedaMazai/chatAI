@@ -80,22 +80,22 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 <VStack gap="8" max>
                     {!collapsed && (<Typography text={t('Чаты')} />)}
                     <div className={cls.list}>
-                        {chats?.map(({ id, name }) => (
-                            <HStack gap="2" max key={id}>
+                        {chats?.map(({ chat_id, chat_name }) => (
+                            <HStack gap="2" max key={chat_id}>
                                 <Button
                                     variant="clearGrey"
                                     fullWidth={!collapsed}
-                                    onClick={() => navigate(RoutePath.HOME_ID(`${id}`))}
+                                    onClick={() => navigate(RoutePath.HOME_ID(`${chat_id}`))}
                                 >
                                     <HStack gap="8" max>
                                         <Icon Svg={SmsSingle} className={cls.smsSingle} />
-                                        {!collapsed && <Typography text={name} />}
+                                        {!collapsed && <Typography text={chat_name} />}
                                     </HStack>
                                 </Button>
                                 <Button
                                     fullHeight
                                     variant="clearGreen"
-                                    onClick={() => navigate(RoutePath.HOME_EDIT(`${id}`))}
+                                    onClick={() => navigate(RoutePath.HOME_EDIT(`${chat_id}`))}
                                 >
                                     <Icon Svg={Edit} className={cls.editIcon} />
                                 </Button>
@@ -120,11 +120,11 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         <HStack gap="24">
                             <Typography text={`${t('Кредиты')}:`} />
                             <Typography
-                                text={`${userInfo?.num_of_requests_used} / ${userInfo?.num_of_contexts}`}
+                                text={`${userInfo?.action_points_used} / ${userInfo?.max_action_points}`}
                                 bold
                             />
                         </HStack>
-                        <Progress percent={Math.round(((userInfo?.num_of_requests_used || 0) / (userInfo?.num_of_contexts || 0)) * 100)} />
+                        <Progress percent={Math.round(((userInfo?.action_points_used || 0) / (userInfo?.max_action_points || 0)) * 100)} />
                     </VStack>
                     <HStack>
                         <Button fullHeight variant="clearGrey" onClick={() => navigate(RoutePath.SUPPORT())}>

@@ -22,7 +22,7 @@ export const upgradePlanApi = rtkApi.injectEndpoints({
         url: '/billing/createpay/',
         method: 'POST',
         params: {
-          subscription_plan_id : id,
+          subscription_plan_id : id, 
         }
       }),
     }),

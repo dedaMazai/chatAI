@@ -275,11 +275,11 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                                 <HStack gap="24">
                                     <Typography text={`${t('Кредиты')}:`} />
                                     <Typography
-                                        text={`${userInfo?.num_of_requests_used} / ${userInfo?.num_of_contexts}`}
+                                        text={`${userInfo?.action_points_used} / ${userInfo?.max_action_points}`}
                                         bold
                                     />
                                 </HStack>
-                                <Progress percent={50} />
+                                <Progress percent={Math.round(((userInfo?.action_points_used || 0) / (userInfo?.max_action_points || 0)) * 100)} />
                             </VStack>
                             <HStack>
                                 <Button

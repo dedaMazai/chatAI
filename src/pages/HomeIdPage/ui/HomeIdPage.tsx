@@ -3,7 +3,6 @@ import { Icon } from '@/shared/ui/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import ShareIcon from '@/shared/assets/icons/ShareIcon.svg';
 import File from '@/shared/assets/icons/File.svg';
 import Settings from '@/shared/assets/icons/Settings.svg';
 import Send from '@/shared/assets/icons/Send.svg';
@@ -17,26 +16,20 @@ import { useNotification } from '@/shared/lib/hooks/useNotification/useNotificat
 import { Tooltip } from '@/shared/ui/Tooltip/Tooltip';
 import { Dropdown } from '@/shared/ui/Dropdown';
 import { redirectToWebsite } from '@/shared/lib/redirectToWebsite/redirectToWebsite';
-import { Modal } from '@/shared/ui/Modal';
-import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
 
 import cls from './HomeIdPage.module.scss';
-import { useUploadContextMutation } from '@/entities/Chats/api/chatsApi';
 
 const HomeIdPage = () => {
     const { t } = useTranslation('');
     const { id } = useParams<{ id: string }>();
     const chatRef:  MutableRefObject<HTMLDivElement | null> = useRef(null);
     const [question, setQuestion] = useState('');
-    const [isOpenModal, setIsOpenModal] = useState(false);
-    const [files, setFiles] = useState<FileList>();
 
     const { data: chat, isLoading: chatLoading } = useChatQuery(+id!, {
         skip: !id
     });
     const [clearChat, clearChatResult] = useClearChatMutation();
     const [sendQuestion, sendQuestionResult] = useSendQuestionMutation();
-    const [uploadContext, uploadContextResult] = useUploadContextMutation();
 
     useEffect(() => {
         chatRef.current?.scrollIntoView(false);
@@ -76,34 +69,6 @@ const HomeIdPage = () => {
             })
         }
     };
-
-    const handleCloseSite = () => {
-        setIsOpenModal(false);
-        setFiles(undefined);
-    };
-
-    const handleUploadFile = () => {
-        const formData = new FormData();
-        formData.append('file', files?.[0]!);
-
-        uploadContext({ name: '123', file: formData})
-    };
-
-    useEffect(() => {
-        if (uploadContextResult.isSuccess) {
-            handleCloseSite();
-        }
-    }, [uploadContextResult])
-
-    useNotification({
-        isLoading: {
-            active: uploadContextResult.isLoading,
-        },
-        isError: {
-            active: uploadContextResult.isError,
-            text: t('Ошибка отправки смс'),
-        },
-    });
 
     return (
         <VStack max fullHeight gap="8">
@@ -154,11 +119,7 @@ const HomeIdPage = () => {
                             items={[
                                 {
                                     content: t('Открыть файл'),
-                                    onClick: () => redirectToWebsite('https://google.com'),
-                                },
-                                {
-                                    content: t('Добавить файл'),
-                                    onClick: () => setIsOpenModal(true),
+                                    onClick: () => redirectToWebsite('https://google.com'), // TODO
                                 },
                             ]}
                             direction="bottom left"
@@ -219,25 +180,6 @@ const HomeIdPage = () => {
                     </HStack>
                 </VStack>
             </HStack>
-            <Modal isOpen={isOpenModal} onClose={handleCloseSite} lazy>
-                <VStack max gap="24" align='center' className={cls.modalInput}>
-                    <Typography
-                        bold
-                        text={t('Загрузите PDF файл')}
-                        align='center'
-                        wrap
-                    />
-                    <InputDrop
-                        onChange={(files) => {
-                            setFiles(files)
-                        }}
-                        countFiles={files?.length}
-                    />
-                    <Button disabled={!files?.[0]} onClick={handleUploadFile}>
-                        {t('Отправить')}
-                    </Button>
-                </VStack>
-            </Modal>
         </VStack>
     );
 };
