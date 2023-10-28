@@ -4,10 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "webpack serve --env port=3000 apiUrl=https://api.chatwiz.ru",
+        "start": "webpack serve --env port=3000 apiUrl=http://62.84.118.223:8000",
         "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",
         "start:dev:server": "node ./json-server/index.js",
-        "build": "webpack  --env mode=production apiUrl=https://api.chatwiz.ru",
+        "build": "webpack  --env mode=production apiUrl=http://62.84.118.223:8000",
         "prettier": "npx prettier --write **/*.{ts,tsx,json}",
         "lint:ts": "eslint \"./src/**/*.{ts,tsx}\"",
         "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
