@@ -5,10 +5,11 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import { useChangePasswordMutation, useDeleteUserMutation } from '@/entities/User/api/userApi';
+import { useChangePasswordMutation, useDeleteUserMutation, useGetUserInfoQuery } from '@/entities/User/api/userApi';
 import { Modal } from '@/shared/ui/Modal';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { userActions } from '@/entities/User';
+import { useSubscriptionPlansQuery } from '@/pages/UpgradePlanPage/api/upgradePlanApi';
 
 import cls from './SettingPage.module.scss';
 
@@ -29,6 +30,10 @@ const SettingPage = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [deleteUser, deleteUserResult] = useDeleteUserMutation();
     const [changePassword, changePasswordResult] = useChangePasswordMutation();
+
+    const { data: userInfo, isLoading: userInfoLoading } = useGetUserInfoQuery();
+
+    const { data: subscriptionPlans, isLoading: subscriptionPlansLoading } = useSubscriptionPlansQuery();
 
     const handleLogout = () => {
         dispatch(userActions.logout());
@@ -124,6 +129,45 @@ const SettingPage = () => {
                         </HStack>
                     </VStack>
                 </Card> */}
+                <Card
+                    padding="24"
+                    variant="outlineLight"
+                    header={(
+                        <Typography text={t('Основная информация')} bold />
+                    )}
+                    max
+                >
+                    <VStack gap="24" max>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Кол-во израсходованных токенов:')} />
+                            <Typography text={userInfo?.action_points_used} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Кол-во загруженных контекстов:')} />
+                            <Typography text={userInfo?.num_of_contexts} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Максимальное кол-во токенов:')} />
+                            <Typography text={userInfo?.max_action_points} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Максимальное кол-во документов:')} />
+                            <Typography text={userInfo?.max_number_of_contexts} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Максимальный размер документа:')} />
+                            <Typography text={userInfo?.max_context_size} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Максимальная длина вопроса:')} />
+                            <Typography text={userInfo?.max_question_length} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Тип подписки:')} />
+                            <Typography text={subscriptionPlans?.find((plan) => plan.id === userInfo?.subscription_plan_id)?.name || 'Персональный'} />
+                        </HStack>
+                    </VStack>
+                </Card>
                 <Card
                     padding="24"
                     variant="outlineLight"
