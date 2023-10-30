@@ -1,0 +1,47 @@
+.popup {
+    position: relative;
+}
+
+.menu {
+    border-radius: 10px;
+    box-shadow: 0 0.4rem 1.7rem 0 var(--shadow-card);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.trigger {
+    background: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.active {
+    background: var(--inverted-bg-color);
+}
+
+.optionsBottomLeft {
+    top: 100%;
+    right: 0;
+}
+
+.optionsBottomRight {
+    top: 100%;
+    left: 0;
+}
+
+.optionsTopRight {
+    bottom: 100%;
+    left: 0;
+}
+
+.optionsTopLeft {
+    right: 0;
+    bottom: 100%;
+}
+
+.disabled {
+    opacity: 0.7;
+}

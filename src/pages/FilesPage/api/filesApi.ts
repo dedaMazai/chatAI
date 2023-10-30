@@ -12,20 +12,20 @@ interface Contexts {
 
 export const filesApi = rtkApi.injectEndpoints({
   endpoints: (builder) => ({
-    uploadContext: builder.mutation<Contexts, FormData>({ // TODO
+    uploadContext: builder.mutation<Contexts, FormData>({
       query: (file) => ({
         url: '/context/uploadfile/',
         method: 'POST',
         body: file,
       }),
-      invalidatesTags: ['Chat'],
+      invalidatesTags: ['Chat', 'Contexts'],
     }),
     allContexts: builder.query<Contexts[], void>({
       query: () => ({
         url: '/context/get_contexts/',
         method: 'GET',
       }),
-      providesTags: ['AllChats', 'Contexts'],
+      providesTags: ['Contexts'],
       transformResponse: (response: { contexts: Contexts[] }) => response.contexts || [],
     }),
     downloadContext: builder.mutation<void, string>({
@@ -42,7 +42,7 @@ export const filesApi = rtkApi.injectEndpoints({
         url: `/context/delete_context/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Contexts'],
+      invalidatesTags: ['Chat', 'Contexts'],
     }),
   })
 });

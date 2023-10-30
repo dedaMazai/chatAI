@@ -1,6 +1,5 @@
 import { Button } from '@/shared/ui/Button';
 import { Icon } from '@/shared/ui/Icon';
-import { InputDrop } from '@/shared/ui/InputDrop/InputDrop';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
@@ -10,10 +9,11 @@ import { useEffect, useState } from 'react';
 import { Modal } from '@/shared/ui/Modal';
 import { Input } from '@/shared/ui/Input/Input';
 import { useStartNewChatMutation } from '@/entities/Chats';
-import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
 import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
+import { ListBox } from '@/shared/ui/ListBox/ListBox';
+import { useAllContextsQuery } from '@/pages/FilesPage/api/filesApi';
 
 import cls from './HomePage.module.scss';
 
@@ -23,11 +23,11 @@ const HomePage = () => {
     const [isOpenYouTube, setIsOpenYouTube] = useState(false);
     const [site, setSite] = useState('');
     const [youTube, setYouTube] = useState('');
-    const [name, setName] = useState('');
-    const [files, setFiles] = useState<FileList>();
+    const [file, setFile] = useState(0);
     const navigate = useNavigate();
 
     const [createChat, createChatResult] = useStartNewChatMutation();
+    const { data: contexts, isLoading: contextsLoading } = useAllContextsQuery();
 
     const handleCloseSite = () => {
         setIsOpenWorld(false);
@@ -61,8 +61,6 @@ const HomePage = () => {
     // }, [files])
 
     useEffect(() => {
-        setFiles(undefined)
-        setName('')
         if (createChatResult.isSuccess) {
             navigate(RoutePath.HOME_ID(`${createChatResult.data.chat_id}`))
         }
@@ -77,31 +75,39 @@ const HomePage = () => {
                 align='center'
                 wrap
             />
-            <HStack gap="16" max align='end' className={cls.nameInput}>
-                <Input
-                    value={name}
-                    onChange={(value) => {setName(value)}}
-                    label={t('Название чата')}
+            <HStack gap="16" max justify='center' className={cls.nameInput}>
+                <ListBox
+                    onChange={(value) => setFile(value)}
+                    items={[
+                        {
+                            content: t('Без файла'),
+                            value: 0
+                        },
+                        {
+                            content: t('Без файssла'),
+                            value: 2
+                        },
+                        ...(contexts ? contexts.map((context) => (
+                            {
+                                content: context.name,
+                                value: context.id,
+                            }
+                        )) : [])
+                    ]}
+                    value={file}
                 />
-                {/* <Button
+                <Button
                     color='green'
-                    disabled={!name.length}
                     bold
                     onClick={() => {
                         createChat({
-                            name,
+                            id: file ? file : undefined,
                         })
                     }}
                 >
                     {t('Создать')}
-                </Button> */}
+                </Button>
             </HStack>
-            {/* <InputDrop
-                onChange={(files) => {
-                    setFiles(files)
-                }}
-                isLoading={createChatResult.isLoading}
-            /> */}
             <Typography
                 size='l'
                 bold
