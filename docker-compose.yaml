@@ -2,7 +2,11 @@ version: "3"
 
 services:
   chatwizweb_node:
-    image: chatwiz_web
+    # image: chatwiz_web
+    container_name: chatwizweb_node
+    build:
+      context: .
+      dockerfile: Dockerfile
     command:
       [
         "serve", "build"
@@ -15,7 +19,11 @@ services:
       - ./public:/usr/src/app/public
 
   chatwizweb_nginx:
-    image: chatwiz_web_nginx
+    # image: chatwiz_web_nginx
+    container_name: chatwizweb_nginx
+    build:
+      context: ./nginx
+      dockerfile: ./Dockerfile
     ports:
       - 80:80
       - 443:443
