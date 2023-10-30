@@ -3,7 +3,7 @@ version: "3"
 services:
 
   chatwizweb_node:
-    image: chatwizweb
+    image: chatwiz_web
     command:
       [
         "npm", "run", "start"
