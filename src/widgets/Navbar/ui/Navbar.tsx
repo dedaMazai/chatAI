@@ -27,6 +27,7 @@ import { Progress } from '@/shared/ui/Progress/Progress';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
 import cls from './Navbar.module.scss';
+import { useGetUserInfoQuery } from '@/entities/User/api/userApi';
 
 interface NavbarProps {
     className?: string;
@@ -41,6 +42,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenPerson, setIsOpenPerson] = useState(false);
+
+    const { data: userInfo, isLoading: userInfoLoading } = useGetUserInfoQuery();
 
     const handleLogout = () => {
         dispatch(userActions.logout());
@@ -271,9 +274,12 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                             <VStack gap="8" max align='center'>
                                 <HStack gap="24">
                                     <Typography text={`${t('Кредиты')}:`} />
-                                    <Typography text="8 / 10" bold />
+                                    <Typography
+                                        text={`${userInfo?.action_points_used} / ${userInfo?.max_action_points}`}
+                                        bold
+                                    />
                                 </HStack>
-                                <Progress percent={50} />
+                                <Progress percent={Math.round(((userInfo?.action_points_used || 0) / (userInfo?.max_action_points || 0)) * 100)} />
                             </VStack>
                             <HStack>
                                 <Button

@@ -10,6 +10,7 @@ import Logo from '@/shared/assets/icons/Logo.svg';
 import Email from '@/shared/assets/icons/Email.svg';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '@/shared/const/router';
+import { redirectToWebsite } from '@/shared/lib/redirectToWebsite/redirectToWebsite';
 
 import cls from './Footer.module.scss';
 
@@ -21,13 +22,6 @@ export const Footer = (props: FooterProps) => {
     const { className } = props;
     const { t } = useTranslation();
     const navigate = useNavigate();
-
-    const redirectToWebsite = (url: string) => {
-        window.open(
-            url,
-            '_blank',
-        );
-    };
 
     return (
         <footer className={classNames(cls.Footer, {}, [className])}>

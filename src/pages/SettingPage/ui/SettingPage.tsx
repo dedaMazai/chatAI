@@ -5,10 +5,11 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import { Typography } from '@/shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
-import { useChangePasswordMutation, useDeleteUserMutation } from '@/entities/User/api/userApi';
+import { useChangePasswordMutation, useDeleteUserMutation, useGetUserInfoQuery } from '@/entities/User/api/userApi';
 import { Modal } from '@/shared/ui/Modal';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { userActions } from '@/entities/User';
+import { useSubscriptionPlansQuery } from '@/pages/UpgradePlanPage/api/upgradePlanApi';
 
 import cls from './SettingPage.module.scss';
 
@@ -30,6 +31,10 @@ const SettingPage = () => {
     const [deleteUser, deleteUserResult] = useDeleteUserMutation();
     const [changePassword, changePasswordResult] = useChangePasswordMutation();
 
+    const { data: userInfo, isLoading: userInfoLoading } = useGetUserInfoQuery();
+
+    const { data: subscriptionPlans, isLoading: subscriptionPlansLoading } = useSubscriptionPlansQuery();
+
     const handleLogout = () => {
         dispatch(userActions.logout());
     };
@@ -42,7 +47,6 @@ const SettingPage = () => {
         changePassword({
             old_password: nowPassword,
             new_password: newPassword,
-            new_password_repeat: newAccessPassword,
         })
     }
 
@@ -129,12 +133,51 @@ const SettingPage = () => {
                     padding="24"
                     variant="outlineLight"
                     header={(
+                        <Typography text={t('Основная информация')} bold />
+                    )}
+                    max
+                >
+                    <VStack gap="24" max>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Кол-во израсходованных токенов:')} />
+                            <Typography text={userInfo?.action_points_used} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Кол-во загруженных контекстов:')} />
+                            <Typography text={userInfo?.num_of_contexts} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Максимальное кол-во токенов:')} />
+                            <Typography text={userInfo?.max_action_points} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Максимальное кол-во документов:')} />
+                            <Typography text={userInfo?.max_number_of_contexts} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Максимальный размер документа:')} />
+                            <Typography text={userInfo?.max_context_size} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Максимальная длина вопроса:')} />
+                            <Typography text={userInfo?.max_question_length} />
+                        </HStack>
+                        <HStack max gap="24" className={cls.changeFlex}>
+                            <Typography bold text={t('Тип подписки:')} />
+                            <Typography text={subscriptionPlans?.find((plan) => plan.id === userInfo?.subscription_plan_id)?.name || 'Персональный'} />
+                        </HStack>
+                    </VStack>
+                </Card>
+                <Card
+                    padding="24"
+                    variant="outlineLight"
+                    header={(
                         <Typography text={t('Изменение пароля')} bold />
                     )}
                     max
                 >
                     <VStack gap="24" max>
-                        <HStack max gap="24" justify="between">
+                        <HStack max gap="24" justify="between" className={cls.changeFlex}>
                             <Typography text={t('Текущий пароль')} />
                             <Input
                                 className={cls.inputBlock}
@@ -143,7 +186,7 @@ const SettingPage = () => {
                                 onChange={(value) => {setNowPassword(value)}}
                             />
                         </HStack>
-                        <HStack max gap="24" justify="between">
+                        <HStack max gap="24" justify="between" className={cls.changeFlex}>
                             <Typography text={t('Новый пароль')} />
                             <Input
                                 className={cls.inputBlock}
@@ -152,7 +195,7 @@ const SettingPage = () => {
                                 onChange={(value) => {setNewPassword(value)}}
                             />
                         </HStack>
-                        <HStack max gap="24" justify="between">
+                        <HStack max gap="24" justify="between" className={cls.changeFlex}>
                             <Typography text={t('Подтвердите новый пароль')} />
                             <Input
                                 className={cls.inputBlock}
@@ -163,7 +206,12 @@ const SettingPage = () => {
                         </HStack>
                         <HStack max justify='end'>
                             <Button
-                                disabled={!nowPassword.length || !newPassword.length || !newAccessPassword.length}
+                                disabled={(
+                                    !nowPassword.length
+                                    || !newPassword.length
+                                    || !newAccessPassword.length
+                                    || newPassword !== newAccessPassword
+                                )}
                                 onClick={handleChangePassword}
                             >
                                 {t('Сохранить изменения')}
@@ -180,7 +228,7 @@ const SettingPage = () => {
                     max
                 >
                     <VStack gap="24" max>
-                        <Typography variant="gray" text={t('Когда вы удаляете свою учетную запись, вы теряете доступ к услугам учетной записи PandaChat, и мы навсегда удаляем ваши личные данные. Активные подписки будут отменены.')} bold />
+                        <Typography variant="gray" text={t('Когда вы удаляете свою учетную запись, вы теряете доступ к услугам учетной записи Chatwiz, и мы навсегда удаляем ваши личные данные. Активные подписки будут отменены.')} bold />
                         <HStack max justify='end'>
                             <Button onClick={() => setIsOpen(true)} color="red">{t('Удалить аккаунт')}</Button>
                         </HStack>

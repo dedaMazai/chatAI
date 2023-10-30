@@ -3,7 +3,6 @@ import { Icon } from '@/shared/ui/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import ShareIcon from '@/shared/assets/icons/ShareIcon.svg';
 import File from '@/shared/assets/icons/File.svg';
 import Settings from '@/shared/assets/icons/Settings.svg';
 import Send from '@/shared/assets/icons/Send.svg';
@@ -14,6 +13,9 @@ import { Typewriter } from '@/shared/ui/Typewriter';
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { useChatQuery, useClearChatMutation, useSendQuestionMutation } from '@/entities/Chats';
 import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
+import { Tooltip } from '@/shared/ui/Tooltip/Tooltip';
+import { Dropdown } from '@/shared/ui/Dropdown';
+import { redirectToWebsite } from '@/shared/lib/redirectToWebsite/redirectToWebsite';
 
 import cls from './HomeIdPage.module.scss';
 
@@ -77,15 +79,18 @@ const HomeIdPage = () => {
                 </HStack>
                 <HStack gap="16" className={cls.changeFlex}>
                     <HStack gap="16" max fullHeight>
-                        <Button
-                            color="grey"
-                            onClick={() => {}}
-                            nowrap
-                            fullWidth
-                            fullHeight
-                        >
-                            <Typography text={t('Краткое содержание')} />
-                        </Button>
+                        <Tooltip className={cls.tooltip} text={t('Будет доступно в ближайшее время')}>
+                            <Button
+                                color="grey"
+                                onClick={() => {}}
+                                nowrap
+                                fullWidth
+                                fullHeight
+                                disabled
+                            >
+                                <Typography text={t('Краткое содержание')} />
+                            </Button>
+                        </Tooltip>
                         <Button
                             color="grey"
                             disabled={!id}
@@ -105,14 +110,20 @@ const HomeIdPage = () => {
                         >
                             <Icon Svg={ShareIcon} />
                         </Button> */}
-                        <Button
-                            color="grey"
-                            onClick={() => {}}
-                            fullWidth
-                            fullHeight
-                        >
-                            <Icon Svg={Settings} />
-                        </Button>
+                        <Dropdown
+                            trigger={(
+                                <div className={cls.settings}>
+                                    <Icon Svg={Settings} className={cls.settingsIcon} />
+                                </div>
+                            )}
+                            items={[
+                                {
+                                    content: t('Открыть файл'),
+                                    onClick: () => redirectToWebsite('https://google.com'), // TODO
+                                },
+                            ]}
+                            direction="bottom left"
+                        />
                     </HStack>
                 </HStack>
             </HStack>

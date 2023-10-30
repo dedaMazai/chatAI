@@ -26,17 +26,17 @@ const ChatsPage = () => {
                 max
             >
                 <VStack gap="8">
-                    {chats?.map(({ id, name }) => (
+                    {chats?.map(({ chat_id, chat_name, creation_date }) => (
                         <Card
                             padding="16"
                             variant="outlineLight"
                             max
-                            key={id}
+                            key={chat_id}
                         >
                             <HStack max justify='between' gap="8">
                                 <VStack>
-                                    <Typography text={name} bold />
-                                    <Typography text={t('07 Sep 2023 20:55')} size="s" variant="gray" />
+                                    <Typography text={chat_name} bold />
+                                    <Typography text={creation_date} size="s" variant="gray" />
                                 </VStack>
                                 <Dropdown
                                     trigger={(
@@ -50,11 +50,11 @@ const ChatsPage = () => {
                                     items={[
                                         {
                                             content: t('Открыть'),
-                                            onClick: () => navigate(RoutePath.HOME_ID(`${id}`)),
+                                            onClick: () => navigate(RoutePath.HOME_ID(`${chat_id}`)),
                                         },
                                         {
                                             content: t('Редактировать'),
-                                            onClick: () => navigate(RoutePath.HOME_EDIT(`${id}`)),
+                                            onClick: () => navigate(RoutePath.HOME_EDIT(`${chat_id}`)),
                                         },
                                         {
                                             content: t('Удалить'),

@@ -45,26 +45,26 @@ const HomePage = () => {
         },
     });
 
-    useEffect(() => {
-        if (files?.[0] && name) {
-            const formData = new FormData();
-            formData.append('file', files[0]);
+    // useEffect(() => {
+    //     if (files?.[0] && name) {
+    //         const formData = new FormData();
+    //         formData.append('file', files[0]);
 
-            createChat({
-                name,
-                file: formData,
-            })
-        } else if (files?.[0] && !name) {
-            toast.error(t('Введите название файла'));
-            setFiles(undefined);
-        }
-    }, [files])
+    //         createChat({
+    //             name,
+    //             file: formData,
+    //         })
+    //     } else if (files?.[0] && !name) {
+    //         toast.error(t('Введите название файла'));
+    //         setFiles(undefined);
+    //     }
+    // }, [files])
 
     useEffect(() => {
         setFiles(undefined)
         setName('')
         if (createChatResult.isSuccess) {
-            navigate(RoutePath.HOME_ID(`${createChatResult.data.id}`))
+            navigate(RoutePath.HOME_ID(`${createChatResult.data.chat_id}`))
         }
     }, [createChatResult])
 
@@ -73,7 +73,7 @@ const HomePage = () => {
             <Typography
                 size='xl'
                 bold
-                text={t('Начните чат с загрузки файлов')}
+                text={t('Начните новый чат')}
                 align='center'
                 wrap
             />
@@ -83,7 +83,7 @@ const HomePage = () => {
                     onChange={(value) => {setName(value)}}
                     label={t('Название чата')}
                 />
-                <Button
+                {/* <Button
                     color='green'
                     disabled={!name.length}
                     bold
@@ -94,14 +94,14 @@ const HomePage = () => {
                     }}
                 >
                     {t('Создать')}
-                </Button>
+                </Button> */}
             </HStack>
-            <InputDrop
+            {/* <InputDrop
                 onChange={(files) => {
                     setFiles(files)
                 }}
                 isLoading={createChatResult.isLoading}
-            />
+            /> */}
             <Typography
                 size='l'
                 bold

@@ -1,8 +1,10 @@
 import { rtkApi } from "@/shared/api/rtkApi";
 
 interface Chat {
-  id: number;
-  name: string;
+  chat_id: number;
+  chat_name: string;
+  context_type: string;
+  creation_date: string;
 }
 
 interface ChatInfo {
@@ -19,7 +21,7 @@ export const chatsApi = rtkApi.injectEndpoints({
     allChats: builder.query<Chat[], void>({
       query: () => ({
         url: '/chats/get_chats/',
-        method: 'POST',
+        method: 'GET',
       }),
       providesTags: ['AllChats'],
       transformResponse: (response: { chats: Chat[] }) => response.chats || [],
@@ -64,14 +66,13 @@ export const chatsApi = rtkApi.injectEndpoints({
       }),
       invalidatesTags: ['Chat', 'AllChats'],
     }),
-    startNewChat: builder.mutation<{ id: number }, { name: string, file?: FormData }>({
-      query: ({ name, file }) => ({
+    startNewChat: builder.mutation<Chat, number>({
+      query: (id) => ({
         url: '/chats/start_new_chat',
         method: 'POST',
         params: {
-          chat_name: name,
+          file_id: id,
         },
-        body: file,
       }),
       invalidatesTags: ['AllChats'],
     }),

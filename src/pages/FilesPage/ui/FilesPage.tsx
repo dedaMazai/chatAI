@@ -8,19 +8,15 @@ import pdf from '@/shared/assets/icons/pdf-icon.svg';
 import ArrowDown from '@/shared/assets/icons/ArrowDown.svg';
 import { useAllContextsQuery, useClearContextMutation, useDownloadContextMutation } from '../api/filesApi';
 import { useNotification } from '@/shared/lib/hooks/useNotification/useNotification';
+import { redirectToWebsite } from '@/shared/lib/redirectToWebsite/redirectToWebsite';
+
+import cls from './FilesPage.module.scss';
 
 const FilesPage = () => {
     const { t } = useTranslation('');
     const { data: contexts, isLoading: contextsLoading } = useAllContextsQuery();
     const [delContext, delContextResult] = useClearContextMutation();
     const [downloadContext, downloadContextResult] = useDownloadContextMutation();
-
-    const redirectToWebsite = (url: string) => {
-        window.open(
-            url,
-            '_blank',
-        );
-    };
 
     useNotification({
         isSuccess: {
@@ -46,7 +42,7 @@ const FilesPage = () => {
                             variant="outlineLight"
                             max
                         >
-                            <HStack max justify='between'>
+                            <HStack max justify='between' className={cls.changeFlex}>
                                 <HStack gap="32">
                                     <Icon Svg={pdf} height={70} width={40} />
                                     <VStack>
@@ -55,9 +51,10 @@ const FilesPage = () => {
                                     </VStack>
                                 </HStack>
                                 <Dropdown
+                                    className={cls.Dropdown}
                                     trigger={(
-                                        <Card variant="greyOne" padding="8">
-                                            <HStack gap="8">
+                                        <Card variant="greyOne" padding="8" max>
+                                            <HStack gap="8" max justify='center'>
                                                 <Typography text={t('Действия')} />
                                                 <Icon Svg={ArrowDown} height={8} />
                                             </HStack>

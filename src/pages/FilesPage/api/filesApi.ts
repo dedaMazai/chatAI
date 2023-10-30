@@ -12,6 +12,14 @@ interface Contexts {
 
 export const filesApi = rtkApi.injectEndpoints({
   endpoints: (builder) => ({
+    uploadContext: builder.mutation<Contexts, FormData>({ // TODO
+      query: (file) => ({
+        url: '/context/uploadfile/',
+        method: 'POST',
+        body: file,
+      }),
+      invalidatesTags: ['Chat'],
+    }),
     allContexts: builder.query<Contexts[], void>({
       query: () => ({
         url: '/context/get_contexts/',
@@ -40,6 +48,7 @@ export const filesApi = rtkApi.injectEndpoints({
 });
 
 export const {
+  useUploadContextMutation,
   useAllContextsQuery,
   useClearContextMutation,
   useDownloadContextMutation,
