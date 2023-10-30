@@ -1,3 +1,7 @@
+.ListBoxBtn {
+    min-width: 250px;
+}
+
 .trigger {
     background: none;
     border: none;
@@ -7,17 +11,21 @@
 }
 
 .options {
-    background: var(--dark-bg-redesigned);
+    background: var(--bg-color);
     position: absolute;
     z-index: 10000;
     border-radius: 12px;
-    box-shadow: 4px 4px 8px var(--dark-bg-redesigned);
+    box-shadow: 4px 4px 8px var(--shadow-card);
+    max-height: 200px;
+    overflow-y: auto;
+    min-width: 250px;
 }
 
 .item {
     padding: 10px 20px;
+    cursor: pointer;
 }
 
 .selected {
-    background: var(--light-bg-redesigned);
+    background: var(--shadow-card);
 }

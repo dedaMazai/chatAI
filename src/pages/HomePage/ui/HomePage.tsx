@@ -83,10 +83,6 @@ const HomePage = () => {
                             content: t('Без файла'),
                             value: 0
                         },
-                        {
-                            content: t('Без файssла'),
-                            value: 2
-                        },
                         ...(contexts ? contexts.map((context) => (
                             {
                                 content: context.name,

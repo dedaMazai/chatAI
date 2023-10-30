@@ -60,8 +60,9 @@ export function ListBox<T extends string | number>(props: ListBoxProps<T>) {
                 onChange={onChange}
             >
                 <HListBox.Button
+                    className={cls.ListBoxBtn}
                     as={Button}
-                    variant="filled"
+                    variant="outline"
                 >
                     {selectedItem?.content ?? defaultValue}
                 </HListBox.Button>
