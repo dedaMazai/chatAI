@@ -12,4 +12,6 @@ EXPOSE 3000
 
 RUN ["npm", "run", "build"]
 
+RUN ["npm", "install", "-g", "serve"]
+
 CMD ["serve", "build"]
