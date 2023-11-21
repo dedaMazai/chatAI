@@ -144,13 +144,13 @@ const HomeIdPage = () => {
                 </div>
                 <VStack justify="between" gap="8" className={cls.chatWrapper}>
                     <div className={cls.chat}>
-                        {chat?.message_history.chat.map(([from, sms], index) => (
+                        {!!chat?.message_history?.chat && chat.message_history.chat.map(([from, sms], index) => (
                             <HStack key={index} max justify={from === 'human' ? "end" : "start"}>
                                 <Card
-                                    ref={index === chat?.message_history.chat.length - 1 ? chatRef : undefined}
+                                    ref={index === chat?.message_history!.chat!.length - 1 ? chatRef : undefined}
                                     className={cls.smsCard} variant={from === 'human' ? "green" : "greyOne"}
                                 >
-                                    {(index === chat?.message_history.chat.length - 1) && from === "ai" ? (
+                                    {(index === chat?.message_history!.chat!.length - 1) && from === "ai" ? (
                                         <Typewriter text={sms} delay={7}  />
                                     ) : <Typography text={sms} variant={from === 'human' ? "white" : "black"} />}
                                 </Card>

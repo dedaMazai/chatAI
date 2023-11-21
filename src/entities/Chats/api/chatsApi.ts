@@ -8,11 +8,11 @@ interface Chat {
 }
 
 interface ChatInfo {
-  url: string;
+  url?: string;
   chat_name: string;
   context_type: 'pdf' | 'video' | 'site';
-  message_history: {
-    chat: [from: string, sms: string][]
+  message_history?: {
+    chat?: [from: string, sms: string][]
   };
 }
 
@@ -96,7 +96,7 @@ export const chatsApi = rtkApi.injectEndpoints({
                   'chat',
                   args,
                   (draftPosts) => {
-                      draftPosts.message_history.chat.push(
+                      draftPosts.message_history?.chat?.push(
                         [
                             "human",
                             question,
