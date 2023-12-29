@@ -8,9 +8,9 @@ interface Chat {
 }
 
 interface ChatInfo {
-  url?: string;
+  context_url?: string;
   chat_name: string;
-  context_type: 'pdf' | 'video' | 'site';
+  context_type: 'application/pdf' | 'video' | 'site';
   message_history?: {
     chat?: [from: string, sms: string][]
   };
